@@ -1,0 +1,104 @@
+.emptyNote {
+  color: var(--pm-ink-3);
+  font-size: 12.5px;
+}
+
+.docCard {
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+
+  & + & {
+    margin-top: var(--pm-sp-3);
+  }
+}
+
+.docCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--pm-sp-2);
+}
+
+.docTitle {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--pm-ink);
+  word-break: break-all;
+}
+
+.docMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--pm-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.docActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.editRow {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-2);
+  margin-top: var(--pm-sp-3);
+  padding-top: var(--pm-sp-3);
+  border-top: 1px solid var(--pm-border);
+
+  select {
+    flex: 1;
+  }
+}
+
+.rowError {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--pm-critical);
+}
+
+.iconBtn {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface);
+  color: var(--pm-ink-2);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--pm-surface-2);
+    color: var(--pm-ink);
+  }
+}
+
+.deleteBtn {
+  color: var(--pm-critical);
+
+  &:hover {
+    color: var(--pm-critical);
+    background: color-mix(in srgb, var(--pm-critical) 8%, var(--pm-surface));
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.55;
+  }
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+}

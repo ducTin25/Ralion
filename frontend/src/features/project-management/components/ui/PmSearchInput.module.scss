@@ -1,0 +1,52 @@
+.box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--pm-surface);
+  border: 1px solid var(--pm-border-strong);
+  border-radius: var(--pm-radius-sm);
+  padding: 0 11px;
+  height: 37px;
+  transition: border-color 0.13s var(--pm-ease);
+
+  &:focus-within {
+    border-color: var(--pm-accent);
+    box-shadow: 0 0 0 3px var(--pm-accent-bg);
+  }
+}
+
+.icon {
+  color: var(--pm-ink-3);
+  flex: none;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--pm-ink);
+  outline: none;
+
+  &::placeholder {
+    color: var(--pm-ink-3);
+  }
+}
+
+.box {
+  height: 42px;
+  border-radius: 10px;
+}
+
+.input {
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .box {
+    height: 44px;
+  }
+}

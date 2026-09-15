@@ -1,0 +1,666 @@
+{
+  "extractions": {
+    "THANOS_8378_E3": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Remove comments that simply restate what is already obvious from the symbol's name.",
+      "rationale": "It's pretty obvious what it is for from its name.",
+      "prompt_tokens": 656,
+      "completion_tokens": 439,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 6625,
+      "error": null
+    },
+    "THANOS_8594_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "When exposing tls.Config options in an API, expose relevant security-affecting fields such as MinVersion and add a docstring linking to the crypto/tls documentation.",
+      "rationale": "Exposing MinVersion may be good, as it's always best to force the highest safe TLS version to limit downgrade attacks; ServerName is already in the containing clientConfig so doesn't need adding here.",
+      "prompt_tokens": 726,
+      "completion_tokens": 724,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 11375,
+      "error": null
+    },
+    "THANOS_8594_E13": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "When the project targets Go 1.26 or later, prefer using new(Type) for allocating pointers to basic types instead of creating separate variables or helper functions to reduce boilerplate.",
+      "rationale": "That's a lot of boilerplate that we could avoid just by upgrading; so we can remove lots of boilerplate.",
+      "prompt_tokens": 910,
+      "completion_tokens": 728,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 8766,
+      "error": null
+    },
+    "THANOS_8594_E19": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Centralize allowed TLS versions in a shared definition and validate uses via a common enum, shared array, or custom type/constructor.",
+      "rationale": "The knowledge about what TLS versions are allowed is scattered across multiple places.",
+      "prompt_tokens": 704,
+      "completion_tokens": 515,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 7172,
+      "error": null
+    },
+    "THANOS_8594_E2": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Place and name configuration validation functions to reflect their scope: use broader public names like ValidateConfig or ValidateClientConfig for general config validation, and make small, internal validators private (e.g., validateCompression).",
+      "rationale": "There'll likely be other things to validate in the config later, and this code is only checking for Compression type (not the entire config), so per-endpoint ValidateConfig belongs elsewhere and ValidateCompression should be a private method.",
+      "prompt_tokens": 754,
+      "completion_tokens": 768,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 10046,
+      "error": null
+    },
+    "THANOS_8594_E21": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Avoid creating very small or trivial wrapper functions; prefer exposing the underlying function directly.",
+      "rationale": "We typically try to avoid such small functions as per the coding style.",
+      "prompt_tokens": 669,
+      "completion_tokens": 477,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 4766,
+      "error": null
+    },
+    "THANOS_8594_E4": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "When documenting or exposing TLS configuration fields, include a link to the crypto/tls Configuration documentation as a reference.",
+      "rationale": "as a reference for the fields",
+      "prompt_tokens": 655,
+      "completion_tokens": 495,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 10156,
+      "error": null
+    },
+    "THANOS_8594_E8": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Run the project's documentation formatting/cleanup (for example `make white-noise-cleanup`) so docs whitespace and formatting, such as space around CLI flags, conform to CI checks.",
+      "rationale": "The docs checks are complaining; it doesn't like the whitespace around the cli flags edits.",
+      "prompt_tokens": 863,
+      "completion_tokens": 809,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 15141,
+      "error": null
+    },
+    "THANOS_8630_E2": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Use range-based for loops when iterating over slices instead of manual index-based loops.",
+      "rationale": "This should have been caught by linters.",
+      "prompt_tokens": 666,
+      "completion_tokens": 838,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 11437,
+      "error": null
+    },
+    "THANOS_8630_E3": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Remove small or redundant comments that merely restate what the code does to avoid distraction.",
+      "rationale": "Because it's clear what's happening from the code and it is distracting.",
+      "prompt_tokens": 661,
+      "completion_tokens": 420,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 6782,
+      "error": null
+    },
+    "THANOS_8648_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Accessor methods for an endpointRef should acquire and manage the endpointRef's own mutex to protect endpoint state, rather than relying on the endpoint set's mutex.",
+      "rationale": "The status being retrieved is endpoint state, so the mutex should protect the endpoint state not the endpointset state; having a Status method manage its own locks is cleaner and consistent with other endpointRef methods.",
+      "prompt_tokens": 753,
+      "completion_tokens": 925,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 10656,
+      "error": null
+    },
+    "THANOS_8691_E2": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Put related paths into a slice and iterate over that slice to perform the same operation (e.g., delete) instead of duplicating the code for each path.",
+      "rationale": "Chưa tìm thấy lý do tường minh",
+      "prompt_tokens": 760,
+      "completion_tokens": 431,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 6859,
+      "error": null
+    },
+    "THANOS_8691_E3": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Skip making API calls when the operation would be a no-op for a provider to avoid unnecessary requests.",
+      "rationale": "It causes two extra API calls for object store providers where this is a no-op (for example S3).",
+      "prompt_tokens": 679,
+      "completion_tokens": 568,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 10453,
+      "error": null
+    },
+    "THANOS_8713_E1": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "When removing or closing a worker/endpoint, delete any Prometheus metrics keyed by that worker to avoid leaving stale labels.",
+      "rationale": "In dynamic setups this could accumulate cardinality without a bound.",
+      "prompt_tokens": 737,
+      "completion_tokens": 591,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 5282,
+      "error": null
+    },
+    "THANOS_8720_E2": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Use errors.Is to check wrapped errors (rather than direct equality) and distinguish handling for context.DeadlineExceeded and context.Canceled when appropriate.",
+      "rationale": "Chưa tìm thấy lý do tường minh",
+      "prompt_tokens": 679,
+      "completion_tokens": 610,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 8343,
+      "error": null
+    },
+    "THANOS_8720_E3": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Do not move synchronous local writes off the request's critical path into detached goroutines that let the handler return before the write completes, because that can bypass admission control and allow unbounded goroutine accumulation.",
+      "rationale": "Moving the local TSDB Append into a goroutine takes it off the request's critical path, so the handler can return once remote acks satisfy quorum while the local Append is still pending; gRPC then admits the next request and wrapper goroutines accumulate without admission control, causing TSDB lock contention and slower local Appends which makes goroutines stack up.",
+      "prompt_tokens": 990,
+      "completion_tokens": 907,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 11532,
+      "error": null
+    },
+    "THANOS_8801_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Extract repeated literal values into named constants and document in a comment why the constant is used and why alternatives were not chosen.",
+      "rationale": "Chưa tìm thấy lý do tường minh",
+      "prompt_tokens": 708,
+      "completion_tokens": 861,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 9000,
+      "error": null
+    },
+    "THANOS_8806_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "Use handler tests instead of end-to-end tests when you need to assert specific error responses and HTTP status codes.",
+      "rationale": "So we can check the error as well; handler tests allow better visibility on the response code, e.g. tenant label validation errors now cause 400 responses.",
+      "prompt_tokens": 692,
+      "completion_tokens": 652,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 6437,
+      "error": null
+    },
+    "THANOS_8806_E2": {
+      "evidence_type": "QUESTION_DISCUSSION",
+      "reuse_scope": 0,
+      "rule_text_draft": "",
+      "rationale": "Chưa tìm thấy lý do tường minh",
+      "prompt_tokens": 663,
+      "completion_tokens": 462,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 7141,
+      "error": null
+    },
+    "THANOS_8808_E2": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "When changing the type of a serialized field (e.g., in protobuf), do not replace the existing field number with a different type; allocate a new field number for the new type to preserve backward compatibility.",
+      "rationale": "An older reader will not be able to unmarshal the data if the field's type changes, making the change backward incompatible.",
+      "prompt_tokens": 705,
+      "completion_tokens": 614,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 7734,
+      "error": null
+    },
+    "THANOS_8840_E2": {
+      "evidence_type": "NOISE_OTHER",
+      "reuse_scope": 0,
+      "rule_text_draft": "",
+      "rationale": "so that it would distract less from the main path.",
+      "prompt_tokens": 679,
+      "completion_tokens": 524,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 11078,
+      "error": null
+    },
+    "THANOS_8894_E1": {
+      "evidence_type": "REUSABLE_CORRECTION",
+      "reuse_scope": 1,
+      "rule_text_draft": "When removing a legacy enum field from a protobuf schema, reserve its field number and delete the field rather than reusing the number.",
+      "rationale": "Most call sites are already updated to respect the enum and all clients set it.",
+      "prompt_tokens": 681,
+      "completion_tokens": 540,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 9547,
+      "error": null
+    },
+    "THANOS_8907_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Do not include specific runtime/version numbers in CI job or required status check names; use generic names instead so checks continue to match after renames.",
+      "rationale": "to avoid this problem in the future — the required status check named with a Node version will stop reporting after the CI job was renamed, so keep the name generic without the match on node version",
+      "prompt_tokens": 758,
+      "completion_tokens": 720,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 9250,
+      "error": null
+    },
+    "THANOS_8935_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Do not create functions that are only called once in a single place; keep the interface narrow and avoid shallow/one-use helper functions.",
+      "rationale": "Chưa tìm thấy lý do tường minh",
+      "prompt_tokens": 678,
+      "completion_tokens": 270,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 3063,
+      "error": null
+    },
+    "THANOS_8944_E1": {
+      "evidence_type": "CONVENTION",
+      "reuse_scope": 2,
+      "rule_text_draft": "Do not add a CHANGELOG entry for changes that are not visible to end users.",
+      "rationale": "This change is not visible to end users so no need for an entry here.",
+      "prompt_tokens": 689,
+      "completion_tokens": 398,
+      "model": "openai/gpt-5-mini",
+      "latency_ms": 6703,
+      "error": null
+    }
+  },
+  "threshold_sweep": [
+    {
+      "threshold": 0.6,
+      "accepted_family_count": 2,
+      "known_families_reconstructed": 0,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8378_E3",
+            "THANOS_8594_E13",
+            "THANOS_8594_E21",
+            "THANOS_8630_E2",
+            "THANOS_8630_E3",
+            "THANOS_8691_E2",
+            "THANOS_8713_E1",
+            "THANOS_8808_E2",
+            "THANOS_8894_E1",
+            "THANOS_8935_E1"
+          ],
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8378_E3",
+            "THANOS_8594_E13",
+            "THANOS_8594_E21",
+            "THANOS_8630_E2",
+            "THANOS_8630_E3",
+            "THANOS_8691_E2",
+            "THANOS_8713_E1",
+            "THANOS_8808_E2",
+            "THANOS_8894_E1",
+            "THANOS_8935_E1"
+          ],
+          "exact_match": false
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8378_E3",
+            "THANOS_8594_E13",
+            "THANOS_8594_E21",
+            "THANOS_8630_E2",
+            "THANOS_8630_E3",
+            "THANOS_8691_E2",
+            "THANOS_8713_E1",
+            "THANOS_8808_E2",
+            "THANOS_8894_E1",
+            "THANOS_8935_E1"
+          ],
+          "exact_match": false
+        }
+      },
+      "false_positive_families": [
+        [
+          "THANOS_8378_E3",
+          "THANOS_8594_E13",
+          "THANOS_8594_E21",
+          "THANOS_8630_E2",
+          "THANOS_8630_E3",
+          "THANOS_8691_E2",
+          "THANOS_8713_E1",
+          "THANOS_8808_E2",
+          "THANOS_8894_E1",
+          "THANOS_8935_E1"
+        ],
+        [
+          "THANOS_8594_E8",
+          "THANOS_8720_E2",
+          "THANOS_8806_E1"
+        ]
+      ]
+    },
+    {
+      "threshold": 0.65,
+      "accepted_family_count": 4,
+      "known_families_reconstructed": 3,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "exact_match": true
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "exact_match": true
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "exact_match": true
+        }
+      },
+      "false_positive_families": [
+        [
+          "THANOS_8630_E2",
+          "THANOS_8691_E2"
+        ]
+      ]
+    },
+    {
+      "threshold": 0.7,
+      "accepted_family_count": 3,
+      "known_families_reconstructed": 3,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "exact_match": true
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "exact_match": true
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "exact_match": true
+        }
+      },
+      "false_positive_families": []
+    },
+    {
+      "threshold": 0.75,
+      "accepted_family_count": 2,
+      "known_families_reconstructed": 2,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "exact_match": true
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "exact_match": true
+        }
+      },
+      "false_positive_families": []
+    },
+    {
+      "threshold": 0.8,
+      "accepted_family_count": 0,
+      "known_families_reconstructed": 0,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        }
+      },
+      "false_positive_families": []
+    },
+    {
+      "threshold": 0.85,
+      "accepted_family_count": 0,
+      "known_families_reconstructed": 0,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        }
+      },
+      "false_positive_families": []
+    },
+    {
+      "threshold": 0.9,
+      "accepted_family_count": 0,
+      "known_families_reconstructed": 0,
+      "known_families_total": 4,
+      "per_family": {
+        "THANOS_FAM_avoid_llmisms": {
+          "expected_members": [
+            "THANOS_8944_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_redundant_comments": {
+          "expected_members": [
+            "THANOS_8378_E3",
+            "THANOS_8630_E3"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_avoid_shallow_functions": {
+          "expected_members": [
+            "THANOS_8594_E21",
+            "THANOS_8935_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        },
+        "THANOS_FAM_protobuf_field_compat": {
+          "expected_members": [
+            "THANOS_8808_E2",
+            "THANOS_8894_E1"
+          ],
+          "pipeline_component_members": null,
+          "exact_match": false
+        }
+      },
+      "false_positive_families": []
+    }
+  ],
+  "eligible_case_ids": [
+    "THANOS_8378_E3",
+    "THANOS_8594_E1",
+    "THANOS_8594_E13",
+    "THANOS_8594_E19",
+    "THANOS_8594_E2",
+    "THANOS_8594_E21",
+    "THANOS_8594_E4",
+    "THANOS_8594_E8",
+    "THANOS_8630_E2",
+    "THANOS_8630_E3",
+    "THANOS_8648_E1",
+    "THANOS_8691_E2",
+    "THANOS_8691_E3",
+    "THANOS_8713_E1",
+    "THANOS_8720_E2",
+    "THANOS_8720_E3",
+    "THANOS_8801_E1",
+    "THANOS_8806_E1",
+    "THANOS_8808_E2",
+    "THANOS_8894_E1",
+    "THANOS_8907_E1",
+    "THANOS_8935_E1",
+    "THANOS_8944_E1"
+  ]
+}

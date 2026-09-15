@@ -1,0 +1,83 @@
+.readLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pm-accent);
+  cursor: pointer;
+  flex: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.group {
+  & + & {
+    margin-top: var(--pm-sp-5);
+    padding-top: var(--pm-sp-5);
+    border-top: 1px solid var(--pm-border);
+  }
+}
+
+.groupHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--pm-sp-3);
+
+  b {
+    font-size: 13.5px;
+    color: var(--pm-ink);
+  }
+}
+
+.groupIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--pm-radius-md);
+  color: #fff;
+  flex: none;
+}
+
+.iconAccent {
+  background: var(--pm-accent);
+}
+.iconSuccess {
+  background: var(--pm-success);
+}
+.iconWarning {
+  background: var(--pm-warning);
+}
+.iconViolet {
+  background: #7c5cff;
+}
+
+.docCard {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  padding: 10px var(--pm-sp-4);
+
+  & + & {
+    margin-top: 8px;
+  }
+}
+
+.docTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pm-ink);
+  flex: 1;
+}

@@ -1,0 +1,259 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--pm-sp-5);
+  font-size: 12.5px;
+  color: var(--pm-ink-3);
+}
+
+.stepCurrent {
+  color: var(--pm-accent);
+  font-weight: 700;
+}
+
+.pickArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--pm-sp-3);
+  padding: var(--pm-sp-6) 0;
+}
+
+.pickHint {
+  color: var(--pm-ink-3);
+  font-size: 13px;
+  max-width: 460px;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.browserNote {
+  color: var(--pm-ink-3);
+  font-size: 11.5px;
+  font-style: italic;
+  margin-top: -2px;
+}
+
+.pickSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-surface-2);
+  border: 1px solid var(--pm-border);
+  font-size: 13px;
+}
+
+.processingSummary {
+  flex-direction: row;
+  align-items: center;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  border: 2px solid var(--pm-border);
+  border-top-color: var(--pm-accent);
+  border-radius: 50%;
+  animation: repoScanSpin 0.75s linear infinite;
+}
+
+@keyframes repoScanSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.5s;
+  }
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  padding: var(--pm-sp-8) 0;
+  color: var(--pm-ink-3);
+  text-align: center;
+}
+
+.importProgress {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+  margin: calc(-1 * var(--pm-sp-2)) 0 var(--pm-sp-4);
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-surface);
+  box-shadow: var(--pm-shadow-sm);
+}
+
+.importProgressText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 13px;
+
+  progress {
+    width: 100%;
+    height: 7px;
+    accent-color: var(--pm-accent);
+  }
+}
+
+.reviewHint {
+  color: var(--pm-ink-3);
+  font-size: 12.5px;
+  margin-bottom: var(--pm-sp-4);
+}
+
+.categoryGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pm-sp-3);
+  margin-bottom: var(--pm-sp-5);
+}
+
+.categoryGroup {
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-lg);
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.categoryGroupHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+
+  b {
+    font-size: 13px;
+    flex: 1;
+  }
+}
+
+.categoryGroupIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--pm-accent);
+  color: #fff;
+}
+
+.candidateRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: var(--pm-radius-md);
+
+  &:hover {
+    background: var(--pm-surface-2);
+  }
+}
+
+.candidateRowMain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.unclassifiedBlock {
+  border-top: 1px solid var(--pm-border);
+  padding-top: var(--pm-sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.unclassifiedTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pm-ink-3);
+}
+
+.unclassifiedRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+}
+
+.candidatePath {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+
+  b {
+    font-weight: 600;
+    font-size: 12.5px;
+    word-break: break-all;
+  }
+
+  span {
+    color: var(--pm-ink-3);
+    font-size: 11px;
+  }
+}
+
+.previewBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm, 6px);
+  background: var(--pm-surface-2);
+  color: var(--pm-ink-3);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--pm-accent);
+    border-color: var(--pm-accent);
+  }
+}
+
+.reasonNote {
+  color: var(--pm-ink-3);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.categorySelectSm {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+.emptyNote {
+  color: var(--pm-ink-3);
+  font-size: 13px;
+  padding: var(--pm-sp-5) 0;
+}

@@ -1,0 +1,154 @@
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  thead {
+    background: var(--pm-surface-2);
+  }
+
+  thead th {
+    text-align: left;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--pm-ink-3);
+    padding: 10px var(--pm-sp-3);
+    border-bottom: 1px solid var(--pm-border-strong);
+  }
+
+  thead th:first-child {
+    border-top-left-radius: var(--pm-radius-lg);
+  }
+
+  thead th:last-child {
+    border-top-right-radius: var(--pm-radius-lg);
+  }
+
+  tbody td {
+    padding: var(--pm-sp-3);
+    border-bottom: 1px solid var(--pm-border);
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  tbody tr.clickable {
+    cursor: pointer;
+    transition: background 0.13s var(--pm-ease);
+  }
+
+  tbody tr.clickable:hover {
+    background: var(--pm-surface-2);
+  }
+}
+
+.cellMain {
+  font-weight: 600;
+  color: var(--pm-ink);
+}
+
+.cellSub {
+  color: var(--pm-ink-3);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.emptyNote {
+  color: var(--pm-ink-3);
+  font-size: 12.5px;
+  padding: var(--pm-sp-3) 0;
+}
+
+.table {
+  font-size: 14px;
+
+  thead th {
+    padding: 12px 14px;
+  }
+
+  tbody td {
+    padding: 14px;
+  }
+}
+
+.cellSub {
+  font-size: 12.5px;
+}
+
+.emptyNote {
+  padding: var(--pm-sp-4) 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .tableWrap {
+    overflow: visible;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .table tbody {
+    display: grid;
+    gap: 12px;
+  }
+
+  .table tbody tr {
+    overflow: hidden;
+    border: 1px solid var(--pm-border);
+    border-radius: var(--pm-radius-lg);
+    background: var(--pm-surface);
+    box-shadow: var(--pm-shadow-sm);
+  }
+
+  .table tbody td {
+    min-height: 44px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--pm-border);
+  }
+
+  .table tbody td[data-label] {
+    display: grid;
+    grid-template-columns: minmax(96px, 34%) minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+  }
+
+  .table tbody td[data-label]::before {
+    content: attr(data-label);
+    color: var(--pm-ink-3);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.035em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .table tbody td:last-child {
+    border-bottom: 0;
+  }
+}

@@ -1,0 +1,10 @@
+project_id: 19
+sync_scope:
+  include:
+    - path: README.md
+    - path: CONTRIBUTING.md
+    - path: docs/contributing/coding-style-guide.md
+    - path: docs/proposals-accepted/**/*.md
+    - path: docs/proposals-done/**/*.md
+pr_comment_scope:
+  enabled: false

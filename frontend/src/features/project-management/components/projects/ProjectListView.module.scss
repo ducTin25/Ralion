@@ -1,0 +1,38 @@
+.card {
+  margin-bottom: var(--pm-sp-6);
+}
+
+.projectCell {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+}
+
+.filterRow {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--pm-sp-3);
+  margin-bottom: var(--pm-sp-4);
+
+  > *:first-child {
+    flex: 1 1 240px;
+    max-width: 340px;
+  }
+
+  > *:last-child {
+    flex: 0 1 200px;
+  }
+}
+
+.caption {
+  font-size: 11.5px;
+  color: var(--pm-ink-3);
+  margin: var(--pm-sp-3) 0 0;
+  line-height: 1.5;
+
+  b {
+    color: var(--pm-ink-2);
+    font-weight: 700;
+  }
+}

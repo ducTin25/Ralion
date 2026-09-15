@@ -1,0 +1,350 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source_csv": "scripts/thanos_comments_annotated_DRAFT.csv",
+    "source_report": "scripts/thanos_annotation_DRAFT_report.md",
+    "repo": "thanos-io/thanos",
+    "window": "2025-08-01..2026-07-31",
+    "sample_pr_count": 120,
+    "eligibility_contract": "evidence_type IN (REUSABLE_CORRECTION, CONVENTION) AND reuse_scope >= 1 (F6_RULE_MINING_SPEC.md mục 2.1)",
+    "total_cases": 25,
+    "evidence_type_distribution": {
+      "REUSABLE_CORRECTION": 19,
+      "CONVENTION": 6
+    },
+    "known_rule_families": {
+      "THANOS_FAM_avoid_shallow_functions": "HIGH",
+      "THANOS_FAM_avoid_llmisms": "HIGH",
+      "THANOS_FAM_avoid_redundant_comments": "HIGH",
+      "THANOS_FAM_protobuf_field_compat": "MEDIUM"
+    },
+    "singleton_case_count": 17,
+    "notes": [
+      "17/25 cases are singletons (expected_rule_family_id=null) — no second evidence found in this 120-PR sample, per F6_RULE_MINING_SPEC.md mục 3.1 (a sample-power question, not a repo-quality verdict).",
+      "raw_comment_bodies is untruncated per row, in original CSV order — density_check.py's 500-char truncation bug (fixed in F6_RULE_MINING_SPEC.md mục 1.1) did not affect any label in this dataset (mục 1.3)."
+    ]
+  },
+  "cases": [
+    {
+      "evidence_unit_id": "THANOS_8378_E3",
+      "pr_number": 8378,
+      "raw_comment_bodies": [
+        "Could you remove this comment? It's pretty obvious what it is for from its name."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_avoid_redundant_comments",
+      "expected_family_match_confidence": "HIGH",
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E1",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "Does it make sense to expose any other parts of https://pkg.go.dev/crypto/tls#Config here? I see that `ServerName` is in the containing `clientConfig` so doesn't need adding here. Exposing `MinVersion` may be good, as it's always best to force the highest safe TLS version to limit downgrade attacks. A docstring linking to the crypto/tls docs would likely make sense here too."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E13",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "Like ```go globalTLSConfig := &tlsConfig{ Enabled: new(bool), CertFile: new(string), KeyFile: new(string), CAFile: new(string), } *globalTLSConfig.Enabled = true *globalTLSConfig.CertFile = \"/mock-path.pem\" *globalTLSConfig.KeyFile = \"/mock-key-path.pem\" *globalTLSConfig.CAFile = \"/mock-ca-path.pem\" ``` or ```go var ( gtlsEnabled = true gtlsCertFile = \"/mock-path.pem\" gtlsKeyFile = \"/mock-key-path.pem\" gtlsCAFile = \"/mock-ca-path.pem\" ) globalTLSConfig := &tlsConfig{ Enabled: &gtlsEnabled, CertF",
+        "i think using boolPtr and strPtr is fine here? can i mark this as resolved @MichaHoffmann and @ringerc?",
+        "I think we can just upgrade to Go 1.26 use `new(...)`. That's a lot of boilerplate that we could avoid just by upgrading. Let me try that.",
+        "Maybe the boilerplate could be reduced by a function like this https://go.dev/play/p/YXjiVmGmqZ5?",
+        "Updated to 1.26 here https://github.com/thanos-io/thanos/pull/8717 so we can remove lots of boilerplate."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E19",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "The knowledge about what TLS versions are allowed is scattered across multiple places. Maybe we could either and or: - Create some \"global\" array with allowed versions that will be referred to from other places - Use EnumVar() here to check against that array - Add a custom type with some function that does validation and/or a constructor"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 0
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E2",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "Shouldn't this just be `ValidateConfig()` or `ValidateClientConfig()` as there'll likely be other things to validate in the config later?",
+        "No `ValidateCompression` cuz we are checking for Compression type and not the either config for per endpoint ValidateConfig would happen in - https://github.com/Naman-B-Parlecha/thanos/blob/NamanParlecha/PerEndpointTLS/cmd/thanos/endpointset.go#L147-L161 Not sure what i was thinking but `ValidateCompression` should be a private method so refactoring to `validateCompression`"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E21",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "Spurious space and very shallow. We typically try to avoid such small functions as per the coding style. Could we just expose getTlsVersion instead?"
+      ],
+      "expected_evidence_type": "CONVENTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_avoid_shallow_functions",
+      "expected_family_match_confidence": "HIGH",
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E4",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "Suggest a link to crypto/tls docs for Configuration as a reference for the fields"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 0
+    },
+    {
+      "evidence_unit_id": "THANOS_8594_E8",
+      "pr_number": 8594,
+      "raw_comment_bodies": [
+        "It looks like you may need to `make white-noise-cleanup` too, as the docs checks are complaining. (Assuming I read the CI check correctly.) It doesn't like the whitespace around the cli flags edits.",
+        "Thanks @ringerc applied ur suggestion on the docs have applied them!! The CI for Docs is broken and has alot of error not related to this PR :((",
+        "@Naman-B-Parlecha Grab this commit and apply it. I couldn't work out how to raise a PR for you against this branch. Edit: actually apply this with `git am 0001-Fix-docs-formatting.patch` instead: [0001-Fix-docs-formatting.patch](https://github.com/user-attachments/files/25088816/0001-Fix-docs-formatting.patch) alternatively grab this commit https://github.com/thanos-io/thanos/commit/a39f3c24010167ad3f3d0e6a372655e017b0be52 I suspect the e2e tests are broken, but the docs tests just need this con"
+      ],
+      "expected_evidence_type": "CONVENTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8630_E2",
+      "pr_number": 8630,
+      "raw_comment_bodies": [
+        "You can modernize with `for j := range len(azSections)`. I'm surprised this wasn't caught by linters :thinking:"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8630_E3",
+      "pr_number": 8630,
+      "raw_comment_bodies": [
+        "I would personally remove these random, small comments because it's clear what's happening from the code and it is distracting."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_avoid_redundant_comments",
+      "expected_family_match_confidence": "HIGH",
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8648_E1",
+      "pr_number": 8648,
+      "raw_comment_bodies": [
+        "This is the mutex on the endpoint itself, v is an element of e.endpoints",
+        "Right, but we're getting the status of an endpoint, I would expect the mutex to protect the endpoint state, not the endpointset state. Maybe we should have a `status()` method which has a mutex.",
+        "Yeah we could add a \"status\" method on endpointRef that protects itself with mutex",
+        "Added a \"Status\" method that manages locks itself ( like most other endpointRef methods too! ) and is called here! Feels cleaner, you are right."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8691_E2",
+      "pr_number": 8691,
+      "raw_comment_bodies": [
+        "How about putting these paths in a directoryMarkerPaths slice, and then looping overthat for delete? ```suggestion directoryMarkerPaths := []string{ path.Join(id.String(), ChunksDirname) + objstore.DirDelim, id.String() + objstore.DirDelim, } for _, p := range directoryMarkerPaths { if err := bkt.Delete(ctx, p); err != nil && !bkt.IsObjNotFoundErr(err) { level.Debug(logger).Log(\"msg\", \"failed to delete directory marker object\", \"dir\", p, \"err\", err) } } ```"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8691_E3",
+      "pr_number": 8691,
+      "raw_comment_bodies": [
+        "This becomes 2 extra API calls for those object store providers where this is a no-op. I wonder if we should do something to skip calling the API if it is a noop for example S3"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8713_E1",
+      "pr_number": 8713,
+      "raw_comment_bodies": [
+        "Good point, added a `p.forwardDelay.Delete(prometheus.Labels{\"worker\": endpoint.Address})` before closing the connection.",
+        "Hmm, in our case the IPs are not so dynamic so it doesn't cause any troubles but if someone runs in a completely dynamic setup then this could accumulate cardinality without a bound. In `func (p *peerGroup) close(endpoint Endpoint) error` I think we also should clear the metric for that worker. Would it be possible to do?"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8720_E2",
+      "pr_number": 8720,
+      "raw_comment_bodies": [
+        "Yep, good point! We certainly should use errors.Is here and seems like we even can handle context.DeadlineExceeded and context.Canceled separately - but I'm not sure if it's really important here."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8720_E3",
+      "pr_number": 8720,
+      "raw_comment_bodies": [
+        "Should we remove the sync.WaitGroup if we are now calling this in the same goroutine? At least I don't see a purpose for it anymore.",
+        "I think that we can't remove it since `sendRemoteWrite` dispatches work via `RemoteWriteAsync`, so the actual writes complete asynchronously and we need to track when all those async callbacks finish, so we know when to `close(responses)`",
+        "Actually this line is the source of a backpressure regression. sendWrites runs sendLocalWrite synchronously inline — moving it into a goroutine takes the local TSDB Append off the request's critical path. Once quorum can be satisfied from remote acks alone, the handler returns success while local Append is still pending, gRPC admits the next request, and wrapper goroutines accumulate without admission control. Lock contention on TSDB → slower local Append → more goroutines stacking up — a negati",
+        "Hi @jnyi I think your comment is relevant. I tested this PR in my own environment but mostly did it with a split routers/ingesters topology, seems like it's the reason why I didn't mention this behavior. Am I right that you noticed this regression on a default mode?",
+        "Hmm, I'm trying to think of a good solution here. Maybe we can just convert local writes into a worker architecture as well so that they would all look uniform? That way we wouldn't spawn more go routines if the local appends are lagging up to a certain extent.",
+        "Trying to address this in https://github.com/thanos-io/thanos/pull/8866. I feel like this change/refactor made the code also easier to understand since remote/local writes goes through the same infra. Let me know if you have any comments."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8801_E1",
+      "pr_number": 8801,
+      "raw_comment_bodies": [
+        "Could you convert this into a constant and write a comment describing why it is ignored and why this was chosen instead of the other options? Basically, copy/paste what you wrote in the description.",
+        "Extracted the string into a `lostFoundDir` constant and added a comment with the full rationale. Both call sites now reference the constant."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8806_E1",
+      "pr_number": 8806,
+      "raw_comment_bodies": [
+        "Maybe instead of e2e test, we should just have a handler test? So we can check the error as well?",
+        "Replaced e2e with handler tests. They allow better visibility on the response code: tenant label validation errors now cause 400 responses"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 0
+    },
+    {
+      "evidence_unit_id": "THANOS_8806_E2",
+      "pr_number": 8806,
+      "raw_comment_bodies": [
+        "Thanks! Generally LGTM! I wonder if we can skip e2e test for this here, and just check handler"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 1,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 0
+    },
+    {
+      "evidence_unit_id": "THANOS_8808_E2",
+      "pr_number": 8808,
+      "raw_comment_bodies": [
+        "Isn't this a backward incompatible change? How will an older reader will be able to unmarshal this if the type changes? I think you need to allocate another field number with a different type instead of replacing.",
+        "Sorry for the late reply. I'll take a stab at it and apply your recommendation. cc @saswatamcode"
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_protobuf_field_compat",
+      "expected_family_match_confidence": "MEDIUM",
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8840_E2",
+      "pr_number": 8840,
+      "raw_comment_bodies": [
+        "Thx for the contribution - I removed some LLMisms like how it wrote down the history in the comments and refactored the config reading so that it would distract less from the main path."
+      ],
+      "expected_evidence_type": "CONVENTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_avoid_llmisms",
+      "expected_family_match_confidence": "HIGH",
+      "expected_f7_operationalizability": 1
+    },
+    {
+      "evidence_unit_id": "THANOS_8894_E1",
+      "pr_number": 8894,
+      "raw_comment_bodies": [
+        "I wonder if PartialResponseDisabled is legacy in the protobuf schema and we should just reserve the field number and remove it. I think most call sites are already updated to respect the enum and all clients set it."
+      ],
+      "expected_evidence_type": "REUSABLE_CORRECTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_protobuf_field_compat",
+      "expected_family_match_confidence": "MEDIUM",
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8907_E1",
+      "pr_number": 8907,
+      "raw_comment_bodies": [
+        "Note: the required status check `React UI test on Node 14` will never report again on this PR (and any future PR) — this commit renames that CI job to `React UI tests`, IMHO it is better to keep the name generic without the match on node version to avoid this problem in the future. Could someone with admin access swap the required check from `React UI test on Node 14` to `React UI tests`?",
+        "Could you please update the conflicts? I will fix the required checks. It makes sense that we do not encode the version there."
+      ],
+      "expected_evidence_type": "CONVENTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": null,
+      "expected_family_match_confidence": null,
+      "expected_f7_operationalizability": 0
+    },
+    {
+      "evidence_unit_id": "THANOS_8935_E1",
+      "pr_number": 8935,
+      "raw_comment_bodies": [
+        "We avoid creating functions that are called just once and in one place: https://thanos.io/tip/contributing/coding-style-guide.md/#keep-the-interface-narrow-avoid-shallow-functions"
+      ],
+      "expected_evidence_type": "CONVENTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_avoid_shallow_functions",
+      "expected_family_match_confidence": "HIGH",
+      "expected_f7_operationalizability": 2
+    },
+    {
+      "evidence_unit_id": "THANOS_8944_E1",
+      "pr_number": 8944,
+      "raw_comment_bodies": [
+        "This is some LLMism and dramatic writing. This change is not visible to end users so no need for an entry here.",
+        "Thanks for the review. Reduced to just the one line, and dropped the test and CHANGELOG entry as suggested."
+      ],
+      "expected_evidence_type": "CONVENTION",
+      "expected_reuse_scope": 2,
+      "expected_rule_family_id": "THANOS_FAM_avoid_llmisms",
+      "expected_family_match_confidence": "HIGH",
+      "expected_f7_operationalizability": 1
+    }
+  ]
+}

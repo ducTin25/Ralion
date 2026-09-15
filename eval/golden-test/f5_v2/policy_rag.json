@@ -1,0 +1,2395 @@
+{
+  "partition": "policy_rag",
+  "domain": "POLICY",
+  "corpus": "demo-data/company-policy/",
+  "notes": [
+    "Every quote below is verified verbatim against demo-data/company-policy/ by eval/validate_golden.py.",
+    "`section` is filled mechanically by scripts/fill_golden_sections.py from where the quote actually occurs, so a reviewer can open the document at the right place without guessing.",
+    "Legacy provenance refers to eval/golden-test/golden_test_f5_70_samples.json (F5-RAG-xxx) and golden_test_50_samples.json (GT-xxx). `reused` means the fact was re-verified against the enriched corpus and still holds."
+  ],
+  "cases": [
+    {
+      "id": "F5V2-POL-001",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Nhân viên chính thức được nghỉ phép năm bao nhiêu ngày mỗi năm?",
+      "reference_answer": "Nhân viên chính thức được nghỉ 12 ngày phép/năm; cứ mỗi 5 năm thâm niên được cộng thêm 1 ngày.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "số ngày phép năm cơ bản",
+        "quy tắc cộng thêm theo thâm niên"
+      ],
+      "expected_claims": [
+        "12 ngày phép/năm cho nhân viên chính thức",
+        "cộng thêm 1 ngày cho mỗi 5 năm thâm niên"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Nhân viên chính thức: 12 ngày phép/năm; cứ mỗi 5 năm thâm niên được cộng thêm 1 ngày.",
+            "section": "Chính sách Nghỉ phép và Chấm công > 3. Các loại nghỉ phép > 3.1. Phép năm"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-001",
+        "note": "Quote re-verified verbatim against the enriched HR-POL-001."
+      },
+      "tags": [
+        "hr",
+        "leave",
+        "baseline"
+      ]
+    },
+    {
+      "id": "F5V2-POL-002",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Công ty trả lương vào ngày nào hằng tháng?",
+      "reference_answer": "Lương trả vào ngày 05 hằng tháng cho công của tháng trước; nếu trùng ngày nghỉ/lễ thì trả vào ngày làm việc liền trước.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "ngày trả lương",
+        "xử lý khi trùng ngày nghỉ/lễ"
+      ],
+      "expected_claims": [
+        "trả lương ngày 05 hằng tháng",
+        "trùng ngày nghỉ/lễ thì trả vào ngày làm việc liền trước"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-002"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-002",
+            "quote": "Kỳ trả lương: ngày 05 hàng tháng cho công của tháng trước; nếu trùng ngày nghỉ/lễ, trả vào ngày làm việc liền trước.",
+            "section": "Chính sách Lương, Thưởng và Phúc lợi > 3. Trả lương"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-002"
+      },
+      "tags": [
+        "hr",
+        "payroll"
+      ]
+    },
+    {
+      "id": "F5V2-POL-003",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Mật khẩu công ty yêu cầu tối thiểu bao nhiêu ký tự?",
+      "reference_answer": "Tối thiểu 12 ký tự.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "độ dài tối thiểu của mật khẩu"
+      ],
+      "expected_claims": [
+        "mật khẩu tối thiểu 12 ký tự"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-002"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-002",
+            "quote": "Độ dài tối thiểu 12 ký tự",
+            "section": "Chính sách Tài khoản và Mật khẩu > 3. Tiêu chuẩn mật khẩu"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-005",
+        "note": "Short exact-number lookup; the most common onboarding question and a precise-recall probe."
+      },
+      "tags": [
+        "security",
+        "password"
+      ]
+    },
+    {
+      "id": "F5V2-POL-004",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Phiên kết nối VPN tự động ngắt sau bao lâu nếu không hoạt động?",
+      "reference_answer": "Phiên VPN tự ngắt sau 12 giờ, hoặc sau 30 phút không hoạt động; đăng nhập lại cần MFA.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thời hạn phiên tối đa",
+        "thời gian idle timeout",
+        "yêu cầu MFA khi đăng nhập lại"
+      ],
+      "expected_claims": [
+        "phiên VPN tự ngắt sau 12 giờ",
+        "tự ngắt sau 30 phút không hoạt động",
+        "đăng nhập lại cần MFA"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-003"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-003",
+            "quote": "Phiên VPN tự ngắt sau 12 giờ hoặc 30 phút không hoạt động; đăng nhập lại cần MFA.",
+            "section": "Chính sách VPN và Truy cập Từ xa > 5. Sử dụng và giới hạn"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-006",
+        "note": "Three distinct numbers in one sentence -- catches an answer that drops the idle rule."
+      },
+      "tags": [
+        "security",
+        "vpn"
+      ]
+    },
+    {
+      "id": "F5V2-POL-005",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "SLA phản hồi cho sự cố CNTT mức P1 là bao lâu và mục tiêu khôi phục dịch vụ là bao lâu?",
+      "reference_answer": "P1 được phản hồi trong 15 phút, 24/7; cập nhật mỗi 30 phút; mục tiêu khôi phục dịch vụ trong 4 giờ.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thời gian phản hồi P1",
+        "mục tiêu khôi phục dịch vụ"
+      ],
+      "expected_claims": [
+        "phản hồi P1 trong 15 phút, 24/7",
+        "mục tiêu khôi phục 4 giờ"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-005"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-005",
+            "quote": "P1 | 15 phút, 24/7 | Mỗi 30 phút | 4 giờ",
+            "section": "Chính sách Quản lý Sự cố Hạ tầng CNTT > 4. SLA phản hồi và xử lý"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-007",
+        "note": "Answer lives in a markdown table row -- tests that table content survives chunking."
+      },
+      "tags": [
+        "it",
+        "incident",
+        "table"
+      ]
+    },
+    {
+      "id": "F5V2-POL-006",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Nhân viên phải báo cáo trong bao lâu khi phát hiện hoặc nghi ngờ một sự cố an toàn thông tin?",
+      "reference_answer": "Trong vòng 1 giờ kể từ khi phát hiện hoặc nghi ngờ.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thời hạn báo cáo sự cố"
+      ],
+      "expected_claims": [
+        "báo cáo trong vòng 1 giờ kể từ khi phát hiện hoặc nghi ngờ"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-004"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-004",
+            "quote": "Thời hạn: trong vòng 1 giờ kể từ khi phát hiện hoặc nghi ngờ.",
+            "section": "Chính sách Ứng phó Sự cố An toàn Thông tin (Incident Response) > 3. Báo cáo sự cố — nghĩa vụ của mọi nhân viên"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-012",
+        "note": "Critical-claim case: a wrong number here is a Critical Hallucination under EVAL_GUIDE.md §3.2."
+      },
+      "tags": [
+        "security",
+        "incident",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-007",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Máy tính công ty cấp cho lập trình viên thì bao lâu được đổi máy mới một lần?",
+      "reference_answer": "Chu kỳ thay mới là 3 năm; cấu hình chuẩn cho kỹ sư phần mềm là laptop 32GB RAM/1TB SSD kèm 2 màn hình 27 inch.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "chu kỳ thay mới thiết bị",
+        "cấu hình chuẩn theo vị trí"
+      ],
+      "expected_claims": [
+        "chu kỳ thay mới 3 năm cho kỹ sư phần mềm"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-001",
+            "quote": "Kỹ sư phần mềm | Laptop 32GB RAM/1TB SSD, 2 màn hình 27\" | 3 năm",
+            "section": "Chính sách Cấp phát và Quản lý Thiết bị > 2. Tiêu chuẩn cấp phát theo vị trí"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-014",
+        "note": "Colloquial paraphrase ('đổi máy mới') of a table row indexed under 'Tiêu chuẩn cấp phát'."
+      },
+      "tags": [
+        "it",
+        "device",
+        "paraphrase"
+      ]
+    },
+    {
+      "id": "F5V2-POL-008",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Mình có được dán mật khẩu hay API key vào ChatGPT để nhờ nó debug giúp không?",
+      "reference_answer": "Không. Secret/API key và mật khẩu bị cấm tuyệt đối đưa vào bất kỳ công cụ AI bên ngoài nào.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "lệnh cấm đưa secret/API key vào AI bên ngoài"
+      ],
+      "expected_claims": [
+        "cấm tuyệt đối đưa secret/API key và mật khẩu vào công cụ AI bên ngoài"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-005"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-005",
+            "quote": "Cấm tuyệt đối đưa vào bất kỳ công cụ AI bên ngoài nào: secret/API key, mật khẩu",
+            "section": "Chính sách Sử dụng AI và Dịch vụ Bên ngoài > 3. Quy tắc dữ liệu khi dùng AI bên ngoài"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-018",
+        "note": "Critical-claim case; also the natural phrasing a real engineer uses."
+      },
+      "tags": [
+        "security",
+        "ai_usage",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-009",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "multi_chunk",
+      "language": "vi",
+      "question": "Em quên chấm công thì có cách nào bù lại không, và giới hạn mấy lần một tháng?",
+      "reference_answer": "Có: gửi yêu cầu bổ sung công trên HRM trong vòng 48 giờ kèm xác nhận của quản lý trực tiếp; tối đa 3 lần/tháng, vượt quá sẽ tính là đi muộn/vắng mặt.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "quy trình và thời hạn gửi yêu cầu bổ sung công",
+        "giới hạn số lần mỗi tháng",
+        "hậu quả khi vượt giới hạn"
+      ],
+      "expected_claims": [
+        "gửi yêu cầu bổ sung trên HRM trong vòng 48 giờ",
+        "cần xác nhận của quản lý trực tiếp",
+        "tối đa 3 lần/tháng"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Quên chấm công: gửi yêu cầu bổ sung trên HRM trong vòng 48 giờ, kèm xác nhận của quản lý trực tiếp.",
+            "section": "Chính sách Nghỉ phép và Chấm công > 5. Chấm công > 5.2. Bổ sung công"
+          },
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Mỗi nhân viên được bổ sung tối đa 3 lần/tháng; vượt quá sẽ tính là đi muộn/vắng mặt.",
+            "section": "Chính sách Nghỉ phép và Chấm công > 5. Chấm công > 5.2. Bổ sung công"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-019",
+        "note": "Two separate bullets of ONE document must both be retrieved -- an answer citing only the first is incomplete, not wrong."
+      },
+      "tags": [
+        "hr",
+        "timekeeping",
+        "multi_chunk"
+      ]
+    },
+    {
+      "id": "F5V2-POL-010",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "cross_document",
+      "language": "vi",
+      "question": "Nhân viên mới cần được đăng ký cấp thiết bị và tài khoản trước ngày đi làm chính thức bao lâu?",
+      "reference_answer": "Ít nhất 3 ngày làm việc trước ngày vào. Cả quy trình HR (HR-POL-003) lẫn quy trình IT (IT-POL-001) đều thống nhất mốc này.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "mốc thời gian trước ngày vào",
+        "hai tài liệu cùng quy định mốc này"
+      ],
+      "expected_claims": [
+        "đăng ký trước ngày vào ít nhất 3 ngày làm việc"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-003",
+          "IT-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-003",
+            "quote": "Tạo yêu cầu cấp thiết bị và tài khoản | HR → IT | Trước ngày vào ít nhất 3 ngày làm việc",
+            "section": "Chính sách Onboarding và Offboarding > 2. Onboarding — Quy trình tiếp nhận nhân viên mới > 2.1. Trước ngày làm việc đầu tiên (Pre-boarding)"
+          },
+          {
+            "doc_id": "IT-POL-001",
+            "quote": "HR tạo yêu cầu cấp thiết bị trên IT Service Desk trước ngày vào ít nhất 3 ngày làm việc, ghi rõ vị trí và ngày bắt đầu.",
+            "section": "Chính sách Cấp phát và Quản lý Thiết bị > 3. Quy trình cấp phát > 3.1. Nhân viên mới"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-023",
+        "note": "Two documents agree -- tests synthesis without a conflict to resolve."
+      },
+      "tags": [
+        "hr",
+        "it",
+        "onboarding",
+        "synthesis"
+      ]
+    },
+    {
+      "id": "F5V2-POL-011",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "conflict",
+      "language": "vi",
+      "question": "Có phải mọi loại tài khoản/quyền không dùng trong 90 ngày đều bị xử lý giống hệt nhau không?",
+      "reference_answer": "Không giống hệt nhau dù cùng mốc 90 ngày: tài khoản không đăng nhập 90 ngày bị tự động tạm khóa và cần IT xác minh trước khi mở lại; quyền VPN không dùng 90 ngày bị tự thu hồi; quyền truy cập nói chung không dùng 90 ngày bị thu hồi tự động nhưng có thông báo trước 7 ngày.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "tài khoản đăng nhập: tạm khóa, cần IT xác minh",
+        "quyền VPN: tự thu hồi",
+        "quyền truy cập: thu hồi tự động có báo trước 7 ngày"
+      ],
+      "expected_claims": [
+        "ba cơ chế khác nhau cùng dùng mốc 90 ngày",
+        "chỉ quyền truy cập nói chung có thông báo trước 7 ngày"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-002",
+          "IT-POL-003",
+          "SEC-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-002",
+            "quote": "Tài khoản không đăng nhập 90 ngày liên tục: tự động tạm khóa, cần IT xác minh trước khi mở lại.",
+            "section": "Chính sách Tài khoản và Mật khẩu > 2. Vòng đời tài khoản > 2.3. Thu hồi"
+          },
+          {
+            "doc_id": "IT-POL-003",
+            "quote": "Quyền VPN tự thu hồi khi nghỉ việc, hết hạn hợp đồng hoặc 90 ngày không sử dụng.",
+            "section": "Chính sách VPN và Truy cập Từ xa > 3. Đăng ký và cấp quyền VPN"
+          },
+          {
+            "doc_id": "SEC-POL-001",
+            "quote": "Quyền không sử dụng 90 ngày: thu hồi tự động, có thông báo trước 7 ngày.",
+            "section": "Chính sách Phân quyền Truy cập (Access Control) > 4. Vòng đời quyền truy cập > 4.3. Thay đổi và thu hồi"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-024",
+        "note": "Near-miss trap: three documents share the number 90 but state different consequences. A single-document answer is confidently wrong."
+      },
+      "tags": [
+        "security",
+        "access",
+        "near_miss_numeric"
+      ]
+    },
+    {
+      "id": "F5V2-POL-012",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Em cần truy cập secret trên hệ thống production để xử lý gấp một sự cố, quy trình và giới hạn thời gian ra sao?",
+      "reference_answer": "Truy cập secret production của con người chỉ qua phiên just-in-time có phê duyệt, và mọi thao tác được ghi log ai-đọc-gì-khi-nào. Quyền tạm thời dạng hỗ trợ sự cố tự hết hạn sau tối đa 24 giờ; muốn gia hạn phải xin lại.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "cơ chế just-in-time có phê duyệt",
+        "ghi log truy cập",
+        "thời hạn tự hết hạn tối đa 24 giờ"
+      ],
+      "expected_claims": [
+        "truy cập secret production chỉ qua phiên just-in-time có phê duyệt",
+        "quyền tạm thời tự hết hạn sau tối đa 24 giờ"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-003",
+          "SEC-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-003",
+            "quote": "Truy cập secret production của con người: chỉ qua phiên just-in-time có phê duyệt, ghi log ai-đọc-gì-khi-nào.",
+            "section": "Chính sách Quản lý Secret và Khóa Mã hóa > 4. Vòng đời secret > 4.2. Sử dụng"
+          },
+          {
+            "doc_id": "SEC-POL-001",
+            "quote": "Quyền tạm thời (ví dụ hỗ trợ sự cố): cấp theo cơ chế just-in-time, tự hết hạn sau tối đa 24 giờ, gia hạn phải xin lại.",
+            "section": "Chính sách Phân quyền Truy cập (Access Control) > 4. Vòng đời quyền truy cập > 4.2. Quyền tạm thời và đặc quyền"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-027",
+        "note": "The time limit lives in a DIFFERENT document from the access mechanism."
+      },
+      "tags": [
+        "security",
+        "secret",
+        "synthesis",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-013",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Nghi ngờ mất dữ liệu do ransomware, IT có được tự ý khôi phục ngay từ bản backup gần nhất không?",
+      "reference_answer": "Không. Sự cố nghi ngờ liên quan tấn công/mã độc/ransomware không được tự khôi phục ngay; phải phối hợp với Security theo quy trình ứng phó sự cố, và sau khi khôi phục phải giám sát tăng cường tối thiểu 2 tuần.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "cấm tự khôi phục ngay khi nghi ngờ mã độc",
+        "phối hợp Security theo quy trình ứng phó",
+        "giám sát tăng cường sau khôi phục"
+      ],
+      "expected_claims": [
+        "không tự khôi phục ngay khi nghi ngờ ransomware",
+        "phải phối hợp Security",
+        "giám sát tăng cường tối thiểu 2 tuần sau sự cố"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-008",
+          "SEC-POL-004"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-008",
+            "quote": "Sự cố nghi ngờ liên quan tấn công/mã độc/ransomware: không tự khôi phục ngay; phối hợp Security theo quy trình SEC-POL-0",
+            "section": "Chính sách Sao lưu và Khôi phục Dữ liệu (Backup & Disaster Recovery) > 6. Kích hoạt khôi phục khi có sự cố (DR Invocation)"
+          },
+          {
+            "doc_id": "SEC-POL-004",
+            "quote": "Khôi phục (Recovery): đưa hệ thống trở lại từ trạng thái sạch/backup, giám sát tăng cường tối thiểu 2 tuần sau sự cố.",
+            "section": "Chính sách Ứng phó Sự cố An toàn Thông tin (Incident Response) > 5. Quy trình ứng phó (6 giai đoạn)"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-029",
+        "note": "Critical safety claim: answering 'yes' here would be a Critical Hallucination."
+      },
+      "tags": [
+        "security",
+        "backup",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-014",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "conflict",
+      "language": "vi",
+      "question": "Nếu công ty dùng bản AI doanh nghiệp đã ký hợp đồng cam kết không train dữ liệu và được Security duyệt, có được đưa dữ liệu khách hàng chưa ẩn danh vào không?",
+      "reference_answer": "Không. Bảng quy tắc chung cho phép dữ liệu Confidential vào AI doanh nghiệp đã được duyệt khi có cam kết không train, nhưng cùng chính sách nêu riêng một lệnh cấm tuyệt đối, không điều kiện, với dữ liệu khách hàng chưa ẩn danh — lệnh cấm tuyệt đối thắng.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "quy tắc có điều kiện cho dữ liệu Confidential",
+        "lệnh cấm tuyệt đối cho dữ liệu khách hàng chưa ẩn danh",
+        "lệnh cấm tuyệt đối được ưu tiên"
+      ],
+      "expected_claims": [
+        "không được đưa dữ liệu khách hàng chưa ẩn danh vào AI bên ngoài kể cả AI doanh nghiệp đã duyệt"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-005"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-005",
+            "quote": "Cấm tuyệt đối đưa vào bất kỳ công cụ AI bên ngoài nào: secret/API key, mật khẩu",
+            "section": "Chính sách Sử dụng AI và Dịch vụ Bên ngoài > 3. Quy tắc dữ liệu khi dùng AI bên ngoài"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "rewritten:F5-RAG-035",
+        "note": "Kept the precedence trap but re-anchored the evidence on the absolute-prohibition sentence, which is the half that decides the answer."
+      },
+      "tags": [
+        "security",
+        "ai_usage",
+        "precedence",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-015",
+      "domain": "POLICY",
+      "case_type": "partial",
+      "category": "ambiguous",
+      "language": "vi",
+      "question": "Nghỉ không lương 25 ngày liên tục trong năm thì ảnh hưởng cụ thể bao nhiêu phần trăm đến kỳ xét tăng lương?",
+      "reference_answer": "Tài liệu xác nhận nghỉ không lương trên 14 ngày liên tục (25 ngày vượt ngưỡng này) có ảnh hưởng đến ngày xét tăng lương và phép năm theo tỷ lệ, nhưng không nêu công thức hay phần trăm cụ thể. Không được suy đoán con số.",
+      "expected_behavior": {
+        "answerable": "partial",
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "xác nhận có ảnh hưởng khi vượt 14 ngày",
+        "nêu rõ tài liệu không có con số phần trăm"
+      ],
+      "expected_claims": [
+        "nghỉ không lương trên 14 ngày liên tục ảnh hưởng theo tỷ lệ"
+      ],
+      "forbidden_substrings": [
+        "%"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Nghỉ không lương trên 14 ngày liên tục ảnh hưởng đến ngày xét tăng lương và phép năm theo tỷ lệ.",
+            "section": "Chính sách Nghỉ phép và Chấm công > 3. Các loại nghỉ phép > 3.5. Nghỉ không lương"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-034",
+        "note": "Classic hallucination trap: a plausible percentage is easy to invent and absent from the corpus."
+      },
+      "tags": [
+        "hr",
+        "partial",
+        "hallucination_trap"
+      ]
+    },
+    {
+      "id": "F5V2-POL-016",
+      "domain": "POLICY",
+      "case_type": "partial",
+      "category": "ambiguous",
+      "language": "vi",
+      "question": "Nếu chi phí license phần mềm mới đúng bằng 5.000.000 VNĐ/năm thì thuộc thẩm quyền phê duyệt của ai?",
+      "reference_answer": "Tài liệu chỉ nêu ngưỡng 'dưới 5 triệu/năm' và 'trên 5 triệu/năm', không nói rõ trường hợp đúng bằng 5 triệu rơi vào ngưỡng nào. Nên nêu hai ngưỡng và đề nghị xác nhận với IT/Finance thay vì chọn bừa một bên.",
+      "expected_behavior": {
+        "answerable": "partial",
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "hai ngưỡng phê duyệt hiện có",
+        "thừa nhận biên đúng-bằng-5-triệu không được quy định"
+      ],
+      "expected_claims": [
+        "dưới 5 triệu/năm thuộc Trưởng phòng IT",
+        "tài liệu không quy định trường hợp đúng bằng 5 triệu"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-004"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-004",
+            "quote": "Phê duyệt chi phí: dưới 5 triệu/năm → Trưởng phòng IT",
+            "section": "Chính sách Phần mềm và Bản quyền (License) > 3. Quy trình xin phê duyệt phần mềm mới"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-031",
+        "note": "Boundary-value ambiguity: the corpus genuinely leaves the equality case open."
+      },
+      "tags": [
+        "it",
+        "license",
+        "boundary",
+        "partial"
+      ]
+    },
+    {
+      "id": "F5V2-POL-017",
+      "domain": "POLICY",
+      "case_type": "partial",
+      "category": "ambiguous",
+      "language": "vi",
+      "question": "Nếu em nghỉ việc thì cần báo trước công ty bao nhiêu ngày?",
+      "reference_answer": "Chính sách không ấn định một mốc ngày cố định: thời hạn báo trước theo loại hợp đồng, công việc đặc thù và quy định pháp luật hiện hành; trong thời gian thử việc thì theo pháp luật và thỏa thuận thử việc. HR xác nhận mốc cuối cùng cho từng trường hợp.",
+      "expected_behavior": {
+        "answerable": "partial",
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "không có một mốc cố định trong policy",
+        "phụ thuộc loại hợp đồng và pháp luật",
+        "HR xác nhận mốc cuối cùng"
+      ],
+      "expected_claims": [
+        "thời hạn báo trước theo loại hợp đồng và quy định pháp luật hiện hành",
+        "HR xác nhận mốc cuối cùng cho từng trường hợp"
+      ],
+      "forbidden_substrings": [
+        "45 ngày",
+        "30 ngày",
+        "3 ngày"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-003"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-003",
+            "quote": "tuân thủ thời hạn báo trước theo loại hợp đồng, công việc đặc thù và quy định pháp luật hiện hành",
+            "section": "Chính sách Onboarding và Offboarding > 4. Offboarding — Quy trình nghỉ việc > 4.1. Thông báo và bàn giao"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "rewritten:F5-RAG-013",
+        "note": "OBSOLETE AS WRITTEN. The legacy case expected '45/30/3 ngày'; the enriched HR-POL-003 deliberately removed those hard-coded numbers (demo-data/company-policy/README.md: 'HR-POL-003 không hard-code một mốc báo trước'). Rewritten into the inverse test: the old numbers are now forbidden substrings, so the case detects a model answering from the stale corpus or from pretrained knowledge."
+      },
+      "tags": [
+        "hr",
+        "offboarding",
+        "partial",
+        "hallucination_trap",
+        "corpus_change"
+      ]
+    },
+    {
+      "id": "F5V2-POL-018",
+      "domain": "POLICY",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Công ty có chương trình hỗ trợ vay mua nhà cho nhân viên không?",
+      "reference_answer": "Không tìm thấy thông tin về chính sách hỗ trợ vay mua nhà trong bộ tài liệu hiện có.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-036",
+        "note": "Re-verified against the 21 documents added in corpus v2: 'vay mua nhà' appears nowhere."
+      },
+      "tags": [
+        "hr",
+        "abstention"
+      ]
+    },
+    {
+      "id": "F5V2-POL-019",
+      "domain": "POLICY",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Chính sách của công ty về việc mang thú cưng đến văn phòng làm việc là gì?",
+      "reference_answer": "Không tìm thấy thông tin về chính sách mang thú cưng đến văn phòng.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-038",
+        "note": "Re-verified: SEC-POL-006 (physical office security, added in v2) covers badges/visitors but says nothing about pets, so the case stays genuinely unanswerable."
+      },
+      "tags": [
+        "abstention",
+        "near_miss_topic"
+      ]
+    },
+    {
+      "id": "F5V2-POL-020",
+      "domain": "POLICY",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Mức lương tối thiểu vùng áp dụng cho vị trí thực tập sinh tại công ty là bao nhiêu?",
+      "reference_answer": "Không tìm thấy thông tin; bộ tài liệu không nêu con số lương tối thiểu vùng nào.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-039",
+        "note": "A number the model plausibly knows from pretraining but the corpus does not contain -- the sharpest False Answer probe in the POLICY set."
+      },
+      "tags": [
+        "hr",
+        "abstention",
+        "pretrained_leak_probe"
+      ]
+    },
+    {
+      "id": "F5V2-POL-021",
+      "domain": "POLICY",
+      "case_type": "partial",
+      "category": "ambiguous",
+      "language": "vi",
+      "question": "Ngoài chế độ BHXH, công ty có phụ cấp tiền mặt thêm nào cho lao động nữ nghỉ thai sản không?",
+      "reference_answer": "Tài liệu chỉ nêu lao động nữ nghỉ thai sản 6 tháng theo Luật BHXH và yêu cầu đăng ký kế hoạch nghỉ trước tối thiểu 30 ngày; không đề cập bất kỳ khoản phụ cấp tiền mặt bổ sung nào từ công ty.",
+      "expected_behavior": {
+        "answerable": "partial",
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "nêu chế độ thai sản có trong tài liệu",
+        "nêu rõ không có thông tin về phụ cấp thêm"
+      ],
+      "expected_claims": [
+        "nghỉ thai sản 6 tháng theo Luật BHXH",
+        "tài liệu không đề cập phụ cấp tiền mặt bổ sung"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Lao động nữ nghỉ thai sản 6 tháng theo Luật BHXH; đăng ký kế hoạch nghỉ trước tối thiểu 30 ngày để bộ phận sắp xếp bàn giao.",
+            "section": "Chính sách Nghỉ phép và Chấm công > 3. Các loại nghỉ phép > 3.4. Nghỉ thai sản"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:F5-RAG-037",
+        "note": "Topic present, specific sub-fact absent -- distinguishes PARTIAL from no_evidence."
+      },
+      "tags": [
+        "hr",
+        "partial"
+      ]
+    },
+    {
+      "id": "F5V2-POL-022",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Nhân viên được làm việc tại nhà (WFH) tối đa mấy ngày một tuần?",
+      "reference_answer": "Mặc định tối đa 2 ngày WFH/tuần với vị trí đủ điều kiện, trừ thỏa thuận lao động hoặc chính sách bộ phận khác đã được HR phê duyệt. Ngày WFH không mặc định được cộng dồn sang tuần sau.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "hạn mức WFH mặc định mỗi tuần",
+        "trường hợp ngoại lệ được HR phê duyệt",
+        "không cộng dồn sang tuần sau"
+      ],
+      "expected_claims": [
+        "tối đa 2 ngày WFH/tuần",
+        "không mặc định cộng dồn ngày WFH sang tuần sau"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Mặc định đối với vị trí đủ điều kiện: tối đa 2 ngày WFH/tuần, trừ thỏa thuận lao động hoặc chính sách bộ phận khác đã được HR phê duyệt.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 2. Mô hình làm việc"
+          },
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Không mặc định cộng dồn ngày WFH sang tuần sau.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 2. Mô hình làm việc"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "HR-POL-006 is new in corpus v2 and had zero golden coverage."
+      },
+      "tags": [
+        "hr",
+        "wfh",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-023",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "deep_document",
+      "language": "vi",
+      "question": "Khi làm việc từ xa, trong khung giờ nào nhân viên bắt buộc phải có khả năng phản hồi?",
+      "reference_answer": "Trong core hours 10:00–16:00, nhân viên phải có khả năng phản hồi qua kênh làm việc chính trong thời gian hợp lý, trừ focus time, cuộc họp hoặc thời gian nghỉ đã báo.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "khung giờ core hours",
+        "nghĩa vụ phản hồi",
+        "các trường hợp ngoại lệ"
+      ],
+      "expected_claims": [
+        "core hours 10:00–16:00",
+        "phải có khả năng phản hồi qua kênh làm việc chính"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Trong core hours 10:00–16:00, phải có khả năng phản hồi qua kênh làm việc chính trong thời gian hợp lý, ngoại trừ focus time/cuộc họp/nghỉ đã báo.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 4. Giờ làm và khả năng liên lạc"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Answer sits in section 4 of a 10-section document, not in the opening summary."
+      },
+      "tags": [
+        "hr",
+        "wfh",
+        "deep_document",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-024",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Em muốn làm việc từ nước ngoài trong 3 tuần thì cần xin phép những ai?",
+      "reference_answer": "Remote dài hạn trên 10 ngày làm việc liên tục cần Trưởng bộ phận và HR phê duyệt; làm việc từ nước ngoài còn cần thêm IT/Security theo IT-POL-003.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "ngưỡng 10 ngày làm việc liên tục",
+        "phê duyệt Trưởng bộ phận + HR",
+        "phê duyệt thêm của IT/Security khi ở nước ngoài"
+      ],
+      "expected_claims": [
+        "remote > 10 ngày làm việc liên tục cần Trưởng bộ phận + HR",
+        "làm việc từ nước ngoài cần thêm IT/Security"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Remote dài hạn > 10 ngày làm việc liên tục cần Trưởng bộ phận + HR phê duyệt; làm việc từ nước ngoài cần thêm IT/Security theo IT-POL-003.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 3. Đăng ký và phê duyệt"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Requires the model to apply a threshold (3 tuần > 10 ngày làm việc) rather than echo a number."
+      },
+      "tags": [
+        "hr",
+        "wfh",
+        "scenario",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-025",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Expense report phải nộp trong bao lâu kể từ ngày phát sinh chi phí?",
+      "reference_answer": "Trong 30 ngày kể từ ngày phát sinh hoặc ngày kết thúc chuyến đi.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thời hạn nộp expense report"
+      ],
+      "expected_claims": [
+        "nộp expense report trong 30 ngày"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "FIN-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "FIN-POL-001",
+            "quote": "Expense report nộp trong 30 ngày từ ngày phát sinh hoặc ngày kết thúc chuyến đi.",
+            "section": "Chính sách Công tác phí, Hoàn ứng và Chi phí Công việc > 6. Chứng từ và thời hạn"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "FIN-POL-001 is new in corpus v2; the Finance domain had no golden coverage at all."
+      },
+      "tags": [
+        "finance",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-026",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "composite",
+      "language": "vi",
+      "question": "Đi công tác thì vé máy bay, khách sạn và các khoản không được hoàn quy định thế nào?",
+      "reference_answer": "Vé máy bay: economy cho chuyến bay thông thường, ngoại lệ cabin cao hơn phải có phê duyệt trước. Khách sạn: trong mức trần theo bảng city tier do Finance cập nhật, vượt trần cần giải trình và duyệt. Không hoàn minibar, spa, pay-per-view hoặc chi phí cá nhân tương tự.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "hạng vé máy bay và ngoại lệ",
+        "mức trần khách sạn theo city tier",
+        "danh mục chi phí không được hoàn"
+      ],
+      "expected_claims": [
+        "vé economy cho chuyến bay thông thường",
+        "khách sạn theo mức trần city tier",
+        "không hoàn minibar, spa, pay-per-view"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "FIN-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "FIN-POL-001",
+            "quote": "Vé máy bay: economy cho chuyến bay thông thường; ngoại lệ cabin cao hơn theo duration/medical/business need phải có phê duyệt trước.",
+            "section": "Chính sách Công tác phí, Hoàn ứng và Chi phí Công việc > 3. Công tác > 3.2. Vé và khách sạn"
+          },
+          {
+            "doc_id": "FIN-POL-001",
+            "quote": "Khách sạn: trong mức trần theo bảng city tier do Finance cập nhật; vượt trần cần giải trình và duyệt.",
+            "section": "Chính sách Công tác phí, Hoàn ứng và Chi phí Công việc > 3. Công tác > 3.2. Vé và khách sạn"
+          },
+          {
+            "doc_id": "FIN-POL-001",
+            "quote": "Không hoàn minibar, spa, pay-per-view hoặc chi phí cá nhân tương tự.",
+            "section": "Chính sách Công tác phí, Hoàn ứng và Chi phí Công việc > 3. Công tác > 3.2. Vé và khách sạn"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Three-aspect composite: an answer covering only airfare is faithful but incomplete (EVAL_GUIDE.md §4)."
+      },
+      "tags": [
+        "finance",
+        "composite",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-027",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Cam kết chi tiêu trên 200 triệu VNĐ cần ai phê duyệt?",
+      "reference_answer": "Trên 200 triệu VNĐ cần thêm Giám đốc chức năng hoặc CFO delegate, ngoài các cấp phê duyệt của ngưỡng thấp hơn.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "cấp phê duyệt cho ngưỡng trên 200 triệu"
+      ],
+      "expected_claims": [
+        "trên 200 triệu VNĐ cần Giám đốc chức năng/CFO delegate"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "FIN-POL-002"
+        ],
+        "quotes": [
+          {
+            "doc_id": "FIN-POL-002",
+            "quote": "> 200 triệu VNĐ | + Giám đốc chức năng/CFO delegate",
+            "section": "Chính sách Mua sắm và Phê duyệt Chi tiêu > 3. Ngưỡng phê duyệt nội bộ"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Threshold table with four adjacent rows -- a retrieval near-miss picks the wrong row."
+      },
+      "tags": [
+        "finance",
+        "procurement",
+        "table",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-028",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Chia một hợp đồng 180 triệu thành bốn PO 45 triệu để duyệt nhanh hơn có được không?",
+      "reference_answer": "Không. Chia nhỏ giao dịch để né ngưỡng phê duyệt bị cấm.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "kết luận cấm",
+        "lý do: né ngưỡng phê duyệt"
+      ],
+      "expected_claims": [
+        "chia nhỏ giao dịch để né ngưỡng phê duyệt bị cấm"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "FIN-POL-002",
+          "FIN-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "FIN-POL-002",
+            "quote": "Chia 180 triệu thành bốn PO 45 triệu: bị cấm vì né ngưỡng.",
+            "section": "Chính sách Mua sắm và Phê duyệt Chi tiêu > 10. Tình huống thường gặp"
+          },
+          {
+            "doc_id": "FIN-POL-001",
+            "quote": "Không chia nhỏ giao dịch để né ngưỡng phê duyệt.",
+            "section": "Chính sách Công tác phí, Hoàn ứng và Chi phí Công việc > 2. Nguyên tắc chung"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "The exact scenario is spelled out in FIN-POL-002 §10 and the principle restated in FIN-POL-001 §2."
+      },
+      "tags": [
+        "finance",
+        "scenario",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-029",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Lỗ hổng bảo mật mức High phải được khắc phục trong bao lâu?",
+      "reference_answer": "Mục tiêu remediation cho mức High là 14 ngày.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "mục tiêu thời gian remediation cho mức High"
+      ],
+      "expected_claims": [
+        "High: remediation trong 14 ngày"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "ENG-POL-002"
+        ],
+        "quotes": [
+          {
+            "doc_id": "ENG-POL-002",
+            "quote": "High | Khả năng khai thác cao, impact lớn | 14 ngày",
+            "section": "Chính sách Quản lý Lỗ hổng và Vá lỗi > 3. Triage"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Four adjacent priority rows each with a different SLA -- a strong ranking probe."
+      },
+      "tags": [
+        "engineering",
+        "vulnerability",
+        "table",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-030",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "cross_document",
+      "language": "vi",
+      "question": "Một CVE Critical đang bị khai thác trên hệ thống production thì xử lý theo quy trình nào và có phải chờ CAB không?",
+      "reference_answer": "Critical đang bị khai thác có mục tiêu remediation 24–72 giờ tùy exposure và có thể đi đường emergency change. Emergency Change được thực hiện ngay để khôi phục dịch vụ khi xử lý sự cố P1/P2, không chờ CAB, nhưng phải ghi lại đầy đủ vào change log trong vòng 24 giờ sau khi hệ thống ổn định.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "mục tiêu remediation cho Critical",
+        "được đi đường emergency change, không chờ CAB",
+        "nghĩa vụ ghi change log sau đó"
+      ],
+      "expected_claims": [
+        "Critical exploited: 24–72 giờ tùy exposure",
+        "Emergency Change không chờ CAB",
+        "phải ghi change log trong vòng 24 giờ sau khi hệ thống ổn định"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "ENG-POL-002",
+          "IT-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "ENG-POL-002",
+            "quote": "Critical | Exploited/internet-facing RCE, auth bypass nghiêm trọng | 24–72 giờ tùy exposure; có thể emergency change",
+            "section": "Chính sách Quản lý Lỗ hổng và Vá lỗi > 3. Triage"
+          },
+          {
+            "doc_id": "IT-POL-006",
+            "quote": "Được thực hiện ngay để khôi phục dịch vụ khi xử lý sự cố P1/P2 theo IT-POL-005, không chờ CAB.",
+            "section": "Chính sách Quản lý Thay đổi Hệ thống (Change Management) > 6. Thay đổi khẩn cấp (Emergency Change)"
+          },
+          {
+            "doc_id": "IT-POL-006",
+            "quote": "Ghi lại đầy đủ vào change log trong vòng 24 giờ sau khi hệ thống ổn định",
+            "section": "Chính sách Quản lý Thay đổi Hệ thống (Change Management) > 6. Thay đổi khẩn cấp (Emergency Change)"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Extends legacy F5-RAG-028 into the ENG-POL-002 vulnerability path added in corpus v2. Two '24 giờ' values mean different things -- a conflation is a detectable failure."
+      },
+      "tags": [
+        "engineering",
+        "change_management",
+        "synthesis",
+        "corpus_v2",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-031",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Vendor Tier 1 được review theo tần suất nào?",
+      "reference_answer": "Vendor Tier 1 (Critical) được review bởi Security, Legal và BCP, tần suất hằng năm.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "tần suất review Tier 1",
+        "các bên tham gia review"
+      ],
+      "expected_claims": [
+        "Tier 1 review hằng năm",
+        "review bởi Security + Legal + BCP"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "TPRM-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "TPRM-POL-001",
+            "quote": "Tier 1 — Critical | Production dependency, dữ liệu Restricted/khách hàng quy mô lớn, single point of failure | Security + Legal + BCP; hằng năm",
+            "section": "Chính sách Quản lý Rủi ro Nhà cung cấp và Bên thứ ba > 2. Phân tầng rủi ro vendor"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "TPRM is a v2 domain with no prior coverage; 'Tier 1' also collides with IT-POL-008's system tiers, making this a genuine near-miss."
+      },
+      "tags": [
+        "tprm",
+        "vendor",
+        "near_miss_term",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-032",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "near_miss",
+      "language": "vi",
+      "question": "Hệ thống Tier 1 có RPO và RTO là bao nhiêu?",
+      "reference_answer": "Hệ thống Tier 1 (production ảnh hưởng khách hàng trực tiếp) sao lưu incremental mỗi 4 giờ và full hằng ngày, RPO 4 giờ và RTO 4 giờ.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "RPO của Tier 1",
+        "RTO của Tier 1"
+      ],
+      "expected_claims": [
+        "Tier 1: RPO 4 giờ, RTO 4 giờ"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-008"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-008",
+            "quote": "Incremental mỗi 4 giờ, Full hằng ngày",
+            "section": "Chính sách Sao lưu và Khôi phục Dữ liệu (Backup & Disaster Recovery) > 3. Phân loại hệ thống và mục tiêu khôi phục"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:F5-RAG-009",
+        "note": "Deliberately paired with F5V2-POL-031: both ask about 'Tier 1' but in different documents and different meanings (backup tier vs vendor tier). Retrieval must disambiguate by context, not by the token 'Tier 1'."
+      },
+      "tags": [
+        "it",
+        "backup",
+        "near_miss_term"
+      ]
+    },
+    {
+      "id": "F5V2-POL-033",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Vendor gửi tặng em một chiếc tai nghe 4 triệu ngay sau khi em chấm điểm tender của họ, em nên làm gì?",
+      "reference_answer": "Không nhận và báo Compliance. Quà lưu niệm chỉ có thể nhận khi giá trị ≤ 1.000.000 VNĐ và không có tender/quyết định đang mở.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "kết luận không nhận",
+        "nghĩa vụ báo Compliance",
+        "ngưỡng giá trị quà và điều kiện tender đang mở"
+      ],
+      "expected_claims": [
+        "không nhận quà trong tình huống này",
+        "phải báo Compliance"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CORP-POL-002"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CORP-POL-002",
+            "quote": "Vendor gửi tai nghe 4 triệu sau khi bạn vừa chấm tender: không nhận; báo Compliance.",
+            "section": "Chính sách Xung đột Lợi ích, Quà tặng và Chống Hối lộ > 8. Tình huống thường gặp"
+          },
+          {
+            "doc_id": "CORP-POL-002",
+            "quote": "Quà lưu niệm/đồ quảng bá ≤ 1.000.000 VNĐ | Có thể nhận nếu không có tender/quyết định đang mở; phải khai báo nếu từ vendor hiện hữu",
+            "section": "Chính sách Xung đột Lợi ích, Quà tặng và Chống Hối lộ > 3. Quà tặng và chiêu đãi > 3.2. Ngưỡng nội bộ"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Corpus contains the scenario verbatim AND the threshold rule; a good answer gives both the decision and the rule behind it."
+      },
+      "tags": [
+        "compliance",
+        "gifts",
+        "scenario",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-034",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Em lỡ commit API key vào repo rồi git revert, như vậy đã an toàn chưa?",
+      "reference_answer": "Chưa an toàn. Commit secret rồi xóa ở commit sau vẫn được coi là đã lộ; phải rotate/revoke secret trước khi clean history — revert không làm key 'chưa từng lộ'.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "secret vẫn bị coi là đã lộ",
+        "bắt buộc rotate/revoke",
+        "thứ tự: rotate trước khi clean history"
+      ],
+      "expected_claims": [
+        "commit secret rồi xóa sau vẫn coi là đã lộ",
+        "phải rotate/revoke secret"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "ENG-POL-003"
+        ],
+        "quotes": [
+          {
+            "doc_id": "ENG-POL-003",
+            "quote": "Commit secret rồi xóa ở commit sau vẫn được coi là đã lộ; rotate/revoke trước khi clean history.",
+            "section": "Chính sách Quản trị Repository, Release và Đóng góp Open Source > 5. Secrets và sensitive files"
+          },
+          {
+            "doc_id": "ENG-POL-003",
+            "quote": "Lỡ commit API key rồi git revert: phải rotate secret; revert không làm key “chưa từng lộ”.",
+            "section": "Chính sách Quản trị Repository, Release và Đóng góp Open Source > 11. Tình huống thường gặp"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Critical security claim where the intuitive wrong answer ('revert fixed it') is very plausible."
+      },
+      "tags": [
+        "engineering",
+        "secret",
+        "scenario",
+        "critical_claim",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-035",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Khách hàng yêu cầu xóa dữ liệu của họ nhưng dữ liệu đó đang thuộc legal hold thì xử lý thế nào?",
+      "reference_answer": "Chuyển sang privacy workflow và không tự xóa nếu dữ liệu đang thuộc legal hold. Legal Hold override cả cơ chế xóa tự động cho phạm vi liên quan.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "không tự xóa khi đang có legal hold",
+        "chuyển privacy workflow",
+        "legal hold override xóa tự động"
+      ],
+      "expected_claims": [
+        "không tự xóa dữ liệu đang thuộc legal hold",
+        "legal hold override xóa tự động"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "GOV-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "GOV-POL-001",
+            "quote": "Khách hàng yêu cầu xóa dữ liệu: chuyển privacy workflow; không tự xóa nếu dữ liệu đang thuộc legal hold.",
+            "section": "Chính sách Quản lý Hồ sơ, Lưu trữ và Legal Hold > 8. Tình huống thường gặp"
+          },
+          {
+            "doc_id": "GOV-POL-001",
+            "quote": "Legal Hold yêu cầu giữ email nhưng mailbox policy tự xóa sau X ngày: hold override xóa tự động cho phạm vi liên quan.",
+            "section": "Chính sách Quản lý Hồ sơ, Lưu trữ và Legal Hold > 8. Tình huống thường gặp"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Two obligations that appear to conflict; the corpus states the precedence explicitly."
+      },
+      "tags": [
+        "governance",
+        "legal_hold",
+        "conflict",
+        "corpus_v2",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-036",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Hợp đồng và phụ lục phải được lưu trữ trong bao lâu?",
+      "reference_answer": "Term của hợp đồng cộng 10 năm, trừ khi Legal quy định khác.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thời hạn lưu trữ hợp đồng",
+        "khả năng Legal quy định khác"
+      ],
+      "expected_claims": [
+        "hợp đồng và phụ lục: term + 10 năm"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "GOV-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "GOV-POL-001",
+            "quote": "Hợp đồng và phụ lục: term + 10 năm trừ khi Legal quy định khác.",
+            "section": "Chính sách Quản lý Hồ sơ, Lưu trữ và Legal Hold > 3. Retention Schedule"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Sits beside 'Hồ sơ procurement/approval: 10 năm' -- adjacent retention numbers are an easy confusion."
+      },
+      "tags": [
+        "governance",
+        "retention",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-037",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Em biết customer ID và muốn mở account của khách để hiểu sản phẩm rõ hơn, có được không?",
+      "reference_answer": "Không được nếu không có mục đích hỗ trợ/kinh doanh hợp lệ. Mỗi truy cập phải có mục đích công việc hợp lệ và traceable tới ticket/incident/request, và không được truy cập chỉ vì có khả năng kỹ thuật.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "kết luận không được phép",
+        "yêu cầu mục đích công việc hợp lệ và traceable"
+      ],
+      "expected_claims": [
+        "không truy cập dữ liệu khách hàng chỉ vì có khả năng kỹ thuật",
+        "mỗi truy cập phải traceable tới ticket/incident/request"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CUST-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CUST-POL-001",
+            "quote": "Bạn biết customer ID và muốn xem account để “hiểu sản phẩm”: không được nếu không có support/business purpose.",
+            "section": "Chính sách Truy cập Dữ liệu Khách hàng trong Hỗ trợ và Vận hành > 10. Tình huống thường gặp"
+          },
+          {
+            "doc_id": "CUST-POL-001",
+            "quote": "Mỗi truy cập phải có mục đích công việc hợp lệ và traceable tới ticket/incident/request.",
+            "section": "Chính sách Truy cập Dữ liệu Khách hàng trong Hỗ trợ và Vận hành > 2. Nguyên tắc"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Customer-data access boundary; a permissive answer here is an ACL-shaped failure even though the question is a policy question."
+      },
+      "tags": [
+        "customer_data",
+        "acl",
+        "scenario",
+        "critical_claim",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-038",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Đồng nghiệp quên badge và nhờ em quẹt hộ thì có được không?",
+      "reference_answer": "Không. Badge là cá nhân, không cho mượn hoặc 'mượn quẹt'; hướng dẫn đồng nghiệp làm temporary badge.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "badge là cá nhân, không cho mượn",
+        "hướng xử lý đúng: temporary badge"
+      ],
+      "expected_claims": [
+        "không cho mượn badge",
+        "hướng dẫn làm temporary badge"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-006",
+            "quote": "Badge là cá nhân, không cho mượn hoặc “mượn quẹt”.",
+            "section": "Chính sách An ninh Vật lý và Kiểm soát Ra vào > 2. Badge và access zone"
+          },
+          {
+            "doc_id": "SEC-POL-006",
+            "quote": "Đồng nghiệp quên badge: không cho mượn badge; hướng dẫn temporary badge.",
+            "section": "Chính sách An ninh Vật lý và Kiểm soát Ra vào > 10. Tình huống thường gặp"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "SEC-POL-006 (physical security) is new in corpus v2."
+      },
+      "tags": [
+        "security",
+        "physical",
+        "scenario",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-039",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Thời hạn thông thường của một Performance Improvement Plan (PIP) là bao lâu?",
+      "reference_answer": "Thông thường 30–60 ngày tùy vấn đề.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thời hạn thông thường của PIP"
+      ],
+      "expected_claims": [
+        "PIP thường kéo dài 30–60 ngày"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-007"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-007",
+            "quote": "Thời hạn thông thường 30–60 ngày tùy vấn đề.",
+            "section": "Chính sách Quản lý Hiệu suất, Thăng tiến và Cải thiện Hiệu suất > 6. Performance Improvement Plan (PIP)"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "HR-POL-007 is new in corpus v2. The quote is a bare bullet whose meaning depends on its section heading -- tests heading-aware chunking."
+      },
+      "tags": [
+        "hr",
+        "performance",
+        "corpus_v2",
+        "context_dependent"
+      ]
+    },
+    {
+      "id": "F5V2-POL-040",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Làm tốt một dự án lớn thì có được thăng chức luôn không?",
+      "reference_answer": "Không tự động. Thăng tiến dựa trên việc thể hiện ổn định năng lực của level tiếp theo, phạm vi tác động và nhu cầu tổ chức, không chỉ dựa vào thâm niên; làm tốt một dự án có thể được rating tốt nhưng chưa đủ để promotion.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "tiêu chí thăng tiến",
+        "một dự án tốt không tự động dẫn tới promotion"
+      ],
+      "expected_claims": [
+        "thăng tiến dựa trên năng lực level tiếp theo, phạm vi tác động và nhu cầu tổ chức",
+        "rating tốt không đồng nghĩa promotion"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-007"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-007",
+            "quote": "Thăng tiến dựa trên việc nhân viên thể hiện ổn định năng lực của level tiếp theo, phạm vi tác động và nhu cầu tổ chức; không chỉ dựa vào thâm niên.",
+            "section": "Chính sách Quản lý Hiệu suất, Thăng tiến và Cải thiện Hiệu suất > 5. Thăng tiến"
+          },
+          {
+            "doc_id": "HR-POL-007",
+            "quote": "Nhân viên làm tốt 1 dự án nhưng chưa thể hiện scope level tiếp theo: có thể rating tốt nhưng chưa promotion.",
+            "section": "Chính sách Quản lý Hiệu suất, Thăng tiến và Cải thiện Hiệu suất > 9. Tình huống thường gặp"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Colloquial question against formal policy language -- a paraphrase-retrieval probe."
+      },
+      "tags": [
+        "hr",
+        "performance",
+        "paraphrase",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-041",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi_no_diacritics",
+      "question": "Mat khau sai bao nhieu lan thi bi khoa tai khoan?",
+      "reference_answer": "Sai 5 lần liên tiếp bị khóa tạm 15 phút; sai tiếp 5 lần nữa bị khóa cứng và phải qua IT mở.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "ngưỡng khóa tạm",
+        "ngưỡng khóa cứng và cách mở"
+      ],
+      "expected_claims": [
+        "sai 5 lần liên tiếp: khóa tạm 15 phút",
+        "sai tiếp 5 lần: khóa cứng, phải qua IT mở"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-002"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-002",
+            "quote": "Nhập sai mật khẩu 5 lần liên tiếp: khóa tạm 15 phút; sai tiếp 5 lần: khóa cứng, phải qua IT mở.",
+            "section": "Chính sách Tài khoản và Mật khẩu > 6. Khóa tài khoản và khôi phục"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "rewritten:F5-RAG-020",
+        "note": "Same fact as the legacy case but typed WITHOUT diacritics, the way Vietnamese engineers actually type in a hurry. Tests that the embedding/BM25 path survives diacritic loss."
+      },
+      "tags": [
+        "security",
+        "password",
+        "no_diacritics"
+      ]
+    },
+    {
+      "id": "F5V2-POL-042",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "paraphrase",
+      "language": "vi_no_diacritics",
+      "question": "Cong ty co cho dung ChatGPT de viet code khong, can luu y gi?",
+      "reference_answer": "Được dùng nhưng code do AI sinh ra bắt buộc phải review như code người viết: kiểm tra bảo mật và license của đoạn mã gợi ý, và không copy nguyên văn code có bản quyền không rõ nguồn.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "được phép dùng AI hỗ trợ code",
+        "bắt buộc review bảo mật và license"
+      ],
+      "expected_claims": [
+        "code do AI sinh ra bắt buộc review như code người viết",
+        "phải kiểm tra bảo mật và license"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-005"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-005",
+            "quote": "Code do AI sinh ra: bắt buộc review như code người viết — kiểm tra bảo mật, license của đoạn mã gợi ý",
+            "section": "Chính sách Sử dụng AI và Dịch vụ Bên ngoài > 4. AI trong phát triển phần mềm"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "rewritten:F5-RAG-026",
+        "note": "Narrowed to the AI-code half of the legacy synthesis case and retyped without diacritics."
+      },
+      "tags": [
+        "security",
+        "ai_usage",
+        "no_diacritics"
+      ]
+    },
+    {
+      "id": "F5V2-POL-043",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "en",
+      "question": "How long is a guest WiFi session before it is automatically disconnected?",
+      "reference_answer": "Guest WiFi is bandwidth-limited and the session is automatically disconnected after 8 hours.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "guest WiFi session timeout"
+      ],
+      "expected_claims": [
+        "guest WiFi session ends after 8 hours"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-007"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-007",
+            "quote": "Guest WiFi giới hạn băng thông, tự ngắt phiên sau 8 giờ.",
+            "section": "Chính sách Mạng và Hạ tầng Văn phòng > 3. WiFi khách (Guest WiFi)"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "rewritten:F5-RAG-016",
+        "note": "English question against a Vietnamese-only corpus -- tests cross-lingual retrieval, which no legacy POLICY case covered."
+      },
+      "tags": [
+        "it",
+        "network",
+        "cross_lingual"
+      ]
+    },
+    {
+      "id": "F5V2-POL-044",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "en",
+      "question": "Where is the only approved place to store system secrets?",
+      "reference_answer": "Only in a company-approved Secret Manager (Vault, AWS Secrets Manager or Azure Key Vault depending on the environment).",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "approved secret storage location",
+        "named secret managers"
+      ],
+      "expected_claims": [
+        "secrets may only live in a company-approved Secret Manager"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-003"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-003",
+            "quote": "Chỉ lưu secret trong Secret Manager được công ty phê duyệt (Vault/AWS Secrets Manager/Azure Key Vault theo môi trường).",
+            "section": "Chính sách Quản lý Secret và Khóa Mã hóa > 3. Nguyên tắc bắt buộc"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "rewritten:F5-RAG-011",
+        "note": "Cross-lingual retrieval of a critical security rule; the product names are the anchor a lexical retriever can still match."
+      },
+      "tags": [
+        "security",
+        "secret",
+        "cross_lingual",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-045",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "false_refusal_probe",
+      "language": "vi",
+      "question": "Cho mình hỏi tí, cái vụ nghỉ phép ấy, bao nhiêu ngày thế?",
+      "reference_answer": "Nhân viên chính thức được nghỉ 12 ngày phép/năm, cộng thêm 1 ngày cho mỗi 5 năm thâm niên.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "số ngày phép năm"
+      ],
+      "expected_claims": [
+        "12 ngày phép/năm cho nhân viên chính thức"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Nhân viên chính thức: 12 ngày phép/năm; cứ mỗi 5 năm thâm niên được cộng thêm 1 ngày.",
+            "section": "Chính sách Nghỉ phép và Chấm công > 3. Các loại nghỉ phép > 3.1. Phép năm"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Same fact as F5V2-POL-001 but phrased vaguely and chattily. The scope/sufficiency gates are the thing under test: rejecting this is a FALSE_REFUSAL, not safety. Kept as a deliberate language-matched pair with POL-001 -- the duplicate checker exempts it only if wording differs enough, so keep the informal phrasing."
+      },
+      "tags": [
+        "hr",
+        "false_refusal",
+        "informal"
+      ]
+    },
+    {
+      "id": "F5V2-POL-046",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "false_refusal_probe",
+      "language": "vi",
+      "question": "sếp bảo em đọc policy mà em lười quá, tóm lại là được nghỉ ốm hưởng lương không?",
+      "reference_answer": "Câu hỏi này nằm trong phạm vi chính sách nghỉ phép của công ty và phải được trả lời từ HR-POL-001 thay vì bị từ chối vì cách hỏi thân mật.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "trả lời nội dung nghỉ ốm theo tài liệu",
+        "không từ chối chỉ vì văn phong thân mật"
+      ],
+      "expected_claims": [
+        "câu hỏi thuộc phạm vi chính sách nghỉ phép và được trả lời từ tài liệu"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-001",
+            "quote": "Nghỉ ốm",
+            "section": "Chính sách Nghỉ phép và Chấm công > 3. Các loại nghỉ phép > 3.2. Nghỉ ốm"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Chatty framing plus an off-topic preamble ('sếp bảo em đọc policy mà em lười quá'). ScopeGate must not read the preamble as an out-of-scope signal."
+      },
+      "tags": [
+        "hr",
+        "false_refusal",
+        "scope_gate_probe"
+      ]
+    },
+    {
+      "id": "F5V2-POL-047",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "composite",
+      "language": "vi",
+      "question": "Quy định sử dụng máy tính công ty, VPN và cài phần mềm như thế nào?",
+      "reference_answer": "Ba phần: thiết bị công ty cấp theo tiêu chuẩn vị trí với chu kỳ thay mới (IT-POL-001); truy cập từ xa qua VPN có giới hạn phiên và MFA (IT-POL-003); phần mềm mới phải qua quy trình phê duyệt theo ngưỡng chi phí (IT-POL-004).",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "quy định thiết bị công ty",
+        "quy định VPN/truy cập từ xa",
+        "quy định cài đặt/phê duyệt phần mềm"
+      ],
+      "expected_claims": [
+        "thiết bị cấp theo tiêu chuẩn vị trí",
+        "phiên VPN có giới hạn thời gian và cần MFA",
+        "phần mềm mới cần phê duyệt theo ngưỡng chi phí"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "IT-POL-001",
+          "IT-POL-003",
+          "IT-POL-004"
+        ],
+        "quotes": [
+          {
+            "doc_id": "IT-POL-001",
+            "quote": "Kỹ sư phần mềm | Laptop 32GB RAM/1TB SSD, 2 màn hình 27\" | 3 năm",
+            "section": "Chính sách Cấp phát và Quản lý Thiết bị > 2. Tiêu chuẩn cấp phát theo vị trí"
+          },
+          {
+            "doc_id": "IT-POL-003",
+            "quote": "Phiên VPN tự ngắt sau 12 giờ hoặc 30 phút không hoạt động; đăng nhập lại cần MFA.",
+            "section": "Chính sách VPN và Truy cập Từ xa > 5. Sử dụng và giới hạn"
+          },
+          {
+            "doc_id": "IT-POL-004",
+            "quote": "Phê duyệt chi phí: dưới 5 triệu/năm → Trưởng phòng IT",
+            "section": "Chính sách Phần mềm và Bản quyền (License) > 3. Quy trình xin phê duyệt phần mềm mới"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "This is the exact worked example in EVAL_GUIDE.md §4: an answer covering only laptops is correct but scores 1/3 on Task Completeness."
+      },
+      "tags": [
+        "it",
+        "composite",
+        "task_completeness"
+      ]
+    },
+    {
+      "id": "F5V2-POL-048",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "catalog",
+      "language": "vi",
+      "question": "Công ty có những chính sách nào về an toàn thông tin?",
+      "reference_answer": "Nhóm SEC-POL gồm phân quyền truy cập, phân loại và bảo vệ dữ liệu, quản lý secret, ứng phó sự cố, sử dụng AI/dịch vụ bên ngoài và an ninh vật lý văn phòng.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "CATALOG",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "liệt kê các chính sách an toàn thông tin hiện có"
+      ],
+      "expected_claims": [
+        "tồn tại nhiều chính sách SEC-POL bao gồm phân quyền truy cập và quản lý secret"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-000"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-000",
+            "quote": "Chính sách An toàn Thông tin",
+            "section": "Chính sách An toàn Thông tin (Security Policy)"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Catalog route: asks what exists, not a specific fact. EVAL_GUIDE.md §7.3 treats routing this to content RAG as a routing failure."
+      },
+      "tags": [
+        "security",
+        "catalog",
+        "routing"
+      ]
+    },
+    {
+      "id": "F5V2-POL-049",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "deep_document",
+      "language": "vi",
+      "question": "Whiteboard có thông tin dự án nhạy cảm thì xử lý thế nào sau cuộc họp?",
+      "reference_answer": "Phải xóa khi kết thúc cuộc họp hoặc trước khi phòng được dùng bởi người ngoài.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "nghĩa vụ xóa whiteboard",
+        "thời điểm phải xóa"
+      ],
+      "expected_claims": [
+        "xóa whiteboard khi kết thúc cuộc họp hoặc trước khi phòng được người ngoài dùng"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "SEC-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "SEC-POL-006",
+            "quote": "Whiteboard có thông tin dự án nhạy cảm phải xóa khi kết thúc cuộc họp hoặc trước khi phòng được dùng bởi người ngoài.",
+            "section": "Chính sách An ninh Vật lý và Kiểm soát Ra vào > 5. Clean desk / clear screen"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "A very specific rule buried mid-document; no summary sentence mentions whiteboards."
+      },
+      "tags": [
+        "security",
+        "physical",
+        "deep_document",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-050",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "cross_document",
+      "language": "vi",
+      "question": "Một consultant bên ngoài cần truy cập production trong 2 ngày thì cấp quyền thế nào?",
+      "reference_answer": "Cấp account riêng theo cơ chế just-in-time, không cho mượn tài khoản nhân viên; quyền tạm thời dạng này tự hết hạn sau tối đa 24 giờ và phải xin lại nếu cần gia hạn. Quyền truy cập của vendor phải được thu hồi chậm nhất vào ngày kết thúc.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "cấp account riêng JIT, không mượn tài khoản",
+        "giới hạn thời gian của quyền tạm thời",
+        "thu hồi khi kết thúc"
+      ],
+      "expected_claims": [
+        "cấp account riêng JIT cho consultant",
+        "không cho mượn tài khoản nhân viên",
+        "thu hồi access chậm nhất ngày kết thúc"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "TPRM-POL-001",
+          "SEC-POL-001"
+        ],
+        "quotes": [
+          {
+            "doc_id": "TPRM-POL-001",
+            "quote": "Consultant cần prod 2 ngày: cấp account riêng JIT, không cho mượn tài khoản nhân viên.",
+            "section": "Chính sách Quản lý Rủi ro Nhà cung cấp và Bên thứ ba > 10. Tình huống thường gặp"
+          },
+          {
+            "doc_id": "TPRM-POL-001",
+            "quote": "Offboarding vendor | Access thu hồi chậm nhất ngày kết thúc",
+            "section": "Chính sách Quản lý Rủi ro Nhà cung cấp và Bên thứ ba > 11. Kênh và SLA"
+          },
+          {
+            "doc_id": "SEC-POL-001",
+            "quote": "Quyền tạm thời (ví dụ hỗ trợ sự cố): cấp theo cơ chế just-in-time, tự hết hạn sau tối đa 24 giờ, gia hạn phải xin lại.",
+            "section": "Chính sách Phân quyền Truy cập (Access Control) > 4. Vòng đời quyền truy cập > 4.2. Quyền tạm thời và đặc quyền"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Three-document synthesis across a v2 domain (TPRM) and an original one (SEC-POL-001)."
+      },
+      "tags": [
+        "tprm",
+        "security",
+        "access",
+        "synthesis",
+        "corpus_v2",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-POL-051",
+      "domain": "POLICY",
+      "case_type": "answerable",
+      "category": "multi_chunk",
+      "language": "vi",
+      "question": "Khi làm việc tại nhà, quy định về không gian làm việc và bảo mật gồm những gì?",
+      "reference_answer": "Dùng thiết bị công ty hoặc BYOD đã đăng ký; truy cập tài nguyên nội bộ theo IT-POL-003, bật MFA và khóa màn hình khi rời chỗ; không làm việc với dữ liệu Confidential/Restricted ở nơi có nguy cơ bị quan sát hoặc nghe thấy; không in tài liệu Restricted tại nhà nếu chưa được Security/Data Owner cho phép.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thiết bị được phép dùng",
+        "MFA và khóa màn hình",
+        "hạn chế xử lý dữ liệu nhạy cảm nơi công cộng",
+        "hạn chế in tài liệu Restricted"
+      ],
+      "expected_claims": [
+        "dùng thiết bị công ty hoặc BYOD đã đăng ký",
+        "bật MFA và khóa màn hình khi rời chỗ",
+        "không xử lý Confidential/Restricted nơi có nguy cơ bị quan sát",
+        "không in tài liệu Restricted tại nhà nếu chưa được phép"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "HR-POL-006"
+        ],
+        "quotes": [
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Dùng thiết bị công ty hoặc BYOD đã đăng ký theo IT-POL-001.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 5. Không gian và bảo mật"
+          },
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Truy cập tài nguyên nội bộ theo IT-POL-003; bật MFA và khóa màn hình khi rời chỗ.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 5. Không gian và bảo mật"
+          },
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Không làm việc với dữ liệu Confidential/Restricted ở nơi có nguy cơ bị quan sát/nghe thấy; dùng headset, privacy screen khi cần.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 5. Không gian và bảo mật"
+          },
+          {
+            "doc_id": "HR-POL-006",
+            "quote": "Không in tài liệu Restricted tại nhà nếu chưa được Security/Data Owner cho phép.",
+            "section": "Chính sách Làm việc Linh hoạt và Làm việc Từ xa > 5. Không gian và bảo mật"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Four bullets of one section; measures whether max_chunks_per_domain truncates a genuinely multi-chunk answer (EVAL_GUIDE.md §19 CONTEXT_BUDGET_TRUNCATION)."
+      },
+      "tags": [
+        "hr",
+        "wfh",
+        "multi_chunk",
+        "corpus_v2"
+      ]
+    },
+    {
+      "id": "F5V2-POL-052",
+      "domain": "POLICY",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "en",
+      "question": "What is the company's policy on cryptocurrency payments to contractors?",
+      "reference_answer": "The corpus contains no policy about cryptocurrency payments.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "English unanswerable: FIN-POL-001/002 make the topic look adjacent (payments, vendors), so retrieval will surface plausible-but-wrong context. Tests abstention despite non-empty retrieval."
+      },
+      "tags": [
+        "finance",
+        "abstention",
+        "cross_lingual",
+        "near_miss_topic"
+      ]
+    },
+    {
+      "id": "F5V2-POL-053",
+      "domain": "POLICY",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Công ty áp dụng mức phạt bao nhiêu tiền nếu nhân viên làm lộ dữ liệu khách hàng?",
+      "reference_answer": "Bộ tài liệu quy định quy trình kỷ luật và ứng phó sự cố nhưng không nêu bất kỳ mức phạt tiền cụ thể nào.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Strong False Answer probe: HR-POL-005, SEC-POL-004 and CUST-POL-001 all retrieve strongly for this wording, and none contains a monetary penalty. Retrieval succeeding while the answer must still be an abstention is exactly the evidence-sufficiency case."
+      },
+      "tags": [
+        "security",
+        "abstention",
+        "hallucination_trap"
+      ]
+    }
+  ]
+}

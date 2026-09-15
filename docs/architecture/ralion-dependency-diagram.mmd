@@ -1,0 +1,50 @@
+flowchart TB
+    subgraph drivers["Drivers"]
+        web["Web Application"]
+        scheduler["Schedulers and Workers"]
+    end
+
+    subgraph inbound["Inbound Adapters"]
+        api["API Routes and Controllers"]
+        jobHandlers["Background Job Handlers"]
+    end
+
+    subgraph application["Application Layer"]
+        inputPorts["Use Cases / Input Ports"]
+
+        outputPorts["Output Ports<br/>Repository, Search, Model, Integration Contracts"]
+    end
+
+    subgraph domain["Domain Layer"]
+        entities["Domain Entities<br/>Core Business Rules"]
+    end
+
+    subgraph outbound["Outbound Adapters"]
+        persistence["Persistence and Search Adapters"]
+        modelAdapters["LLM and Embedding Adapters"]
+        integrations["External Service Adapters"]
+    end
+
+    subgraph external["External Systems"]
+        database["PostgreSQL<br/>pgvector, ParadeDB"]
+        models["LLM and Embedding Providers"]
+        services["GitHub and Document Storage"]
+    end
+
+    web --> api
+    scheduler --> jobHandlers
+
+    api --> inputPorts
+    jobHandlers --> inputPorts
+
+    inputPorts --> entities
+    inputPorts --> outputPorts
+    outputPorts --> entities
+
+    persistence -->|implements| outputPorts
+    modelAdapters -->|implements| outputPorts
+    integrations -->|implements| outputPorts
+
+    persistence --> database
+    modelAdapters --> models
+    integrations --> services

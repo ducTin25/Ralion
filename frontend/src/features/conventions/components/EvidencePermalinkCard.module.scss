@@ -1,0 +1,106 @@
+/* Chỉ dùng token semantic toàn cục (globals.css) nên card hiển thị nhất quán trong cả PM shell
+   lẫn Member Chat, không phụ thuộc bảng màu riêng của từng shell. */
+.card {
+  margin: 0;
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+}
+
+/* Vạch dọc ở đây là quy ước typography cho trích dẫn (nằm trên chính <blockquote>), không
+   phải viền trang trí ở cạnh card. */
+.snippet {
+  margin: 0;
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--border-strong);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.codeSnippet,
+.codePair pre {
+  margin: var(--sp-2) 0 0;
+  padding: var(--sp-2);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.codePair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+
+  section {
+    min-width: 0;
+  }
+  b {
+    font-size: 11.5px;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-top: var(--sp-2);
+  color: var(--ink-2);
+  font-size: 11.5px;
+}
+
+.author {
+  font-weight: 600;
+}
+
+.dot {
+  color: var(--ink-3);
+}
+
+.cosine {
+  padding: 1px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.permalink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--accent-bg);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+}
+
+@media (max-width: 560px) {
+  .codePair {
+    grid-template-columns: 1fr;
+  }
+}

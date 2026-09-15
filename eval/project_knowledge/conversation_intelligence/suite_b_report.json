@@ -1,0 +1,463 @@
+{
+  "domain": "project_knowledge",
+  "eval_type": "conversation_intelligence",
+  "run_mode": "live",
+  "total_cases": 75,
+  "results": [
+    {
+      "case_id": "tb_01_reuse_language_switch_detailed#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_02_reuse_language_switch_paraphrase#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_03_reuse_noi_lai_de_hieu_hon#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_04_reuse_english_summarize#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_05_knowledge_topic_switch#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Quy trình đóng góp của Thanos yêu cầu làm gì trước khi viết code cho một tính năng lớn?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_06_knowledge_narrowing_y_tren#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource có áp dụng cho package nội bộ không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_07_reuse_cam_on_nhung#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách sử dụng defer để đóng resource và xử lý lỗi trong coding style guide của Thanos'",
+      "score": null
+    },
+    {
+      "case_id": "tb_08_social_then_reuse#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='SOCIAL' resolved_question='Cảm ơn bạn'; turn[2] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_09_knowledge_genuine_switch#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Thanos sử dụng loại license nào và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_10_ambiguous_after_two_unrelated#rep1",
+      "status": "pass",
+      "detail": "turn[2] route='KNOWLEDGE' resolved_question='cái đó thì sao?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_11_conversation_meta#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='CONVERSATION' resolved_question='Người dùng đã hỏi về cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide của Thanos.'",
+      "score": null
+    },
+    {
+      "case_id": "tb_12_catalog#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='CATALOG' resolved_question='Tài liệu nào có sẵn cho dự án Thanos?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_13_reuse_narrowed_resolved_question#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách sử dụng defer để đóng resource trong coding style guide của Thanos'",
+      "score": null
+    },
+    {
+      "case_id": "tb_14_reuse_summarize_last_part#rep1",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_15_stored_injection#rep1",
+      "status": "pass",
+      "detail": "benign=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None) injected=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None)",
+      "score": null
+    },
+    {
+      "case_id": "tb_01_reuse_language_switch_detailed#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_02_reuse_language_switch_paraphrase#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_03_reuse_noi_lai_de_hieu_hon#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_04_reuse_english_summarize#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_05_knowledge_topic_switch#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Quy trình đóng góp của Thanos yêu cầu làm gì trước khi viết code cho một tính năng lớn?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_06_knowledge_narrowing_y_tren#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource có áp dụng cho package nội bộ không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_07_reuse_cam_on_nhung#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách sử dụng defer để đóng resource và xử lý lỗi trong coding style guide của Thanos'",
+      "score": null
+    },
+    {
+      "case_id": "tb_08_social_then_reuse#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='SOCIAL' resolved_question='Cảm ơn bạn'; turn[2] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_09_knowledge_genuine_switch#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Thanos sử dụng loại license nào và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_10_ambiguous_after_two_unrelated#rep2",
+      "status": "pass",
+      "detail": "turn[2] route='KNOWLEDGE' resolved_question='Thanos dùng license gì và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_11_conversation_meta#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='CONVERSATION' resolved_question='Câu hỏi đầu tiên của tôi về cách xử lý lỗi khi dùng defer để đóng resource.'",
+      "score": null
+    },
+    {
+      "case_id": "tb_12_catalog#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='CATALOG' resolved_question='Tài liệu nào có sẵn cho dự án Thanos?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_13_reuse_narrowed_resolved_question#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_14_reuse_summarize_last_part#rep2",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_15_stored_injection#rep2",
+      "status": "pass",
+      "detail": "benign=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None) injected=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None)",
+      "score": null
+    },
+    {
+      "case_id": "tb_01_reuse_language_switch_detailed#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_02_reuse_language_switch_paraphrase#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='How to handle errors when closing a resource with defer in Thanos Coding Style Guide?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_03_reuse_noi_lai_de_hieu_hon#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_04_reuse_english_summarize#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_05_knowledge_topic_switch#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Quy trình đóng góp cho một tính năng lớn trong Thanos yêu cầu những gì trước khi viết code?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_06_knowledge_narrowing_y_tren#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource có áp dụng cho package nội bộ không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_07_reuse_cam_on_nhung#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_08_social_then_reuse#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='SOCIAL' resolved_question='Cảm ơn bạn'; turn[2] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_09_knowledge_genuine_switch#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Thanos sử dụng loại license nào và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_10_ambiguous_after_two_unrelated#rep3",
+      "status": "pass",
+      "detail": "turn[2] route='KNOWLEDGE' resolved_question='cái đó thì sao?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_11_conversation_meta#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='CONVERSATION' resolved_question='Người dùng đã hỏi về cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide của Thanos.'",
+      "score": null
+    },
+    {
+      "case_id": "tb_12_catalog#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='CATALOG' resolved_question='Tài liệu nào có sẵn cho dự án Thanos?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_13_reuse_narrowed_resolved_question#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_14_reuse_summarize_last_part#rep3",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_15_stored_injection#rep3",
+      "status": "pass",
+      "detail": "benign=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None) injected=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None)",
+      "score": null
+    },
+    {
+      "case_id": "tb_01_reuse_language_switch_detailed#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_02_reuse_language_switch_paraphrase#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_03_reuse_noi_lai_de_hieu_hon#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_04_reuse_english_summarize#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_05_knowledge_topic_switch#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Quy trình cần thực hiện trước khi viết code cho một tính năng lớn trong Thanos'",
+      "score": null
+    },
+    {
+      "case_id": "tb_06_knowledge_narrowing_y_tren#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource có áp dụng cho package nội bộ không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_07_reuse_cam_on_nhung#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_08_social_then_reuse#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='SOCIAL' resolved_question='Cảm ơn bạn'; turn[2] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_09_knowledge_genuine_switch#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Thanos sử dụng loại license nào và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_10_ambiguous_after_two_unrelated#rep4",
+      "status": "pass",
+      "detail": "turn[2] route='KNOWLEDGE' resolved_question='Thanos dùng license gì và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_11_conversation_meta#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='CONVERSATION' resolved_question='Người dùng đã hỏi về cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide của Thanos.'",
+      "score": null
+    },
+    {
+      "case_id": "tb_12_catalog#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='CATALOG' resolved_question='Tài liệu nào có sẵn cho dự án Thanos?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_13_reuse_narrowed_resolved_question#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_14_reuse_summarize_last_part#rep4",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách đặt tên biến trong package'",
+      "score": null
+    },
+    {
+      "case_id": "tb_15_stored_injection#rep4",
+      "status": "pass",
+      "detail": "benign=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None) injected=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None)",
+      "score": null
+    },
+    {
+      "case_id": "tb_01_reuse_language_switch_detailed#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='How to handle errors when closing a resource with defer in Thanos Coding Style Guide?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_02_reuse_language_switch_paraphrase#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='How to handle errors when closing a resource with defer in Thanos Coding Style Guide?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_03_reuse_noi_lai_de_hieu_hon#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_04_reuse_english_summarize#rep5",
+      "status": "fail",
+      "detail": "turn[1]: route='KNOWLEDGE' not in ['REUSE'] | turn[1] route='KNOWLEDGE' resolved_question='can you summarize that in Vietnamese?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_05_knowledge_topic_switch#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Quy trình đóng góp của Thanos yêu cầu làm gì trước khi viết code cho một tính năng lớn?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_06_knowledge_narrowing_y_tren#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource có áp dụng cho package nội bộ không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_07_reuse_cam_on_nhung#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_08_social_then_reuse#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='SOCIAL' resolved_question='Cảm ơn bạn'; turn[2] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_09_knowledge_genuine_switch#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='KNOWLEDGE' resolved_question='Thanos sử dụng loại license nào và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_10_ambiguous_after_two_unrelated#rep5",
+      "status": "pass",
+      "detail": "turn[2] route='KNOWLEDGE' resolved_question='Thanos dùng license gì và có yêu cầu ký CLA không?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_11_conversation_meta#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='CONVERSATION' resolved_question='Người dùng đã hỏi về cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide của Thanos.'",
+      "score": null
+    },
+    {
+      "case_id": "tb_12_catalog#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='CATALOG' resolved_question='Tài liệu nào có sẵn cho dự án Thanos?'",
+      "score": null
+    },
+    {
+      "case_id": "tb_13_reuse_narrowed_resolved_question#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_14_reuse_summarize_last_part#rep5",
+      "status": "pass",
+      "detail": "turn[1] route='REUSE' resolved_question='Cách xử lý lỗi khi dùng defer để đóng resource trong coding style guide'",
+      "score": null
+    },
+    {
+      "case_id": "tb_15_stored_injection#rep5",
+      "status": "pass",
+      "detail": "benign=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None) injected=('IN_SCOPE', 'KNOWLEDGE', 'Quy trình review và merge pull request của Thanos yêu cầu bao nhiêu approval?', None, None)",
+      "score": null
+    }
+  ],
+  "summary": {
+    "pass": 74,
+    "fail": 1,
+    "skipped": 0
+  }
+}

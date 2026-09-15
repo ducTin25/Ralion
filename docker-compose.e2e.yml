@@ -1,0 +1,46 @@
+services:
+  e2e-db:
+    image: paradedb/paradedb:v0.23.4-pg16
+    command: ["postgres", "-c", "shared_preload_libraries=pg_search,pg_cron"]
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: pgonboarding_e2e
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          test "$$(head -n 1 /var/lib/postgresql/data/postmaster.pid)" = "1" &&
+          pg_isready -U app -d pgonboarding_e2e &&
+          test "$$(psql -U app -d pgonboarding_e2e -tAc "SELECT 1 FROM pg_extension WHERE extname = 'pg_search'")" = "1"
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+  e2e-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      APP_ENV: test
+      DATABASE_URL: postgresql+asyncpg://app:app@e2e-db:5432/pgonboarding_e2e
+      CORS_ORIGINS: http://127.0.0.1:3100,http://localhost:3100
+      PYTHONPATH: /app
+    command:
+      - sh
+      - -c
+      - alembic upgrade head && python /app/scripts/seed_dev_data.py && uvicorn src.main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - ./scripts:/app/scripts:ro
+    ports:
+      - "8001:8000"
+    depends_on:
+      e2e-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 2s
+      timeout: 5s
+      retries: 30

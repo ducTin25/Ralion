@@ -1,0 +1,387 @@
+{
+  "passed": true,
+  "checks": {
+    "schema": [],
+    "unique_ids": [],
+    "evidence_verbatim": [],
+    "absence_freshness": [],
+    "reviewed_bindings": [],
+    "no_fabricated_evidence": [],
+    "duplicates": [],
+    "coverage": [],
+    "answerability_balance": []
+  },
+  "coverage": {
+    "total_cases": 147,
+    "by_partition": {
+      "adversarial": 20,
+      "conversation": 19,
+      "guardrails": 18,
+      "policy_rag": 53,
+      "project_rag": 37
+    },
+    "by_domain": {
+      "POLICY": 90,
+      "PROJECT": 57
+    },
+    "by_case_type": {
+      "adversarial": 20,
+      "answerable": 76,
+      "conversation": 19,
+      "guardrail": 18,
+      "partial": 6,
+      "unanswerable": 8
+    },
+    "by_category": {
+      "ambiguous": 7,
+      "catalog": 3,
+      "composite": 5,
+      "conflict": 4,
+      "cross_document": 3,
+      "deep_document": 6,
+      "factual_lookup": 23,
+      "false_refusal_probe": 6,
+      "general_guidance": 1,
+      "identifier": 10,
+      "memory_continuity": 1,
+      "multi_chunk": 4,
+      "near_miss": 3,
+      "paraphrase": 18,
+      "scenario": 10,
+      "unanswerable": 43
+    },
+    "by_language": {
+      "en": 24,
+      "vi": 120,
+      "vi_no_diacritics": 3
+    },
+    "by_origin": {
+      "new": 105,
+      "reused": 33,
+      "rewritten": 9
+    },
+    "stability_subset": [
+      "F5V2-ADV-001",
+      "F5V2-ADV-002",
+      "F5V2-ADV-004",
+      "F5V2-ADV-005",
+      "F5V2-ADV-006",
+      "F5V2-ADV-007",
+      "F5V2-ADV-008",
+      "F5V2-ADV-009",
+      "F5V2-ADV-010",
+      "F5V2-ADV-011",
+      "F5V2-ADV-012",
+      "F5V2-ADV-015",
+      "F5V2-ADV-016",
+      "F5V2-ADV-017",
+      "F5V2-ADV-018",
+      "F5V2-ADV-019",
+      "F5V2-ADV-020",
+      "F5V2-CNV-001",
+      "F5V2-CNV-002",
+      "F5V2-CNV-003",
+      "F5V2-CNV-004",
+      "F5V2-CNV-005",
+      "F5V2-CNV-007",
+      "F5V2-CNV-010",
+      "F5V2-CNV-011",
+      "F5V2-CNV-013",
+      "F5V2-CNV-014",
+      "F5V2-CNV-101",
+      "F5V2-CNV-102",
+      "F5V2-CNV-103",
+      "F5V2-CNV-104",
+      "F5V2-CNV-105",
+      "F5V2-GRD-002",
+      "F5V2-GRD-003",
+      "F5V2-GRD-004",
+      "F5V2-GRD-005",
+      "F5V2-GRD-006",
+      "F5V2-GRD-007",
+      "F5V2-GRD-008",
+      "F5V2-GRD-009",
+      "F5V2-GRD-010",
+      "F5V2-GRD-012",
+      "F5V2-GRD-014",
+      "F5V2-GRD-015",
+      "F5V2-GRD-016",
+      "F5V2-POL-001",
+      "F5V2-POL-003",
+      "F5V2-POL-006",
+      "F5V2-POL-008",
+      "F5V2-POL-011",
+      "F5V2-POL-013",
+      "F5V2-POL-014",
+      "F5V2-POL-017",
+      "F5V2-POL-018",
+      "F5V2-POL-020",
+      "F5V2-POL-029",
+      "F5V2-POL-030",
+      "F5V2-POL-032",
+      "F5V2-POL-034",
+      "F5V2-POL-037",
+      "F5V2-POL-041",
+      "F5V2-POL-044",
+      "F5V2-POL-045",
+      "F5V2-POL-047",
+      "F5V2-POL-050",
+      "F5V2-POL-053",
+      "F5V2-PRJ-001",
+      "F5V2-PRJ-002",
+      "F5V2-PRJ-004",
+      "F5V2-PRJ-006",
+      "F5V2-PRJ-007",
+      "F5V2-PRJ-010",
+      "F5V2-PRJ-011",
+      "F5V2-PRJ-012",
+      "F5V2-PRJ-021",
+      "F5V2-PRJ-022",
+      "F5V2-PRJ-025",
+      "F5V2-PRJ-034",
+      "F5V2-PRJ-036"
+    ],
+    "attack_families": [
+      "citation_bypass",
+      "context_flooding_distraction",
+      "cross_project_data_request",
+      "delimiter_boundary_attack",
+      "developer_instruction_extraction",
+      "direct_instruction_override",
+      "encoded_obfuscated_attack",
+      "fabricated_citation_request",
+      "generic_guidance_as_company_fact",
+      "grounding_bypass",
+      "indirect_document_injection",
+      "presentation_as_behavior_control",
+      "pretrained_knowledge_substitution",
+      "role_persona_override",
+      "scope_routing_manipulation",
+      "secret_exfiltration",
+      "stored_multi_turn_injection",
+      "system_prompt_extraction"
+    ],
+    "guardrail_invariants": [
+      "acl_boundary",
+      "citation_integrity",
+      "conflict_handling",
+      "cross_project_access",
+      "insufficient_evidence_behavior",
+      "invalid_structured_output",
+      "malformed_input",
+      "no_evidence_behavior",
+      "personalization_invariant",
+      "scope_boundary",
+      "secret_leakage_prevention",
+      "unsupported_claim_rejection"
+    ],
+    "documents_covered": 35,
+    "documents_total": 74,
+    "documents_uncovered": [
+      "BCP-POL-001",
+      "CORP-POL-001",
+      "CORP-POL-003",
+      "ENG-POL-001",
+      "ESG-POL-001",
+      "HR-POL-000",
+      "HR-POL-004",
+      "HR-POL-005",
+      "IT-POL-000",
+      "LEG-POL-001",
+      "LEG-POL-002",
+      "SEC-POL-002",
+      "docs/proposals-accepted/202012-deletions-object-storage.md",
+      "docs/proposals-accepted/202012-receive-split.md",
+      "docs/proposals-accepted/202101-endpoint-discovery.md",
+      "docs/proposals-accepted/202106-automated-per-endpoint-mTLS.md",
+      "docs/proposals-accepted/202107-protobuf-openapi-httpapi.md",
+      "docs/proposals-accepted/202108-more-granular-query-performance-metrics.md",
+      "docs/proposals-accepted/202205-vertical-query-sharding.md",
+      "docs/proposals-accepted/202206-active-series-limiting-hashring.md",
+      "docs/proposals-accepted/202209-receive-tenant-external-labels.md",
+      "docs/proposals-accepted/README.md",
+      "docs/proposals-done/201809-gossip-removal.md",
+      "docs/proposals-done/201812-thanos-remote-receive.md",
+      "docs/proposals-done/201901-read-write-operations-bucket.md",
+      "docs/proposals-done/201909-thanos-sharding.md",
+      "docs/proposals-done/201912-thanos-binary-index-header.md",
+      "docs/proposals-done/202001-thanos-query-health-handling.md",
+      "docs/proposals-done/202003-thanos-rules-federation.md",
+      "docs/proposals-done/202004-embedd-cortex-frontend.md",
+      "docs/proposals-done/202005-query-logging.md",
+      "docs/proposals-done/202005-scalable-rule-storage.md",
+      "docs/proposals-done/202005-version-documentation.md",
+      "docs/proposals-done/202106-proposals-process.md",
+      "docs/proposals-done/202203-grpc-query-api.md",
+      "docs/proposals-done/202301-distributed-query-execution.md",
+      "docs/proposals-done/202304-query-path-tenancy.md",
+      "docs/proposals-done/README.md",
+      "test_upload/component.md"
+    ],
+    "cases_per_document": {
+      "CONTRIBUTING.md": [
+        "F5V2-PRJ-003",
+        "F5V2-PRJ-004",
+        "F5V2-PRJ-005",
+        "F5V2-PRJ-006",
+        "F5V2-PRJ-018"
+      ],
+      "CORP-POL-002": [
+        "F5V2-POL-033"
+      ],
+      "CUST-POL-001": [
+        "F5V2-POL-037"
+      ],
+      "ENG-POL-002": [
+        "F5V2-POL-029",
+        "F5V2-POL-030"
+      ],
+      "ENG-POL-003": [
+        "F5V2-POL-034"
+      ],
+      "FIN-POL-001": [
+        "F5V2-POL-025",
+        "F5V2-POL-026",
+        "F5V2-POL-028"
+      ],
+      "FIN-POL-002": [
+        "F5V2-POL-027",
+        "F5V2-POL-028"
+      ],
+      "GOV-POL-001": [
+        "F5V2-POL-035",
+        "F5V2-POL-036"
+      ],
+      "HR-POL-001": [
+        "F5V2-POL-001",
+        "F5V2-POL-009",
+        "F5V2-POL-015",
+        "F5V2-POL-021",
+        "F5V2-POL-045",
+        "F5V2-POL-046"
+      ],
+      "HR-POL-002": [
+        "F5V2-POL-002"
+      ],
+      "HR-POL-003": [
+        "F5V2-POL-010",
+        "F5V2-POL-017"
+      ],
+      "HR-POL-006": [
+        "F5V2-POL-022",
+        "F5V2-POL-023",
+        "F5V2-POL-024",
+        "F5V2-POL-051"
+      ],
+      "HR-POL-007": [
+        "F5V2-POL-039",
+        "F5V2-POL-040"
+      ],
+      "IT-POL-001": [
+        "F5V2-POL-007",
+        "F5V2-POL-010",
+        "F5V2-POL-047"
+      ],
+      "IT-POL-002": [
+        "F5V2-POL-003",
+        "F5V2-POL-011",
+        "F5V2-POL-041"
+      ],
+      "IT-POL-003": [
+        "F5V2-POL-004",
+        "F5V2-POL-011",
+        "F5V2-POL-047"
+      ],
+      "IT-POL-004": [
+        "F5V2-POL-016",
+        "F5V2-POL-047"
+      ],
+      "IT-POL-005": [
+        "F5V2-POL-005"
+      ],
+      "IT-POL-006": [
+        "F5V2-POL-030"
+      ],
+      "IT-POL-007": [
+        "F5V2-POL-043"
+      ],
+      "IT-POL-008": [
+        "F5V2-POL-013",
+        "F5V2-POL-032"
+      ],
+      "README.md": [
+        "F5V2-PRJ-001",
+        "F5V2-PRJ-020",
+        "F5V2-PRJ-023",
+        "F5V2-PRJ-032",
+        "F5V2-PRJ-033"
+      ],
+      "SEC-POL-000": [
+        "F5V2-POL-048"
+      ],
+      "SEC-POL-001": [
+        "F5V2-POL-011",
+        "F5V2-POL-012",
+        "F5V2-POL-050"
+      ],
+      "SEC-POL-003": [
+        "F5V2-POL-012",
+        "F5V2-POL-044"
+      ],
+      "SEC-POL-004": [
+        "F5V2-POL-006",
+        "F5V2-POL-013"
+      ],
+      "SEC-POL-005": [
+        "F5V2-POL-008",
+        "F5V2-POL-014",
+        "F5V2-POL-042"
+      ],
+      "SEC-POL-006": [
+        "F5V2-POL-038",
+        "F5V2-POL-049"
+      ],
+      "TPRM-POL-001": [
+        "F5V2-POL-031",
+        "F5V2-POL-050"
+      ],
+      "docs/contributing/coding-style-guide.md": [
+        "F5V2-PRJ-002"
+      ],
+      "docs/proposals-accepted/20221129-avoid-global-sort.md": [
+        "F5V2-PRJ-019"
+      ],
+      "test_upload/ARCHITECTURE.md": [
+        "F5V2-PRJ-037"
+      ],
+      "test_upload/thanos_access_security.md": [
+        "F5V2-PRJ-011",
+        "F5V2-PRJ-012",
+        "F5V2-PRJ-013",
+        "F5V2-PRJ-014",
+        "F5V2-PRJ-015",
+        "F5V2-PRJ-022",
+        "F5V2-PRJ-027",
+        "F5V2-PRJ-036"
+      ],
+      "test_upload/thanos_codebase_guide.md": [
+        "F5V2-PRJ-010",
+        "F5V2-PRJ-030",
+        "F5V2-PRJ-031"
+      ],
+      "test_upload/thanos_environment_setup.md": [
+        "F5V2-PRJ-006",
+        "F5V2-PRJ-007",
+        "F5V2-PRJ-008",
+        "F5V2-PRJ-009",
+        "F5V2-PRJ-016",
+        "F5V2-PRJ-017",
+        "F5V2-PRJ-021",
+        "F5V2-PRJ-028",
+        "F5V2-PRJ-029",
+        "F5V2-PRJ-034",
+        "F5V2-PRJ-035"
+      ]
+    }
+  }
+}

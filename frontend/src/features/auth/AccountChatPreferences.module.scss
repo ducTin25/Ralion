@@ -1,0 +1,178 @@
+/* Nằm trong khu account của shell Member. Panel là popover neo theo trigger, không phải khối
+   inline — nhờ vậy nó vẫn dùng được khi sidebar thu về dạng rail chỉ có icon (≤900px). */
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.composerRoot {
+  display: block;
+  flex: none;
+
+  .trigger {
+    width: auto;
+    min-height: 32px;
+    gap: 5px;
+    padding: 0 7px;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-2);
+
+    &:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+  }
+
+  .triggerLabel {
+    flex: none;
+  }
+  .panel {
+    right: 0;
+    bottom: calc(100% + 8px);
+    left: auto;
+  }
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 34px;
+  padding: 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s var(--ease);
+
+  &:hover {
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  svg {
+    flex: none;
+  }
+}
+
+.triggerLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.chevron {
+  display: inline-flex;
+  flex: none;
+  transition: transform 0.18s var(--ease);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.panel {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  min-width: 232px;
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.panelTitle {
+  margin: 0;
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  span {
+    color: var(--ink-2);
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+
+  select {
+    min-height: 32px;
+    padding: 0 var(--sp-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 12.5px;
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    &:disabled {
+      color: var(--ink-3);
+      cursor: progress;
+    }
+  }
+}
+
+.caption {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.errorCaption {
+  margin: 0;
+  color: var(--critical);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* Sidebar thu về rail 76px: trigger chỉ còn icon, panel bật sang phải để không bị cắt. */
+@media (max-width: 900px) {
+  .trigger {
+    justify-content: center;
+  }
+
+  .triggerLabel,
+  .chevron {
+    display: none;
+  }
+
+  .panel {
+    bottom: 0;
+    left: calc(100% + 8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .chevron {
+    transition: none;
+  }
+}

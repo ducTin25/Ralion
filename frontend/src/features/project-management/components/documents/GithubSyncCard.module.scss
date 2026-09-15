@@ -1,0 +1,32 @@
+// Same notice-banner shape as RuleReviewView.module.scss / ReferencePlanView.module.scss —
+// base .notice is the warning treatment, .noticeCritical overrides to critical. Kept local to
+// this component (not promoted to a shared style) until a second consumer needs it.
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pm-sp-2);
+  margin: 0;
+  padding: var(--pm-sp-2) var(--pm-sp-3);
+  border: 1px solid var(--pm-warning-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-warning-bg);
+  color: var(--pm-warning);
+  font-size: 12.5px;
+  line-height: 1.5;
+
+  svg {
+    flex: none;
+  }
+
+  span {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+.noticeCritical {
+  border-color: var(--pm-critical-border);
+  background: var(--pm-critical-bg);
+  color: var(--pm-critical);
+}

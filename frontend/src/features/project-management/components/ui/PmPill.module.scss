@@ -1,0 +1,54 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--pm-radius-sm);
+  border: 1px solid transparent;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.neutral {
+  background: var(--pm-surface-3);
+  color: var(--pm-ink-2);
+  border-color: var(--pm-border);
+}
+
+.progress {
+  background: var(--pm-accent-bg);
+  color: var(--pm-accent-ink);
+  border-color: var(--pm-accent-bg-strong);
+}
+
+.success {
+  background: var(--pm-success-bg);
+  color: var(--pm-success);
+  border: 1px solid var(--pm-success-border);
+}
+
+.warning {
+  background: var(--pm-warning-bg);
+  color: var(--pm-warning);
+  border: 1px solid var(--pm-warning-border);
+}
+
+.critical {
+  background: var(--pm-critical-bg);
+  color: var(--pm-critical);
+  border: 1px solid var(--pm-critical-border);
+}
+
+.tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pm-ink-3);
+  background: var(--pm-surface-2);
+  border: 1px solid var(--pm-border);
+  padding: 2px 7px;
+  border-radius: 5px;
+}

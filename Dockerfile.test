@@ -1,0 +1,25 @@
+# Tái sử dụng image production local để test không phải pull/build lại toàn bộ
+# runtime. scripts/test-backend.ps1 sẽ build image đó trước nếu máy chưa có.
+FROM p-040-backend:latest
+
+USER root
+COPY requirements.txt requirements-dev.txt ./
+RUN for attempt in 1 2 3; do \
+        pip install --no-cache-dir -r requirements-dev.txt && break; \
+        if [ "$attempt" = "3" ]; then exit 1; fi; \
+        sleep "$((attempt * 10))"; \
+    done
+
+COPY --chown=appuser:appuser src ./src
+COPY --chown=appuser:appuser config ./config
+COPY --chown=appuser:appuser alembic.ini ./
+COPY --chown=appuser:appuser pytest.ini ruff.toml ./
+COPY --chown=appuser:appuser alembic ./alembic
+COPY --chown=appuser:appuser modal_bge_m3 ./modal_bge_m3
+COPY --chown=appuser:appuser tests ./tests
+COPY --chown=appuser:appuser scripts ./scripts
+COPY --chown=appuser:appuser policy_category_labels.json policy_embeddings.jsonl ./
+COPY --chown=appuser:appuser demo-data ./demo-data
+USER appuser
+
+CMD ["sh", "-c", "ruff check src tests && alembic upgrade head && alembic check && pytest tests -q"]

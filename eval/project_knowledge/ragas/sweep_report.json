@@ -1,0 +1,2164 @@
+{
+  "records": [
+    {
+      "case_id": "pk_001",
+      "case_type": "answerable",
+      "question": "Thanos la gi va muc tieu chinh cua du an la gi?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 405,
+          "document_title": "README",
+          "dense_score": 0.49513277411460876,
+          "dense_rank": 13,
+          "bm25_score": 3.6990904808044434,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03009207275993712,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 593,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.5169753432273865,
+          "dense_rank": 3,
+          "bm25_score": 3.209916114807129,
+          "bm25_rank": 12,
+          "hybrid_score": 0.02976190476190476,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.5320590734481812,
+          "dense_rank": 1,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 398,
+          "document_title": "README",
+          "dense_score": 0.5294338026474061,
+          "dense_rank": 2,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 710,
+          "document_title": "Building A Versioning Plugin For Thanos",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 3.6124351024627686,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 410,
+          "document_title": "Contributing",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 3.5997676849365234,
+          "bm25_rank": 3,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 458,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 3.4935245513916016,
+          "bm25_rank": 4,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 682,
+          "document_title": "Query Logging for Thanos",
+          "dense_score": 0.5105128275736812,
+          "dense_rank": 4,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 424,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5072990807085958,
+          "dense_rank": 5,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 456,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 3.424238681793213,
+          "bm25_rank": 5,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_002",
+      "case_type": "answerable",
+      "question": "Khi dung defer de dong 1 resource ma Close() co the loi, coding style guide cua Thanos khuyen dung cach nao de khong bo sot loi?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 428,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6251716613769531,
+          "dense_rank": 2,
+          "bm25_score": 19.852928161621094,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03225806451612903,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 424,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6351773928158702,
+          "dense_rank": 1,
+          "bm25_score": 12.648612976074219,
+          "bm25_rank": 6,
+          "hybrid_score": 0.031544957774465976,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 429,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6043286559385873,
+          "dense_rank": 6,
+          "bm25_score": 21.457250595092773,
+          "bm25_rank": 1,
+          "hybrid_score": 0.031544957774465976,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 441,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6183165311813354,
+          "dense_rank": 4,
+          "bm25_score": 19.61463165283203,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03149801587301587,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 805,
+          "document_title": "Convention #21",
+          "dense_score": 0.5880295879823225,
+          "dense_rank": 9,
+          "bm25_score": 13.0205078125,
+          "bm25_rank": 4,
+          "hybrid_score": 0.030117753623188408,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 455,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6096959114074707,
+          "dense_rank": 5,
+          "bm25_score": 11.952360153198242,
+          "bm25_rank": 13,
+          "hybrid_score": 0.029083245521601686,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 459,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5820708448311941,
+          "dense_rank": 12,
+          "bm25_score": 12.61754035949707,
+          "bm25_rank": 7,
+          "hybrid_score": 0.028814262023217248,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 425,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6216800808906555,
+          "dense_rank": 3,
+          "bm25_score": 11.218649864196777,
+          "bm25_rank": 19,
+          "hybrid_score": 0.028531243721117136,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 439,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5866787433624268,
+          "dense_rank": 11,
+          "bm25_score": 12.10563850402832,
+          "bm25_rank": 12,
+          "hybrid_score": 0.02797339593114241,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 427,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5587198138237,
+          "dense_rank": 21,
+          "bm25_score": 12.725258827209473,
+          "bm25_rank": 5,
+          "hybrid_score": 0.027730294396961064,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_003",
+      "case_type": "answerable",
+      "question": "Truoc khi them 1 feature/component lon vao Thanos, quy trinh dong gop (CONTRIBUTING.md) yeu cau lam gi truoc khi viet code?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 413,
+          "document_title": "Contributing",
+          "dense_score": 0.6063932180404663,
+          "dense_rank": 3,
+          "bm25_score": 6.975345611572266,
+          "bm25_rank": 7,
+          "hybrid_score": 0.030798389007344232,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 411,
+          "document_title": "Contributing",
+          "dense_score": 0.5912942290306091,
+          "dense_rank": 8,
+          "bm25_score": 7.242439270019531,
+          "bm25_rank": 6,
+          "hybrid_score": 0.029857397504456328,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 669,
+          "document_title": "Adding a New Thanos Component that Embeds Cortex Query Frontend",
+          "dense_score": 0.6296010205030749,
+          "dense_rank": 1,
+          "bm25_score": 4.935712814331055,
+          "bm25_rank": 29,
+          "hybrid_score": 0.027629397679130595,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 416,
+          "document_title": "Contributing",
+          "dense_score": 0.5744987897425532,
+          "dense_rank": 13,
+          "bm25_score": 5.9917473793029785,
+          "bm25_rank": 16,
+          "hybrid_score": 0.026856524873828405,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 674,
+          "document_title": "Adding a New Thanos Component that Embeds Cortex Query Frontend",
+          "dense_score": 0.5733109287414234,
+          "dense_rank": 17,
+          "bm25_score": 5.527980327606201,
+          "bm25_rank": 21,
+          "hybrid_score": 0.025332691999358666,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 691,
+          "document_title": "Query Logging for Thanos",
+          "dense_score": 0.5634444952011108,
+          "dense_rank": 25,
+          "bm25_score": 5.999812126159668,
+          "bm25_rank": 15,
+          "hybrid_score": 0.025098039215686277,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 678,
+          "document_title": "Adding a New Thanos Component that Embeds Cortex Query Frontend",
+          "dense_score": 0.5670982003211975,
+          "dense_rank": 20,
+          "bm25_score": 5.457686901092529,
+          "bm25_rank": 24,
+          "hybrid_score": 0.024404761904761905,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 696,
+          "document_title": "Query Logging for Thanos",
+          "dense_score": 0.5532486108989362,
+          "dense_rank": 30,
+          "bm25_score": 5.147602081298828,
+          "bm25_rank": 26,
+          "hybrid_score": 0.0227390180878553,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 404,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 10.578781127929688,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 408,
+          "document_title": "Contributing",
+          "dense_score": 0.6254216432571411,
+          "dense_rank": 2,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_004",
+      "case_type": "answerable",
+      "question": "CONTRIBUTING.md khuyen nghi dung cap thuat ngu nao thay cho whitelist/blacklist va master/slave trong code va tai lieu?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 412,
+          "document_title": "Contributing",
+          "dense_score": 0.6439656403044259,
+          "dense_rank": 1,
+          "bm25_score": 32.48526382446289,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03278688524590164,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 404,
+          "document_title": "README",
+          "dense_score": 0.5537366005025278,
+          "dense_rank": 2,
+          "bm25_score": 10.578781127929688,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03225806451612903,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 413,
+          "document_title": "Contributing",
+          "dense_score": 0.49375516139001707,
+          "dense_rank": 6,
+          "bm25_score": 3.100665330886841,
+          "bm25_rank": 24,
+          "hybrid_score": 0.027056277056277056,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 408,
+          "document_title": "Contributing",
+          "dense_score": 0.511712760431336,
+          "dense_rank": 3,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 721,
+          "document_title": "Building A Versioning Plugin For Thanos",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.427711009979248,
+          "bm25_rank": 3,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 607,
+          "document_title": "Read-Write coordination free operational contract for object storage",
+          "dense_score": 0.5083994572400732,
+          "dense_rank": 4,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 708,
+          "document_title": "Building A Versioning Plugin For Thanos",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 5.187525272369385,
+          "bm25_rank": 4,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 660,
+          "document_title": "Global / Federated Rules API",
+          "dense_score": 0.49571333787262506,
+          "dense_rank": 5,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 716,
+          "document_title": "Building A Versioning Plugin For Thanos",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 5.0799479484558105,
+          "bm25_rank": 5,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 630,
+          "document_title": "Binary Format for Index-cache; Renaming to Index-header.",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 4.956595420837402,
+          "bm25_rank": 6,
+          "hybrid_score": 0.015151515151515152,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_005",
+      "case_type": "answerable",
+      "question": "Vertical query sharding trong Thanos chia nho truy van dua tren co che nao?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 528,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.7104574614490604,
+          "dense_rank": 2,
+          "bm25_score": 14.026256561279297,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03225806451612903,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 525,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.7606580257415771,
+          "dense_rank": 1,
+          "bm25_score": 13.358149528503418,
+          "bm25_rank": 4,
+          "hybrid_score": 0.032018442622950824,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 534,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.6975449323654175,
+          "dense_rank": 3,
+          "bm25_score": 12.725878715515137,
+          "bm25_rank": 6,
+          "hybrid_score": 0.031024531024531024,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 533,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.6769729449169084,
+          "dense_rank": 5,
+          "bm25_score": 12.415372848510742,
+          "bm25_rank": 7,
+          "hybrid_score": 0.030309988518943745,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 535,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.6375365257263184,
+          "dense_rank": 6,
+          "bm25_score": 11.26772689819336,
+          "bm25_rank": 9,
+          "hybrid_score": 0.02964426877470356,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 527,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.5944709423499749,
+          "dense_rank": 11,
+          "bm25_score": 12.759369850158691,
+          "bm25_rank": 5,
+          "hybrid_score": 0.02946912242686891,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 745,
+          "document_title": "Distributed Query Execution",
+          "dense_score": 0.6967117786407471,
+          "dense_rank": 4,
+          "bm25_score": 8.797211647033691,
+          "bm25_rank": 13,
+          "hybrid_score": 0.0293236301369863,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 622,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.6173641681671143,
+          "dense_rank": 8,
+          "bm25_score": 7.42965030670166,
+          "bm25_rank": 15,
+          "hybrid_score": 0.02803921568627451,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 618,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.6337193250656128,
+          "dense_rank": 7,
+          "bm25_score": 6.268894195556641,
+          "bm25_rank": 17,
+          "hybrid_score": 0.027912386121341344,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 531,
+          "document_title": "Vertical query sharding",
+          "dense_score": 0.569484531879425,
+          "dense_rank": 27,
+          "bm25_score": 13.791777610778809,
+          "bm25_rank": 3,
+          "hybrid_score": 0.02736726874657909,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_006",
+      "case_type": "answerable",
+      "question": "De xuat xoa du lieu tren object storage (deletions-object-storage) cua Thanos co nhac toi yeu cau tuan thu phap ly nao?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 461,
+          "document_title": "Delete series for object storage",
+          "dense_score": 0.6692793965339661,
+          "dense_rank": 1,
+          "bm25_score": 23.20673179626465,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03252247488101534,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 466,
+          "document_title": "Delete series for object storage",
+          "dense_score": 0.5989252328872681,
+          "dense_rank": 2,
+          "bm25_score": 19.068857192993164,
+          "bm25_rank": 8,
+          "hybrid_score": 0.030834914611005692,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 623,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5726884603500366,
+          "dense_rank": 6,
+          "bm25_score": 16.01765251159668,
+          "bm25_rank": 14,
+          "hybrid_score": 0.028665028665028666,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 618,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5763511657714844,
+          "dense_rank": 5,
+          "bm25_score": 14.97659969329834,
+          "bm25_rank": 18,
+          "hybrid_score": 0.028205128205128206,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 604,
+          "document_title": "Read-Write coordination free operational contract for object storage",
+          "dense_score": 0.577484454066489,
+          "dense_rank": 4,
+          "bm25_score": 14.427555084228516,
+          "bm25_rank": 20,
+          "hybrid_score": 0.028125,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 463,
+          "document_title": "Delete series for object storage",
+          "dense_score": 0.5234273956163299,
+          "dense_rank": 26,
+          "bm25_score": 23.61142349243164,
+          "bm25_rank": 1,
+          "hybrid_score": 0.028021349599695006,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 467,
+          "document_title": "Delete series for object storage",
+          "dense_score": 0.5478012561798096,
+          "dense_rank": 13,
+          "bm25_score": 16.486412048339844,
+          "bm25_rank": 12,
+          "hybrid_score": 0.02758751902587519,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.572179913520813,
+          "dense_rank": 7,
+          "bm25_score": 13.242691993713379,
+          "bm25_rank": 22,
+          "hybrid_score": 0.02712049508554787,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 622,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5571182370185852,
+          "dense_rank": 11,
+          "bm25_score": 15.451777458190918,
+          "bm25_rank": 17,
+          "hybrid_score": 0.027071520029266508,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 624,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5602550506591797,
+          "dense_rank": 10,
+          "bm25_score": 14.85541820526123,
+          "bm25_rank": 19,
+          "hybrid_score": 0.02694394213381555,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_007",
+      "case_type": "answerable",
+      "question": "De xuat mTLS tu dong theo tung endpoint muon giai quyet van de gi khi Querier o cluster observer ket noi toi Sidecar o cluster khac?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 492,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.6376334048728117,
+          "dense_rank": 1,
+          "bm25_score": 32.57036209106445,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03278688524590164,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 493,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5530602931976318,
+          "dense_rank": 3,
+          "bm25_score": 26.858064651489258,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03200204813108039,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 497,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5768305407065486,
+          "dense_rank": 2,
+          "bm25_score": 12.597681045532227,
+          "bm25_rank": 6,
+          "hybrid_score": 0.03128054740957967,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 495,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5266540050506592,
+          "dense_rank": 5,
+          "bm25_score": 14.09820556640625,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03125763125763126,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 491,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5134312204461572,
+          "dense_rank": 6,
+          "bm25_score": 13.290407180786133,
+          "bm25_rank": 4,
+          "hybrid_score": 0.030776515151515152,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 490,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5004123449325562,
+          "dense_rank": 9,
+          "bm25_score": 11.39557933807373,
+          "bm25_rank": 10,
+          "hybrid_score": 0.02877846790890269,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 660,
+          "document_title": "Global / Federated Rules API",
+          "dense_score": 0.5372162025337281,
+          "dense_rank": 4,
+          "bm25_score": 8.542760848999023,
+          "bm25_rank": 17,
+          "hybrid_score": 0.028612012987012988,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 751,
+          "document_title": "Distributed Query Execution",
+          "dense_score": 0.49062934573713957,
+          "dense_rank": 12,
+          "bm25_score": 11.646871566772461,
+          "bm25_rank": 8,
+          "hybrid_score": 0.028594771241830064,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 624,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.48598209023475647,
+          "dense_rank": 16,
+          "bm25_score": 12.679329872131348,
+          "bm25_rank": 5,
+          "hybrid_score": 0.02854251012145749,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 494,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.4967207910584941,
+          "dense_rank": 10,
+          "bm25_score": 10.952656745910645,
+          "bm25_rank": 11,
+          "hybrid_score": 0.028370221327967807,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_008",
+      "case_type": "answerable",
+      "question": "De xuat active-series-limiting-hashring muon them co che gi de theo doi theo tung tenant?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 541,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.665521959600215,
+          "dense_rank": 1,
+          "bm25_score": 19.06611442565918,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03278688524590164,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 542,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6625619135760132,
+          "dense_rank": 3,
+          "bm25_score": 18.04212760925293,
+          "bm25_rank": 4,
+          "hybrid_score": 0.03149801587301587,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 555,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6646670502821147,
+          "dense_rank": 2,
+          "bm25_score": 17.380706787109375,
+          "bm25_rank": 7,
+          "hybrid_score": 0.031054405392392875,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 556,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6444383475519223,
+          "dense_rank": 6,
+          "bm25_score": 18.38962173461914,
+          "bm25_rank": 3,
+          "hybrid_score": 0.031024531024531024,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 544,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6606380151941759,
+          "dense_rank": 4,
+          "bm25_score": 17.219852447509766,
+          "bm25_rank": 8,
+          "hybrid_score": 0.030330882352941176,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 538,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6174799431872413,
+          "dense_rank": 11,
+          "bm25_score": 18.920448303222656,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03021353930031804,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 536,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6204107630008016,
+          "dense_rank": 9,
+          "bm25_score": 17.885372161865234,
+          "bm25_rank": 5,
+          "hybrid_score": 0.029877369007803793,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 552,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6334097226369712,
+          "dense_rank": 7,
+          "bm25_score": 16.693090438842773,
+          "bm25_rank": 11,
+          "hybrid_score": 0.02900988017658188,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 540,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6312384229160306,
+          "dense_rank": 8,
+          "bm25_score": 15.668670654296875,
+          "bm25_rank": 14,
+          "hybrid_score": 0.02821939586645469,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 549,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": 0.6107882493264537,
+          "dense_rank": 13,
+          "bm25_score": 16.850112915039062,
+          "bm25_rank": 9,
+          "hybrid_score": 0.02819138376017471,
+          "lexical_overlap": true
+        }
+      ]
+    },
+    {
+      "case_id": "pk_009",
+      "case_type": "answerable",
+      "question": "README liet ke Thanos cung cap co che truy cap du lieu metric hop nhat qua giao thuc/API nao?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 398,
+          "document_title": "README",
+          "dense_score": 0.6181319171747018,
+          "dense_rank": 2,
+          "bm25_score": 9.07413101196289,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03200204813108039,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6168729891256708,
+          "dense_rank": 3,
+          "bm25_score": 4.004893779754639,
+          "bm25_rank": 28,
+          "hybrid_score": 0.027236652236652236,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 511,
+          "document_title": "More granular query performance metrics",
+          "dense_score": 0.5874982722104636,
+          "dense_rank": 17,
+          "bm25_score": 3.9661190509796143,
+          "bm25_rank": 29,
+          "hybrid_score": 0.024222968043192763,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 400,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 11.41000747680664,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 594,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6243626699231475,
+          "dense_rank": 1,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 397,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 11.399175643920898,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 402,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 7.165421009063721,
+          "bm25_rank": 4,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 656,
+          "document_title": "Global / Federated Rules API",
+          "dense_score": 0.6055670019646296,
+          "dense_rank": 4,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 476,
+          "document_title": "Thanos Routing Receive and Ingesting Receive",
+          "dense_score": 0.6039511201410829,
+          "dense_rank": 5,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 757,
+          "document_title": "Distributed Query Execution",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.2574238777160645,
+          "bm25_rank": 5,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_010",
+      "case_type": "answerable",
+      "question": "De xuat query-path tenancy liet ke per-tenant billing la 1 Goal hay khong nam trong pham vi cua proposal?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 761,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.6173371304668718,
+          "dense_rank": 1,
+          "bm25_score": 25.31926727294922,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03278688524590164,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 762,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5827764770059058,
+          "dense_rank": 2,
+          "bm25_score": 18.664331436157227,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03200204813108039,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 769,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5674406805705253,
+          "dense_rank": 5,
+          "bm25_score": 19.677980422973633,
+          "bm25_rank": 2,
+          "hybrid_score": 0.0315136476426799,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 770,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5793514251708984,
+          "dense_rank": 3,
+          "bm25_score": 16.687116622924805,
+          "bm25_rank": 6,
+          "hybrid_score": 0.031024531024531024,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 766,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5680255463130938,
+          "dense_rank": 4,
+          "bm25_score": 16.520099639892578,
+          "bm25_rank": 7,
+          "hybrid_score": 0.03055037313432836,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 764,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5663691759109497,
+          "dense_rank": 6,
+          "bm25_score": 17.176759719848633,
+          "bm25_rank": 5,
+          "hybrid_score": 0.030536130536130537,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 771,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5436713695526123,
+          "dense_rank": 11,
+          "bm25_score": 17.359729766845703,
+          "bm25_rank": 4,
+          "hybrid_score": 0.029709507042253523,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 763,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5489534139633179,
+          "dense_rank": 9,
+          "bm25_score": 15.509485244750977,
+          "bm25_rank": 9,
+          "hybrid_score": 0.028985507246376812,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 765,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5550571945275559,
+          "dense_rank": 8,
+          "bm25_score": 14.436342239379883,
+          "bm25_rank": 12,
+          "hybrid_score": 0.028594771241830064,
+          "lexical_overlap": true
+        },
+        {
+          "chunk_id": 758,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.5450165271759033,
+          "dense_rank": 10,
+          "bm25_score": 15.386314392089844,
+          "bm25_rank": 10,
+          "hybrid_score": 0.02857142857142857,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_011",
+      "case_type": "answerable",
+      "question": "Vi sao Thanos loai bo (deprecate) giao thuc gossip de chuyen sang File SD?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 588,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.632361455874274,
+          "dense_rank": 3,
+          "bm25_score": 25.1292667388916,
+          "bm25_rank": 1,
+          "hybrid_score": 0.032266458495966696,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 585,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.6566284894943237,
+          "dense_rank": 1,
+          "bm25_score": 16.71089744567871,
+          "bm25_rank": 5,
+          "hybrid_score": 0.03177805800756621,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 587,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.6112158662805488,
+          "dense_rank": 4,
+          "bm25_score": 17.432893753051758,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03149801587301587,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 586,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.6386561013069104,
+          "dense_rank": 2,
+          "bm25_score": 13.436454772949219,
+          "bm25_rank": 8,
+          "hybrid_score": 0.030834914611005692,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 591,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.5099867582321167,
+          "dense_rank": 7,
+          "bm25_score": 17.34229278564453,
+          "bm25_rank": 4,
+          "hybrid_score": 0.03055037313432836,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 589,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.5144395538830501,
+          "dense_rank": 6,
+          "bm25_score": 13.472561836242676,
+          "bm25_rank": 7,
+          "hybrid_score": 0.03007688828584351,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 584,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.4989890456199646,
+          "dense_rank": 12,
+          "bm25_score": 17.481664657592773,
+          "bm25_rank": 2,
+          "hybrid_score": 0.030017921146953404,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 654,
+          "document_title": "Thanos Query store nodes healthiness handling",
+          "dense_score": 0.5155358603277299,
+          "dense_rank": 5,
+          "bm25_score": 5.522298812866211,
+          "bm25_rank": 10,
+          "hybrid_score": 0.02967032967032967,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 441,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5055785775184631,
+          "dense_rank": 8,
+          "bm25_score": 4.049356460571289,
+          "bm25_rank": 16,
+          "hybrid_score": 0.02786377708978328,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 590,
+          "document_title": "Deprecated gossip clustering in favor of File SD",
+          "dense_score": 0.4827775071395938,
+          "dense_rank": 20,
+          "bm25_score": 14.632774353027344,
+          "bm25_rank": 6,
+          "hybrid_score": 0.027651515151515153,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_012",
+      "case_type": "answerable",
+      "question": "De xuat 'Avoid Global Sort on Querier Select' uoc tinh cai thien do tre (latency) khoang bao nhieu phan tram trong benchmark ban dau, voi thiet lap nao?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 573,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.6668922503654819,
+          "dense_rank": 1,
+          "bm25_score": 24.393043518066406,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03252247488101534,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 577,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.6151346197644114,
+          "dense_rank": 4,
+          "bm25_score": 23.324960708618164,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03149801587301587,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 572,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.5817455898674981,
+          "dense_rank": 7,
+          "bm25_score": 26.223539352416992,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03131881575727918,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 575,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.6384958840313039,
+          "dense_rank": 2,
+          "bm25_score": 20.162033081054688,
+          "bm25_rank": 6,
+          "hybrid_score": 0.03128054740957967,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 578,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.5857098945552184,
+          "dense_rank": 6,
+          "bm25_score": 20.239572525024414,
+          "bm25_rank": 5,
+          "hybrid_score": 0.030536130536130537,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 576,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.6239673347512085,
+          "dense_rank": 3,
+          "bm25_score": 16.074949264526367,
+          "bm25_rank": 9,
+          "hybrid_score": 0.03036576949620428,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 580,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.5925142897639959,
+          "dense_rank": 5,
+          "bm25_score": 15.867944717407227,
+          "bm25_rank": 10,
+          "hybrid_score": 0.02967032967032967,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 579,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.5719406263863677,
+          "dense_rank": 9,
+          "bm25_score": 17.607152938842773,
+          "bm25_rank": 8,
+          "hybrid_score": 0.02919863597612958,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 582,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.544718113856429,
+          "dense_rank": 11,
+          "bm25_score": 18.88217544555664,
+          "bm25_rank": 7,
+          "hybrid_score": 0.02900988017658188,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 581,
+          "document_title": "Avoid Global Sort on Querier Select",
+          "dense_score": 0.572472444477982,
+          "dense_rank": 8,
+          "bm25_score": 13.525571823120117,
+          "bm25_rank": 11,
+          "hybrid_score": 0.028790389395194696,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_013",
+      "case_type": "unanswerable",
+      "question": "Thanos ho tro dang nhap qua OAuth/SSO cho giao dien UI nhu the nao?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6461139513884175,
+          "dense_rank": 1,
+          "bm25_score": 2.599526882171631,
+          "bm25_rank": 8,
+          "hybrid_score": 0.031099324975891997,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 646,
+          "document_title": "Thanos Query store nodes healthiness handling",
+          "dense_score": 0.6046821059191857,
+          "dense_rank": 8,
+          "bm25_score": 5.049660682678223,
+          "bm25_rank": 6,
+          "hybrid_score": 0.029857397504456328,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 405,
+          "document_title": "README",
+          "dense_score": 0.6101033273370068,
+          "dense_rank": 6,
+          "bm25_score": 2.3702445030212402,
+          "bm25_rank": 18,
+          "hybrid_score": 0.027972027972027972,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 593,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6270871349301084,
+          "dense_rank": 3,
+          "bm25_score": 2.3398828506469727,
+          "bm25_rank": 27,
+          "hybrid_score": 0.02736726874657909,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 594,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.5878400381755843,
+          "dense_rank": 24,
+          "bm25_score": 2.4766898155212402,
+          "bm25_rank": 10,
+          "hybrid_score": 0.026190476190476188,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 492,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5916365804780572,
+          "dense_rank": 18,
+          "bm25_score": 2.3493661880493164,
+          "bm25_rank": 25,
+          "hybrid_score": 0.02458521870286576,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 415,
+          "document_title": "Contributing",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 7.621697902679443,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 500,
+          "document_title": "Expose Thanos APIs to OpenAPI/protobuf and expose on website and UIs",
+          "dense_score": 0.6439281085665326,
+          "dense_rank": 2,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 790,
+          "document_title": "Convention #23",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.130569934844971,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 805,
+          "document_title": "Convention #21",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.127074241638184,
+          "bm25_rank": 3,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_014",
+      "case_type": "unanswerable",
+      "question": "Cau hinh Kubernetes RBAC (Role-Based Access Control) cho service account cua Thanos duoc huong dan o dau trong coding style guide?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 424,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.6094116931803044,
+          "dense_rank": 1,
+          "bm25_score": 11.473381042480469,
+          "bm25_rank": 9,
+          "hybrid_score": 0.030886196246139225,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 455,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5615292358854188,
+          "dense_rank": 10,
+          "bm25_score": 11.952360153198242,
+          "bm25_rank": 4,
+          "hybrid_score": 0.029910714285714284,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 425,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5795307332137448,
+          "dense_rank": 4,
+          "bm25_score": 10.279787063598633,
+          "bm25_rank": 17,
+          "hybrid_score": 0.028612012987012988,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 416,
+          "document_title": "Contributing",
+          "dense_score": 0.5598305201429439,
+          "dense_rank": 11,
+          "bm25_score": 10.792065620422363,
+          "bm25_rank": 14,
+          "hybrid_score": 0.027598020555767037,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 427,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5494741365156813,
+          "dense_rank": 21,
+          "bm25_score": 11.53947639465332,
+          "bm25_rank": 7,
+          "hybrid_score": 0.027271052146674038,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 459,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5490820735145852,
+          "dense_rank": 23,
+          "bm25_score": 11.879862785339355,
+          "bm25_rank": 6,
+          "hybrid_score": 0.02719970792259949,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 434,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5566811131441928,
+          "dense_rank": 14,
+          "bm25_score": 9.1012601852417,
+          "bm25_rank": 23,
+          "hybrid_score": 0.025561706284597852,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 437,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5479632779348876,
+          "dense_rank": 25,
+          "bm25_score": 9.1012601852417,
+          "bm25_rank": 24,
+          "hybrid_score": 0.023669467787114845,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 445,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 13.414888381958008,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 430,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 12.434121131896973,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_015",
+      "case_type": "unanswerable",
+      "question": "Co proposal nao cua Thanos de xuat dung GraphQL thay the cho gRPC Store API khong?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 735,
+          "document_title": "202203-grpc-query-api",
+          "dense_score": 0.6734811456822031,
+          "dense_rank": 1,
+          "bm25_score": 12.796683311462402,
+          "bm25_rank": 1,
+          "hybrid_score": 0.03278688524590164,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 736,
+          "document_title": "202203-grpc-query-api",
+          "dense_score": 0.6361285285796534,
+          "dense_rank": 2,
+          "bm25_score": 10.138835906982422,
+          "bm25_rank": 5,
+          "hybrid_score": 0.0315136476426799,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 742,
+          "document_title": "202203-grpc-query-api",
+          "dense_score": 0.6111162768463801,
+          "dense_rank": 5,
+          "bm25_score": 10.64399242401123,
+          "bm25_rank": 3,
+          "hybrid_score": 0.03125763125763126,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 697,
+          "document_title": "Query Logging for Thanos",
+          "dense_score": 0.5897423518011192,
+          "dense_rank": 8,
+          "bm25_score": 12.040565490722656,
+          "bm25_rank": 2,
+          "hybrid_score": 0.030834914611005692,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 651,
+          "document_title": "Thanos Query store nodes healthiness handling",
+          "dense_score": 0.6087942589766714,
+          "dense_rank": 6,
+          "bm25_score": 10.159276962280273,
+          "bm25_rank": 4,
+          "hybrid_score": 0.030776515151515152,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 507,
+          "document_title": "Expose Thanos APIs to OpenAPI/protobuf and expose on website and UIs",
+          "dense_score": 0.6147649334581324,
+          "dense_rank": 4,
+          "bm25_score": 9.509976387023926,
+          "bm25_rank": 9,
+          "hybrid_score": 0.030117753623188408,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 768,
+          "document_title": "Tenancy awareness in query path",
+          "dense_score": 0.6036950698625875,
+          "dense_rank": 7,
+          "bm25_score": 9.537933349609375,
+          "bm25_rank": 8,
+          "hybrid_score": 0.029631255487269532,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 483,
+          "document_title": "Unified Endpoint Discovery",
+          "dense_score": 0.5869525146228872,
+          "dense_rank": 9,
+          "bm25_score": 7.556133270263672,
+          "bm25_rank": 25,
+          "hybrid_score": 0.02625745950554135,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 749,
+          "document_title": "Distributed Query Execution",
+          "dense_score": 0.558369152740345,
+          "dense_rank": 23,
+          "bm25_score": 8.354286193847656,
+          "bm25_rank": 16,
+          "hybrid_score": 0.025206087507926443,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 658,
+          "document_title": "Global / Federated Rules API",
+          "dense_score": 0.5695625717230023,
+          "dense_rank": 15,
+          "bm25_score": 7.092383861541748,
+          "bm25_rank": 30,
+          "hybrid_score": 0.024444444444444446,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_016",
+      "case_type": "unanswerable",
+      "question": "Quy trinh on-call/pager rotation cho maintainer cua Thanos duoc mo ta o dau trong CONTRIBUTING.md?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 626,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5791813385974574,
+          "dense_rank": 12,
+          "bm25_score": 3.22969651222229,
+          "bm25_rank": 21,
+          "hybrid_score": 0.026234567901234566,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 404,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 10.578781127929688,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 408,
+          "document_title": "Contributing",
+          "dense_score": 0.6475048871335466,
+          "dense_rank": 1,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 494,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.9588446617126465,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 593,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6169348587432599,
+          "dense_rank": 2,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 493,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.872114658355713,
+          "bm25_rank": 3,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6115297310632638,
+          "dense_rank": 3,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 414,
+          "document_title": "Contributing",
+          "dense_score": 0.6046754357412208,
+          "dense_rank": 4,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 640,
+          "document_title": "Binary Format for Index-cache; Renaming to Index-header.",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.682829856872559,
+          "bm25_rank": 4,
+          "hybrid_score": 0.015625,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 418,
+          "document_title": "Contributing",
+          "dense_score": 0.6000796794843876,
+          "dense_rank": 5,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015384615384615385,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_017",
+      "case_type": "unanswerable",
+      "question": "Chi phi luu tru (gia tren moi GB) khi dung Thanos voi object storage backend la bao nhieu?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 461,
+          "document_title": "Delete series for object storage",
+          "dense_score": 0.5890741944313049,
+          "dense_rank": 6,
+          "bm25_score": 9.349067687988281,
+          "bm25_rank": 1,
+          "hybrid_score": 0.031544957774465976,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 623,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5842236280441284,
+          "dense_rank": 9,
+          "bm25_score": 8.560100555419922,
+          "bm25_rank": 5,
+          "hybrid_score": 0.029877369007803793,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 604,
+          "document_title": "Read-Write coordination free operational contract for object storage",
+          "dense_score": 0.59833457479867,
+          "dense_rank": 2,
+          "bm25_score": 7.742488861083984,
+          "bm25_rank": 13,
+          "hybrid_score": 0.029827662395050816,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.596446692943573,
+          "dense_rank": 3,
+          "bm25_score": 7.264998912811279,
+          "bm25_rank": 18,
+          "hybrid_score": 0.028693528693528692,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 398,
+          "document_title": "README",
+          "dense_score": 0.598552364067804,
+          "dense_rank": 1,
+          "bm25_score": 7.0525102615356445,
+          "bm25_rank": 22,
+          "hybrid_score": 0.028588564574170333,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 618,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5714541673660278,
+          "dense_rank": 14,
+          "bm25_score": 8.092897415161133,
+          "bm25_rank": 9,
+          "hybrid_score": 0.028006267136701922,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 466,
+          "document_title": "Delete series for object storage",
+          "dense_score": 0.5584736466407776,
+          "dense_rank": 21,
+          "bm25_score": 7.932620048522949,
+          "bm25_rank": 10,
+          "hybrid_score": 0.026631393298059962,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 622,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5540611743927002,
+          "dense_rank": 26,
+          "bm25_score": 8.21275520324707,
+          "bm25_rank": 7,
+          "hybrid_score": 0.026553280111072546,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 619,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.5863855481147766,
+          "dense_rank": 7,
+          "bm25_score": 5.5489091873168945,
+          "bm25_rank": 29,
+          "hybrid_score": 0.026161328190508135,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 620,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": 0.551574554945556,
+          "dense_rank": 28,
+          "bm25_score": 6.261704921722412,
+          "bm25_rank": 26,
+          "hybrid_score": 0.02299154334038055,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_018",
+      "case_type": "unanswerable",
+      "question": "Thanos co tai lieu nao ve chung nhan tuan thu PCI-DSS khong?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 397,
+          "document_title": "README",
+          "dense_score": 0.5300732535080172,
+          "dense_rank": 9,
+          "bm25_score": 7.826994895935059,
+          "bm25_rank": 1,
+          "hybrid_score": 0.030886196246139225,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.6022018431304798,
+          "dense_rank": 1,
+          "bm25_score": 1.2873057126998901,
+          "bm25_rank": 17,
+          "hybrid_score": 0.02938045560996381,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 644,
+          "document_title": "Thanos Query store nodes healthiness handling",
+          "dense_score": 0.5220065401788637,
+          "dense_rank": 12,
+          "bm25_score": 1.3602925539016724,
+          "bm25_rank": 6,
+          "hybrid_score": 0.02904040404040404,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 472,
+          "document_title": "Thanos Routing Receive and Ingesting Receive",
+          "dense_score": 0.5049934682253925,
+          "dense_rank": 25,
+          "bm25_score": 1.3808106184005737,
+          "bm25_rank": 4,
+          "hybrid_score": 0.02738970588235294,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 651,
+          "document_title": "Thanos Query store nodes healthiness handling",
+          "dense_score": 0.5209741281882457,
+          "dense_rank": 13,
+          "bm25_score": 1.2371808290481567,
+          "bm25_rank": 28,
+          "hybrid_score": 0.025062266500622665,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 679,
+          "document_title": "Adding a New Thanos Component that Embeds Cortex Query Frontend",
+          "dense_score": 0.49996751547053453,
+          "dense_rank": 30,
+          "bm25_score": 1.2880672216415405,
+          "bm25_rank": 16,
+          "hybrid_score": 0.024269005847953218,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 455,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5035030541716194,
+          "dense_rank": 27,
+          "bm25_score": 1.2352097034454346,
+          "bm25_rank": 29,
+          "hybrid_score": 0.022730207929742993,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 604,
+          "document_title": "Read-Write coordination free operational contract for object storage",
+          "dense_score": 0.5637802405619334,
+          "dense_rank": 2,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 617,
+          "document_title": "Thanos Sharding for Long Term Retention Storage",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 1.3920526504516602,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 537,
+          "document_title": "Active Series Limiting for Hashring Topology",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 1.386574149131775,
+          "bm25_rank": 3,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_019",
+      "case_type": "unanswerable",
+      "question": "Thanos co ho tro viet custom metric provider bang ngon ngu Java khong, tai lieu nao huong dan?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 397,
+          "document_title": "README",
+          "dense_score": 0.5076751406386419,
+          "dense_rank": 6,
+          "bm25_score": 7.826994895935059,
+          "bm25_rank": 2,
+          "hybrid_score": 0.03128054740957967,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 593,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.5280396027541406,
+          "dense_rank": 4,
+          "bm25_score": 5.929011821746826,
+          "bm25_rank": 4,
+          "hybrid_score": 0.03125,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 398,
+          "document_title": "README",
+          "dense_score": 0.5305374106604653,
+          "dense_rank": 3,
+          "bm25_score": 5.5562424659729,
+          "bm25_rank": 6,
+          "hybrid_score": 0.031024531024531024,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.533625213287759,
+          "dense_rank": 1,
+          "bm25_score": 4.154145240783691,
+          "bm25_rank": 17,
+          "hybrid_score": 0.02938045560996381,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 511,
+          "document_title": "More granular query performance metrics",
+          "dense_score": 0.5158909251754934,
+          "dense_rank": 5,
+          "bm25_score": 3.9661190509796143,
+          "bm25_rank": 18,
+          "hybrid_score": 0.028205128205128206,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 751,
+          "document_title": "Distributed Query Execution",
+          "dense_score": 0.4932982929589399,
+          "dense_rank": 18,
+          "bm25_score": 4.629138946533203,
+          "bm25_rank": 13,
+          "hybrid_score": 0.02651914295749912,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 517,
+          "document_title": "More granular query performance metrics",
+          "dense_score": 0.49100619608126994,
+          "dense_rank": 21,
+          "bm25_score": 3.2505722045898438,
+          "bm25_rank": 25,
+          "hybrid_score": 0.02411038489469862,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 400,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 9.482007026672363,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 455,
+          "document_title": "Thanos Coding Style Guide",
+          "dense_score": 0.5307072084720615,
+          "dense_rank": 2,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 467,
+          "document_title": "Delete series for object storage",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 6.529390811920166,
+          "bm25_rank": 3,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        }
+      ]
+    },
+    {
+      "case_id": "pk_020",
+      "case_type": "unanswerable",
+      "question": "Thanos co API tich hop hoa don (invoice) cho hop dong enterprise support khong?",
+      "error": null,
+      "candidates": [
+        {
+          "chunk_id": 595,
+          "document_title": "Thanos Remote Write",
+          "dense_score": 0.5954759653338186,
+          "dense_rank": 2,
+          "bm25_score": 4.004893779754639,
+          "bm25_rank": 21,
+          "hybrid_score": 0.028474711270410194,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 736,
+          "document_title": "202203-grpc-query-api",
+          "dense_score": 0.5635552910168752,
+          "dense_rank": 16,
+          "bm25_score": 4.1495161056518555,
+          "bm25_rank": 17,
+          "hybrid_score": 0.026144907723855092,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 493,
+          "document_title": "Automated, per-endpoint mTLS",
+          "dense_score": 0.5525099533060174,
+          "dense_rank": 23,
+          "bm25_score": 4.3916850090026855,
+          "bm25_rank": 13,
+          "hybrid_score": 0.02574682290807064,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 502,
+          "document_title": "Expose Thanos APIs to OpenAPI/protobuf and expose on website and UIs",
+          "dense_score": 0.5685495815932262,
+          "dense_rank": 12,
+          "bm25_score": 3.564199447631836,
+          "bm25_rank": 29,
+          "hybrid_score": 0.025124843945068663,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 505,
+          "document_title": "Expose Thanos APIs to OpenAPI/protobuf and expose on website and UIs",
+          "dense_score": 0.5523833201045849,
+          "dense_rank": 25,
+          "bm25_score": 4.023374080657959,
+          "bm25_rank": 20,
+          "hybrid_score": 0.02426470588235294,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 735,
+          "document_title": "202203-grpc-query-api",
+          "dense_score": 0.5505276218528431,
+          "dense_rank": 29,
+          "bm25_score": 3.875718832015991,
+          "bm25_rank": 22,
+          "hybrid_score": 0.023431077007399288,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 397,
+          "document_title": "README",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 9.059380531311035,
+          "bm25_rank": 1,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 688,
+          "document_title": "Query Logging for Thanos",
+          "dense_score": 0.5962626515705249,
+          "dense_rank": 1,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.01639344262295082,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 484,
+          "document_title": "Unified Endpoint Discovery",
+          "dense_score": null,
+          "dense_rank": null,
+          "bm25_score": 7.576951026916504,
+          "bm25_rank": 2,
+          "hybrid_score": 0.016129032258064516,
+          "lexical_overlap": false
+        },
+        {
+          "chunk_id": 499,
+          "document_title": "Expose Thanos APIs to OpenAPI/protobuf and expose on website and UIs",
+          "dense_score": 0.5908121046666004,
+          "dense_rank": 3,
+          "bm25_score": null,
+          "bm25_rank": null,
+          "hybrid_score": 0.015873015873015872,
+          "lexical_overlap": false
+        }
+      ]
+    }
+  ]
+}

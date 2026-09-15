@@ -1,0 +1,55 @@
+{
+  "domain": "project_knowledge",
+  "eval_type": "conversation_intelligence",
+  "run_mode": "live",
+  "total_cases": 7,
+  "results": [
+    {
+      "case_id": "p2_01_knowledge",
+      "status": "pass",
+      "detail": "fallback=False n_citations=1 route=KNOWLEDGE",
+      "score": null
+    },
+    {
+      "case_id": "p2_02_reuse",
+      "status": "fail",
+      "detail": "fallback=True n_citations=0 route=REUSE evidence_source=None",
+      "score": null
+    },
+    {
+      "case_id": "p2_03_topic_switch",
+      "status": "pass",
+      "detail": "fallback=False route=KNOWLEDGE n_citations=1",
+      "score": null
+    },
+    {
+      "case_id": "p2_04_conversation",
+      "status": "pass",
+      "detail": "fallback=False route=CONVERSATION answer_len=163",
+      "score": null
+    },
+    {
+      "case_id": "p2_05_catalog",
+      "status": "pass",
+      "detail": "fallback=False route=CATALOG answer_len=821",
+      "score": null
+    },
+    {
+      "case_id": "p2_06_social_fast_path",
+      "status": "pass",
+      "detail": "fallback=False citations=() decision_details_keys=['answer_mode', 'social_intent']",
+      "score": null
+    },
+    {
+      "case_id": "p2_07_out_of_scope",
+      "status": "pass",
+      "detail": "fallback=True fallback_reason=out_of_scope",
+      "score": null
+    }
+  ],
+  "summary": {
+    "pass": 6,
+    "fail": 1,
+    "skipped": 0
+  }
+}

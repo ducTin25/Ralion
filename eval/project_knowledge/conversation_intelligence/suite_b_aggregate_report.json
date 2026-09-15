@@ -1,0 +1,38 @@
+{
+  "repeats": 5,
+  "total_case_runs": 75,
+  "pass_count": 74,
+  "fail_count": 1,
+  "pass_rate": 0.9867,
+  "per_case_pass_rate": {
+    "tb_01_reuse_language_switch_detailed": "5/5",
+    "tb_02_reuse_language_switch_paraphrase": "5/5",
+    "tb_03_reuse_noi_lai_de_hieu_hon": "5/5",
+    "tb_04_reuse_english_summarize": "4/5",
+    "tb_05_knowledge_topic_switch": "5/5",
+    "tb_06_knowledge_narrowing_y_tren": "5/5",
+    "tb_07_reuse_cam_on_nhung": "5/5",
+    "tb_08_social_then_reuse": "5/5",
+    "tb_09_knowledge_genuine_switch": "5/5",
+    "tb_10_ambiguous_after_two_unrelated": "5/5",
+    "tb_11_conversation_meta": "5/5",
+    "tb_12_catalog": "5/5",
+    "tb_13_reuse_narrowed_resolved_question": "5/5",
+    "tb_14_reuse_summarize_last_part": "5/5",
+    "tb_15_stored_injection": "5/5"
+  },
+  "unstable_cases": {
+    "tb_04_reuse_english_summarize[turn=1]": [
+      "KNOWLEDGE",
+      "REUSE"
+    ]
+  },
+  "reuse_true_positive": 39,
+  "reuse_false_negative": 1,
+  "reuse_false_positive": 0,
+  "reuse_recall": 0.975,
+  "reuse_precision": 1.0,
+  "narrowing_violations": 0,
+  "narrowing_checked": 10,
+  "regressions": []
+}

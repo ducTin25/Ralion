@@ -1,0 +1,964 @@
+{
+  "partition": "conversation",
+  "notes": [
+    "Routes are the `InterpreterRoute` values in src/ai/orchestration/turn_interpreter.py. CLARIFY is never expected: `chat.turn_interpreter.clarify_enabled` is false in config/chunking_params.yaml, so expecting it would test a disabled capability.",
+    "`expected_resolution` describes the information need the resolved question must represent (EVAL_GUIDE.md §7.2). It is graded semantically -- never by string equality against the model's own paraphrase.",
+    "Turn 1 of most cases is a real answerable question so that later REUSE turns have a genuine answer to re-present; a REUSE turn after a fallback would test nothing."
+  ],
+  "cases": [
+    {
+      "id": "F5V2-CNV-001",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Policy device-loss conversation: language controls, general/security switches, and topic restoration",
+      "turns": [
+        {
+          "question": "Hướng dẫn tôi nhận thiết bị công ty vào ngày đầu tiên",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "nói lại bằng tiếng Anh đi",
+          "expected_route": "REUSE",
+          "expected_resolution": "hướng dẫn nhận thiết bị công ty ngày đầu tiên",
+          "expected_apply_now": true,
+          "expected_persist_future": false,
+          "expected_language": "en",
+          "expect_citations": true,
+          "note": "Re-answer only: preserve grounding without a new retrieval."
+        },
+        {
+          "question": "từ giờ hãy dùng tiếng Việt",
+          "expected_route": "SOCIAL",
+          "expected_apply_now": false,
+          "expected_persist_future": true,
+          "expected_retrieval_calls": 0,
+          "expected_language": "vi",
+          "expect_citations": false
+        },
+        {
+          "question": "nếu làm mất thiết bị công ty thì phải làm gì?",
+          "expected_route": "KNOWLEDGE",
+          "expected_language": "vi",
+          "expect_citations": true
+        },
+        {
+          "question": "thời hạn báo mất thiết bị là bao lâu?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "thời hạn báo mất thiết bị công ty",
+          "expect_citations": true
+        },
+        {
+          "question": "tại sao doanh nghiệp thường yêu cầu báo mất thiết bị nhanh như vậy?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "expected_language": "vi",
+          "note": "GENERAL_ALLOWED explanation; do not present a general rationale as Ralion policy."
+        },
+        {
+          "question": "remote wipe là gì?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "expected_language": "vi",
+          "note": "GENERAL_ALLOWED technical/security explanation."
+        },
+        {
+          "question": "công ty có sử dụng remote wipe không?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "expect_citations": true
+        },
+        {
+          "question": "giải thích kỹ hơn quy trình khi mất thiết bị",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "quy trình khi mất thiết bị công ty",
+          "expect_citations": true
+        },
+        {
+          "question": "liệt kê đầy đủ những việc tôi phải làm",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "cho tôi chính xác từng bước và thao tác cần thực hiện",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true,
+          "note": "Unsupported procedural details must be disclosed, not fabricated."
+        },
+        {
+          "question": "SOC 2 là gì?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "note": "GENERAL_ALLOWED compliance explanation."
+        },
+        {
+          "question": "công ty có tuân thủ SOC 2 không?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "note": "STRICT_INTERNAL: only corpus evidence may establish company compliance."
+        },
+        {
+          "question": "tôi hơi sợ vì lỡ làm mất laptop thì sao",
+          "expected_route": "SOCIAL",
+          "expect_citations": false
+        },
+        {
+          "question": "quay lại câu hỏi trước, nếu mất máy thì tôi cần báo ai?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "báo ai khi mất thiết bị công ty",
+          "expected_topic_subject": "thiết bị",
+          "expect_citations": true
+        },
+        {
+          "question": "from now on answer in English and repeat that answer",
+          "expected_route": "REUSE",
+          "expected_apply_now": true,
+          "expected_persist_future": true,
+          "expected_language": "en",
+          "expect_citations": true
+        },
+        {
+          "question": "what should I do if my company badge is lost?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "expected_language": "en",
+          "note": "STRICT_INTERNAL; answer only to the extent company policy supports it."
+        },
+        {
+          "question": "and why are access badges considered a security risk generally?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "expected_language": "en",
+          "note": "GENERAL_ALLOWED; distinguish general risk from company policy."
+        }
+      ],
+      "pass_criteria": [
+        "Exercise the reviewed POLICY scenario in its required order.",
+        "Presentation-only turns require zero retrieval; REUSE and BOTH preserve the already-grounded answer.",
+        "GENERAL_ALLOWED turns do not become company-policy claims, and STRICT_INTERNAL turns require evidence."
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "The canonical REUSE shape from EVAL_GUIDE.md §7."
+      },
+    "tags": ["reviewed_policy_scenario", "reuse", "both", "language_preference", "topic_state"]
+    },
+    {
+      "id": "F5V2-CNV-002",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Topic switch phải thoát khỏi REUSE",
+      "turns": [
+        {
+          "question": "Quy định cấp phát thiết bị công ty cho kỹ sư phần mềm như thế nào?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Còn VPN thì sao?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Quy định về VPN/truy cập từ xa -- KHÔNG phải quy định thiết bị của lượt trước",
+          "expect_citations": true,
+          "note": "Elliptical phrasing that looks like a follow-up but introduces a genuinely new subject."
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to KNOWLEDGE, not REUSE",
+        "Turn 2's resolved question is about VPN, not about devices",
+        "Turn 2's evidence comes from the VPN policy"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "EVAL_GUIDE.md §7.3 lists 'topic switch incorrectly classified as REUSE' as a hard routing failure. This is the exact §7 worked example."
+      },
+      "tags": [
+        "topic_switch",
+        "routing",
+        "critical_routing"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-003",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Chuyển ngôn ngữ và độ dài là presentation-only",
+      "turns": [
+        {
+          "question": "Nhân viên phải báo cáo sự cố an toàn thông tin trong bao lâu?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Trả lời ngắn gọn bằng tiếng Anh.",
+          "expected_route": "REUSE",
+          "expected_resolution": "Vẫn là thời hạn báo cáo sự cố an toàn thông tin, chỉ đổi ngôn ngữ và độ dài",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to REUSE",
+        "Turn 2 answers in English and is shorter",
+        "Turn 2 states the SAME deadline as turn 1 -- personalization is presentation-only (EVAL_GUIDE.md §12)",
+        "Turn 2 does not widen scope or drop citations"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Directly exercises the Hard Gate personalization invariant: same evidence, same conclusion, different presentation."
+      },
+      "tags": [
+        "reuse",
+        "personalization",
+        "hard_gate"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-004",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Lượt SOCIAL không được phá vỡ khả năng REUSE sau đó",
+      "turns": [
+        {
+          "question": "Mật khẩu công ty yêu cầu tối thiểu bao nhiêu ký tự?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Cảm ơn bạn nhé.",
+          "expected_route": "SOCIAL",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "note": "Pure gratitude with no information request."
+        },
+        {
+          "question": "Nói lại chi tiết hơn giúp mình.",
+          "expected_route": "REUSE",
+          "expected_resolution": "Chủ đề của câu trả lời thật gần nhất: tiêu chuẩn mật khẩu -- không phải lượt cảm ơn",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to SOCIAL and does not trigger retrieval",
+        "Turn 3 routes to REUSE and resolves to the password topic, not to the thank-you turn",
+        "Turn 3 still carries citations"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "reused:tb_08_social_then_reuse",
+        "note": "Ported from eval/project_knowledge/conversation_intelligence/suite_b_cases.jsonl into the unified suite; EVAL_GUIDE.md §7.3 names 'SOCIAL turn breaks later evidence reuse' as a hard failure."
+      },
+      "tags": [
+        "social",
+        "reuse",
+        "critical_routing"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-005",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Thu hẹp phạm vi trong cùng chủ đề",
+      "turns": [
+        {
+          "question": "Coding style guide của Thanos nói gì về defer/error handling và cách đặt tên biến?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Giải thích kỹ hơn phần defer Close().",
+          "expected_route": "REUSE",
+          "expected_resolution": "Chỉ riêng phần defer Close()/runutil, hẹp hơn chủ đề lượt trước",
+          "expect_citations": true,
+          "note": "The resolved question must NARROW, not simply echo turn 1."
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to REUSE",
+        "Turn 2's resolved question is narrower than turn 1's (defer/Close only, not variable naming)",
+        "Turn 2's answer focuses on the runutil guidance"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "reused:tb_13_reuse_narrowed_resolved_question",
+        "note": "Ported from suite B; tests resolved-question quality, not just the route label."
+      },
+      "tags": [
+        "reuse",
+        "narrowing",
+        "resolved_question"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-006",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Follow-up mang thông tin mới là KNOWLEDGE chứ không phải REUSE",
+      "turns": [
+        {
+          "question": "Khi dùng defer để đóng resource mà Close() có thể lỗi thì Thanos khuyên dùng gì?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Thế còn body của HTTP response thì xử lý ra sao?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Cách đóng/đọc hết body của HTTP request/response -- một nội dung mới trong cùng tài liệu",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to KNOWLEDGE because it asks for a NEW fact",
+        "Turn 2 retrieves the HTTP-body guidance, not the file-Close guidance",
+        "The answer mentions the exhaust-and-close helper rather than repeating turn 1"
+      ],
+      "provenance": {
+        "origin": "new",
+        "note": "Hard case: same document, same section family, but a genuinely new fact. Distinguishes 'related' from 'presentation-only'."
+      },
+      "tags": [
+        "routing",
+        "follow_up"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-007",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "catalog",
+      "language": "vi",
+      "question": "Chuyển sang câu hỏi catalog giữa hội thoại",
+      "turns": [
+        {
+          "question": "Chạy test local mà không có credential cloud thì dùng lệnh nào?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Project này có những tài liệu gì?",
+          "expected_route": "CATALOG",
+          "expected_resolution": "Danh mục tài liệu của project, không phải một fact cụ thể"
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to CATALOG, not KNOWLEDGE and not REUSE",
+        "Turn 2 lists documents that genuinely exist in the project corpus",
+        "Turn 2 does not invent document names"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "reused:tb_12_catalog",
+        "note": "Ported from suite B. EVAL_GUIDE.md §7.3: routing a catalog question to content RAG is a hard failure."
+      },
+      "tags": [
+        "catalog",
+        "routing",
+        "critical_routing"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-008",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Thanos conversation: language controls, general/project switches, and Sidecar topic restoration",
+      "turns": [
+        {
+          "question": "Tôi nên bắt đầu đọc codebase từ đâu?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "trả lời câu trên bằng tiếng Anh đi",
+          "expected_route": "REUSE",
+          "expected_resolution": "nên bắt đầu đọc codebase Thanos từ đâu",
+          "expected_apply_now": true,
+          "expected_persist_future": false,
+          "expected_language": "en",
+          "expect_citations": true
+        },
+        {
+          "question": "từ giờ hãy trả lời bằng tiếng Việt nhé",
+          "expected_route": "SOCIAL",
+          "expected_apply_now": false,
+          "expected_persist_future": true,
+          "expected_retrieval_calls": 0,
+          "expected_language": "vi",
+          "expect_citations": false
+        },
+        {
+          "question": "dự án có kiến trúc như thế nào?",
+          "expected_route": "KNOWLEDGE",
+          "expected_language": "vi",
+          "expect_citations": true
+        },
+        {
+          "question": "kiến trúc của dự án",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "kiến trúc của dự án Thanos",
+          "expected_language": "vi",
+          "expect_citations": true,
+          "note": "Semantic-equivalence/stability pair with the previous turn."
+        },
+        {
+          "question": "liệt kê đầy đủ các thành phần của Thanos",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "giải thích kỹ hơn từng thành phần",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "các thành phần của Thanos",
+          "expect_citations": true
+        },
+        {
+          "question": "chúng tương tác với nhau như thế nào?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "cách các thành phần Thanos tương tác",
+          "expect_citations": true
+        },
+        {
+          "question": "giải thích riêng về Sidecar",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Sidecar pattern nói chung dùng khi nào?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "note": "GENERAL_ALLOWED technical guidance; keep it separate from Thanos facts."
+        },
+        {
+          "question": "Kafka khác RabbitMQ như thế nào?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "note": "GENERAL_ALLOWED; no false refusal merely because it is outside Thanos."
+        },
+        {
+          "question": "Thanos có sử dụng Kafka không?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "expect_citations": true,
+          "note": "STRICT_INTERNAL: assert only with corpus evidence."
+        },
+        {
+          "question": "vậy quay lại Sidecar của Thanos, nó implement ở đâu?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "expected_resolution": "Sidecar của Thanos implement ở đâu",
+          "expected_topic_subject": "Sidecar",
+          "expect_citations": true
+        },
+        {
+          "question": "tôi hơi lo, codebase này lớn quá",
+          "expected_route": "SOCIAL",
+          "expect_citations": false
+        },
+        {
+          "question": "tôi nghĩ mình không làm được task này",
+          "expected_route": "SOCIAL",
+          "expect_citations": false
+        },
+        {
+          "question": "được rồi, giải thích tiếp phần Sidecar lúc nãy",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "giải thích Sidecar của Thanos",
+          "expected_topic_subject": "Sidecar",
+          "expect_citations": true
+        },
+        {
+          "question": "answer that in English and keep using English afterwards",
+          "expected_route": "REUSE",
+          "expected_apply_now": true,
+          "expected_persist_future": true,
+          "expected_language": "en",
+          "expect_citations": true
+        },
+        {
+          "question": "Store Gateway làm gì?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "expected_language": "en",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Exercise the reviewed Thanos scenario in its required order.",
+        "Presentation-only turns require zero retrieval; REUSE and BOTH preserve the already-grounded answer.",
+        "GENERAL_ALLOWED turns stay separate from project claims, and STRICT_INTERNAL turns require evidence."
+      ],
+      "provenance": {
+      "origin": "rewritten:RGS-CNV-009",
+      "note": "Reviewed long-form Thanos scenario replaces the short conversation-meta fixture."
+      },
+    "tags": ["reviewed_thanos_scenario", "reuse", "both", "language_preference", "topic_state"]
+    },
+    {
+      "id": "F5V2-CNV-009",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "REUSE không áp dụng khi chưa có câu trả lời thật",
+      "turns": [
+        {
+          "question": "Chào bạn.",
+          "expected_route": "SOCIAL",
+          "expect_citations": false
+        },
+        {
+          "question": "Bạn nói tiếng Việt đi, mình không hiểu tiếng Anh.",
+          "expected_route": "SOCIAL",
+          "expected_resolution": "Một yêu cầu về ngôn ngữ khi chưa có câu trả lời nào để trình bày lại",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "note": "A presentation preference with no prior real answer behind it cannot be REUSE."
+        },
+        {
+          "question": "Công ty trả lương vào ngày nào hằng tháng?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 does NOT route to REUSE (there is no prior answer to re-present)",
+        "Turn 2 does not trigger a knowledge retrieval",
+        "Turn 3 still works normally after two SOCIAL turns"
+      ],
+      "provenance": {
+        "origin": "new",
+        "note": "Encodes the explicit REUSE-exclusion rule in the interpreter prompt; also checks that consecutive SOCIAL turns do not poison a later KNOWLEDGE turn."
+      },
+      "tags": [
+        "social",
+        "routing",
+        "reuse_exclusion"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-010",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Coreference qua đại từ 'cái đó'",
+      "turns": [
+        {
+          "question": "Quyền tạm thời khi hỗ trợ sự cố tự hết hạn sau bao lâu?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Cái đó có gia hạn được không?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Việc gia hạn quyền tạm thời just-in-time -- 'cái đó' trỏ tới quyền tạm thời ở lượt trước",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2's resolved question replaces 'cái đó' with the temporary-access subject",
+        "Turn 2 answers that renewal requires requesting again",
+        "Turn 2 does not answer about an unrelated subject"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Pure coreference: turn 2 is meaningless without turn 1, and it asks a NEW fact so it must not be REUSE."
+      },
+      "tags": [
+        "coreference",
+        "routing"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-011",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Follow-up sau một lượt fallback",
+      "turns": [
+        {
+          "question": "Công ty có chương trình hỗ trợ vay mua nhà cho nhân viên không?",
+          "expected_route": "KNOWLEDGE",
+          "note": "Any closed, non-hallucinating outcome is acceptable here: measured 2026-08-24, the system returns `insufficient_evidence` rather than `no_evidence` because HR-POL-002 covers adjacent benefits, and it attaches RELATED citations (chat_service `_related_citation_payload`, claim_id=NULL) to show what it does have. Both are documented design. The original expectation of `no_evidence` plus zero citations was a golden-data error -- it pinned one mechanism and forbade a behavior the product intends."
+        },
+        {
+          "question": "Vậy còn phúc lợi thì công ty có những gì?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Danh mục phúc lợi công ty -- một câu hỏi mới, có thể trả lời được",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 1 does not invent a home-loan policy (any closed fallback is acceptable)",
+        "Turn 2 is answered normally -- a previous fallback must not make the next turn also fall back",
+        "Turn 2 does not re-present turn 1's fallback text"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Checks that a fallback does not poison conversation state -- a false-refusal cascade would be invisible in single-turn evaluation. Turn 0 expectations corrected on 2026-08-24 after a live run showed they contradicted documented fallback behavior."
+      },
+      "tags": [
+        "fallback",
+        "false_refusal",
+        "recovery"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-012",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "en",
+      "question": "English conversation with a mid-thread narrowing request",
+      "turns": [
+        {
+          "question": "What do I need installed to build and test Thanos locally?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Just the part about Docker, please.",
+          "expected_route": "REUSE",
+          "expected_resolution": "Only the Docker requirement from the previous answer",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to REUSE",
+        "Turn 2 narrows to the Docker requirement (E2E tests / container builds)",
+        "Turn 2 does not introduce Docker facts absent from the corpus"
+      ],
+      "provenance": {
+        "origin": "new",
+        "note": "English-language multi-turn; every other conversation case is Vietnamese, and the interpreter prompt is written in mixed language."
+      },
+      "tags": [
+        "reuse",
+        "narrowing",
+        "english"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-013",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Hội thoại nhiều bước theo kịch bản §7 của EVAL_GUIDE",
+      "turns": [
+        {
+          "question": "Quy định về thiết bị công ty là gì?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Giải thích kỹ hơn.",
+          "expected_route": "REUSE",
+          "expected_resolution": "Chủ đề thiết bị công ty ở lượt trước",
+          "expect_citations": true
+        },
+        {
+          "question": "Trả lời ngắn gọn bằng tiếng Anh.",
+          "expected_route": "REUSE",
+          "expected_resolution": "Vẫn chủ đề thiết bị công ty, đổi ngôn ngữ và độ dài",
+          "expect_citations": true
+        },
+        {
+          "question": "Cảm ơn.",
+          "expected_route": "SOCIAL",
+          "expect_citations": false
+        },
+        {
+          "question": "Còn VPN thì sao?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Quy định VPN/truy cập từ xa -- chủ đề mới",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Every turn takes its expected route",
+        "The two REUSE turns keep the same factual conclusion as turn 1",
+        "The final turn switches topic to VPN rather than reusing the device answer",
+        "No turn loses citations except the SOCIAL turn"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "The multi-turn flow written out in EVAL_GUIDE.md §7, implemented end to end. Five turns compound: one wrong route early usually corrupts every later turn, which is exactly what makes it worth running."
+      },
+      "tags": [
+        "multi_turn",
+        "routing",
+        "critical_routing",
+        "guide_example"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-014",
+      "domain": "POLICY",
+      "case_type": "conversation",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Câu vừa xã giao vừa hỏi thật vẫn phải là KNOWLEDGE",
+      "turns": [
+        {
+          "question": "Chào bạn, mình là nhân viên mới.",
+          "expected_route": "SOCIAL",
+          "expect_citations": false
+        },
+        {
+          "question": "Cảm ơn bạn nhiều nhé, mà tiện thể cho mình hỏi mật khẩu công ty cần tối thiểu bao nhiêu ký tự?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Độ dài tối thiểu của mật khẩu -- phần xã giao không làm đổi route",
+          "expect_citations": true
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to KNOWLEDGE despite opening with gratitude",
+        "Turn 2 answers with the 12-character minimum and cites it",
+        "Turn 2 is not treated as SOCIAL"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "The interpreter prompt states that a social opener plus a real question is KNOWLEDGE. Misrouting to SOCIAL here is a silent false refusal -- the user gets a pleasant non-answer."
+      },
+      "tags": [
+        "routing",
+        "social",
+        "false_refusal"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-101",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "false_refusal_probe",
+      "language": "vi",
+      "question": "Chuỗi REUSE dài phải giữ được chủ đề vượt qua cửa sổ hội thoại gần nhất",
+      "turns": [
+        {
+          "question": "Dự án Thanos có các thành phần chính nào?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "trình bày chi tiết hơn về chúng",
+          "expected_route": "REUSE",
+          "expected_resolution": "Chủ đề của lượt trước: các thành phần chính của Thanos",
+          "expect_citations": true
+        },
+        {
+          "question": "trình bày chi tiết hơn về các thành phần đó",
+          "expected_route": "REUSE",
+          "expected_resolution": "Chủ đề của lượt trước: các thành phần chính của Thanos",
+          "expect_citations": true
+        },
+        {
+          "question": "trình bày chi tiết hơn",
+          "expected_route": "REUSE",
+          "expected_resolution": "Các thành phần chính của Thanos (Sidecar, Store Gateway, Compactor, Receiver, Ruler, Query Gateway)",
+          "expect_citations": true,
+          "note": "F5 audit 2026-08-28: this exact bare follow-up regressed to scope=OUT_OF_SCOPE once two prior REUSE turns aged the real subject out of the window/anchors. Must resolve via TopicState, never refuse."
+        }
+      ],
+      "pass_criteria": [
+        "Turn 4 routes to REUSE and stays IN_SCOPE -- never out_of_scope",
+        "Turn 4's resolved question still names the Thanos components, not a bare re-ask of 'chi tiết hơn'",
+        "Turn 4 keeps citations from the original components evidence"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "F5 audit 2026-08-28/29, root cause A + TopicState memory enhancement."
+      },
+      "tags": [
+        "reuse",
+        "memory",
+        "topic_state",
+        "regression"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-102",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "composite",
+      "language": "vi",
+      "question": "Yêu cầu đào sâu từng phần phải kích hoạt truy hồi mới, không chỉ diễn giải lại",
+      "turns": [
+        {
+          "question": "Dự án Thanos có các thành phần chính nào?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "giải thích kỹ hơn từng thành phần, vai trò và cách hoạt động của mỗi cái",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Vai trò và cách hoạt động của từng thành phần: Sidecar, Store Gateway, Compactor, Receiver, Ruler, Query Gateway",
+          "expect_citations": true,
+          "note": "F5 audit root cause B: this asks for facts the short list-answer never stated -- must route KNOWLEDGE (fresh retrieval per component), never REUSE reusing the same shallow list evidence reworded longer."
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 routes to KNOWLEDGE, not REUSE",
+        "Turn 2's answer covers per-component detail absent from turn 1's answer",
+        "Turn 2's citations are not identical to turn 1's (fresh retrieval ran)"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "F5 audit 2026-08-28, root cause B (REUSE conflated reformat with depth)."
+      },
+      "tags": [
+        "reuse",
+        "knowledge_boundary",
+        "regression"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-103",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "false_refusal_probe",
+      "language": "vi",
+      "question": "Khái quát hóa một khái niệm đã thảo luận thành kiến thức kỹ thuật chung",
+      "turns": [
+        {
+          "question": "Giải thích Thanos Sidecar hoạt động như thế nào.",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "khi nào một dự án nên sử dụng sidecar vậy?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Khi nào nên dùng sidecar pattern nói chung trong phần mềm",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "expected_fallback": null,
+          "note": "Must stay IN_SCOPE; answerable as bounded general knowledge (GENERAL_ALLOWED), not a project fact."
+        },
+        {
+          "question": "trong dự án phần mềm nói chung, không chỉ riêng thanos thì khi nào nên dùng sidecar",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Khi nào nên dùng sidecar pattern nói chung trong phần mềm",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "expected_fallback": null,
+          "note": "F5 audit root cause C: explicitly disclaiming project-specificity ('nói chung, không chỉ riêng X') must NOT read as off-topic -- it is what makes the question answerable as general engineering knowledge."
+        }
+      ],
+      "pass_criteria": [
+        "Turns 2 and 3 stay IN_SCOPE -- never out_of_scope/scope_rejected",
+        "Turns 2 and 3 answer as general engineering guidance (guidance_only or mixed), never fabricate a Thanos-specific claim",
+        "Turn 1's grounded Sidecar explanation is unaffected"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "F5 audit 2026-08-28, root cause C: exact reported transcript."
+      },
+      "tags": [
+        "scope",
+        "general_knowledge",
+        "regression"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-104",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "general_guidance",
+      "language": "vi",
+      "question": "Từ giải thích chung quay lại áp dụng cụ thể cho dự án phải có trích dẫn",
+      "turns": [
+        {
+          "question": "Khi nào nên dùng circuit breaker pattern nói chung?",
+          "expected_route": "KNOWLEDGE",
+          "expected_knowledge_mode": "GENERAL_ALLOWED",
+          "note": "General engineering knowledge, no project claim to cite."
+        },
+        {
+          "question": "vậy Thanos có dùng circuit breaker ở đâu không?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Thanos có sử dụng circuit breaker pattern ở thành phần nào không?",
+          "expected_knowledge_mode": "STRICT_INTERNAL",
+          "expect_citations": true,
+          "note": "Mixed-then-back-to-project transition: this turn asks what THIS project actually does, so it is STRICT_INTERNAL and needs a real cited answer (or an honest no_evidence/insufficient_evidence, never an uncited guess carried over from the general explanation just given)."
+        }
+      ],
+      "pass_criteria": [
+        "Turn 2 is judged STRICT_INTERNAL, not answered from the general explanation in turn 1",
+        "Turn 2 either cites real evidence or honestly reports no/insufficient evidence -- never asserts a project fact ungrounded"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "F5 audit 2026-08-29, expected-behavior contract: mixed internal+general answers must preserve grounding where needed."
+      },
+      "tags": [
+        "scope",
+        "general_knowledge",
+        "grounding",
+        "regression"
+      ]
+    },
+    {
+      "id": "F5V2-CNV-105",
+      "domain": "PROJECT",
+      "case_type": "conversation",
+      "category": "memory_continuity",
+      "language": "vi",
+      "question": "Đổi chủ đề không được rò rỉ thực thể của chủ đề cũ",
+      "turns": [
+        {
+          "question": "Dự án Thanos có các thành phần chính nào?",
+          "expected_route": "KNOWLEDGE",
+          "expect_citations": true
+        },
+        {
+          "question": "Chính sách VPN của công ty là gì?",
+          "expected_route": "KNOWLEDGE",
+          "expected_resolution": "Chính sách VPN của công ty",
+          "expect_citations": true,
+          "note": "A genuine topic switch -- memory must overwrite, not merge, the standing subject/entities."
+        },
+        {
+          "question": "chi tiết hơn",
+          "expected_route": "REUSE",
+          "expected_resolution": "Chính sách VPN của công ty",
+          "expect_citations": true,
+          "note": "Must elaborate on VPN (the NEW topic), never fall back to Thanos components -- proves TopicState was overwritten on the switch, not merged."
+        }
+      ],
+      "pass_criteria": [
+        "Turn 3 resolves to the VPN policy subject, with no Thanos component names present",
+        "Turn 3's citations come from the VPN policy document, not the architecture document"
+      ],
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "F5 audit 2026-08-29, TopicState overwrite-on-switch guarantee."
+      },
+      "tags": [
+        "memory",
+        "topic_state",
+        "topic_switch",
+        "regression"
+      ]
+    }
+  ]
+}

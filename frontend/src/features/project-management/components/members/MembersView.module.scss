@@ -1,0 +1,120 @@
+.memberCell {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+}
+
+.memberTableWrap {
+  overflow: hidden;
+  border: 1px solid var(--pm-border);
+  border-radius: 13px;
+
+  table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+  thead { display: table-header-group; background: #fafbfd; }
+
+  th {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--pm-border);
+    color: var(--pm-ink-3);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: left;
+    text-transform: uppercase;
+
+    &:nth-child(1) { width: 43%; }
+    &:nth-child(2) { width: 17%; }
+    &:nth-child(3) { width: 40%; text-align: right; }
+  }
+
+  tr {
+    display: table-row;
+    border: 0;
+    border-bottom: 1px solid var(--pm-border);
+    border-radius: 0;
+    background: var(--pm-surface);
+    box-shadow: none;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background: var(--pm-surface-2);
+    }
+
+    &:last-child { border-bottom: 0; }
+  }
+
+  td {
+    display: table-cell;
+    padding: 18px;
+    border: 0;
+    border-bottom: 1px solid var(--pm-border);
+    vertical-align: middle;
+
+    &:nth-child(2) {
+      text-align: left;
+    }
+  }
+}
+
+.memberMain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--pm-ink);
+}
+
+.memberSub {
+  color: var(--pm-ink-3);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.actionCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+
+  > * { width: 184px; min-width: 184px; justify-content: center; white-space: nowrap; }
+}
+
+.memberTableWrap td:last-child { text-align: right; }
+
+@media (max-width: 900px) {
+  .memberTableWrap { overflow-x: auto; }
+  .memberTableWrap table { min-width: 920px; }
+}
+
+@media (max-width: 620px) {
+  .actionCell { flex-wrap: nowrap; }
+}
+
+.filterRow {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--pm-sp-3);
+  margin-bottom: var(--pm-sp-4);
+
+  > *:first-child {
+    flex: 1 1 240px;
+    max-width: 340px;
+  }
+
+  > *:last-child {
+    flex: 0 1 220px;
+  }
+}
+
+.caption {
+  font-size: 11.5px;
+  color: var(--pm-ink-3);
+  margin: var(--pm-sp-3) 0 0;
+  line-height: 1.5;
+
+  b {
+    color: var(--pm-ink-2);
+    font-weight: 700;
+  }
+}

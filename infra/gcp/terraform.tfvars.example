@@ -1,0 +1,20 @@
+billing_account_id = "000000-000000-000000"
+deploy_public_key  = "ssh-ed25519 AAAA... p040-staging"
+
+# User ADC may require quota attribution for Billing Budget API calls. Leave null
+# on the first apply, then set this to the newly created staging project ID and
+# apply again if only google_billing_budget.trial_credit fails.
+billing_quota_project_id = null
+
+# Billing Console value for the USD 300 Welcome credit on this VND account.
+billing_budget_units_vnd = 7897351
+
+# This account is Paid. Change to true only after verifying remaining Welcome credit,
+# accepting that overages can charge the payment method, and approving teardown by 2026-11-08.
+credit_backed_paid_account_confirmed = false
+credit_expiry_date                   = "2026-11-13"
+teardown_deadline                    = "2026-11-08"
+
+# Shared ephemeral deploy runners use changing egress IPs. Keep this broad unless an automated
+# GitHub Actions IP allowlist is maintained; SSH itself is key-only and host-key pinned.
+ssh_source_ranges = ["0.0.0.0/0"]

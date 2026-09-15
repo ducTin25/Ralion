@@ -1,0 +1,264 @@
+.eyebrow {
+  color: var(--pm-ink-3);
+  font-size: 12px;
+}
+
+.error {
+  padding: 10px 12px;
+  border: 1px solid var(--pm-critical-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-critical-bg);
+  color: var(--pm-critical);
+  font-size: 12.5px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pm-sp-5);
+  // `PmDrawer` variant="workspace" bỏ hẳn padding ở `.body` của chính nó (dành cho layout dạng tab
+  // như PlanTaskDrawer tự set padding riêng cho từng phần) — nội dung ở đây không có tab nên phải
+  // tự bù lại padding, nếu không card/task-row sẽ dính sát mép drawer.
+  padding: var(--pm-sp-5);
+  background: #ffffff;
+}
+
+.section {
+  h4 {
+    margin: 0 0 var(--pm-sp-3);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pm-ink);
+  }
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stageList {
+  display: grid;
+  gap: 12px;
+}
+
+.stageCard {
+  overflow: hidden;
+  border: 1px solid var(--pm-border);
+  border-radius: 13px;
+  background: #ffffff;
+}
+
+.stageHead {
+  display: grid;
+  grid-template-columns: 30px 40px minmax(160px, 1fr) minmax(80px, 180px);
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--pm-border);
+  background: #ffffff;
+}
+
+.stageNumber {
+  color: var(--pm-ink-3);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.stageIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+
+.stageCopy {
+  display: grid;
+  gap: 2px;
+
+  b {
+    color: var(--pm-ink);
+    font-size: 13px;
+  }
+
+  small {
+    color: var(--pm-ink-3);
+    font-size: 10px;
+  }
+}
+
+.stageBar {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaf2f8;
+
+  i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+  }
+}
+
+.stageCard[data-variant="accent"] {
+  .stageIcon {
+    border-color: #decdfc;
+    background: #f1eafe;
+    color: #7c3aed;
+  }
+  .stageBar i {
+    background: #7c3aed;
+  }
+}
+
+.stageCard[data-variant="success"] {
+  .stageIcon {
+    border-color: #bfe9df;
+    background: #def7f1;
+    color: #0f9f89;
+  }
+  .stageBar i {
+    background: #0f9f89;
+  }
+}
+
+.stageCard[data-variant="warning"] {
+  .stageIcon {
+    border-color: #ffd9c5;
+    background: #fff0e8;
+    color: #dc5a19;
+  }
+  .stageBar i {
+    background: #dc5a19;
+  }
+}
+
+.stageCard[data-variant="violet"] {
+  .stageIcon {
+    border-color: #cad9ff;
+    background: #e8efff;
+    color: #2563eb;
+  }
+  .stageBar i {
+    background: #2563eb;
+  }
+}
+
+.stageTasks {
+  padding: 4px 12px 8px 50px;
+}
+
+.taskRow {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #ffffff;
+  transition:
+    background 200ms var(--pm-ease),
+    border-color 200ms var(--pm-ease);
+
+  // Đến từ deep-link chuông thông báo -- viền + nền nổi bật để PM biết vừa cuộn tới đúng task nào.
+  &[data-highlighted="true"] {
+    border-color: var(--pm-accent);
+    background: var(--pm-accent-bg);
+    box-shadow: 0 0 0 1px var(--pm-accent);
+  }
+}
+
+.taskRow + .taskRow {
+  border-top: 1px solid var(--pm-border);
+  border-radius: 0;
+}
+
+.taskState {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--pm-border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: var(--pm-ink-3);
+
+  &[data-status="DONE"] {
+    border-color: var(--pm-success-border);
+    background: var(--pm-success-bg);
+    color: var(--pm-success);
+  }
+
+  &[data-status="IN_PROGRESS"] {
+    border-color: color-mix(in srgb, var(--pm-accent) 28%, var(--pm-border));
+    background: var(--pm-accent-bg);
+    color: var(--pm-accent);
+  }
+
+  &[data-status="BLOCKED"] {
+    border-color: var(--pm-critical-border);
+    background: var(--pm-critical-bg);
+    color: var(--pm-critical);
+  }
+}
+
+.taskMain {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  width: 100%;
+}
+
+.taskTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pm-ink);
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--pm-ink-3);
+}
+
+.taskBadges {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 720px) {
+  .stageHead {
+    grid-template-columns: 28px 38px minmax(0, 1fr);
+  }
+
+  .stageBar {
+    grid-column: 2 / -1;
+    width: 100%;
+  }
+
+  .stageTasks {
+    padding-left: 12px;
+  }
+
+  .taskRow {
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: flex-start;
+  }
+
+  .taskBadges {
+    grid-column: 2;
+    width: 100%;
+    padding-left: 42px;
+  }
+}

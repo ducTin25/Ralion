@@ -1,0 +1,250 @@
+.headActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.errorBanner {
+  color: var(--pm-critical);
+  margin-bottom: var(--pm-sp-4);
+}
+
+.approvedBanner,
+.warningBox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pm-sp-3);
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+  border-radius: var(--pm-radius-md);
+  border: 1px solid var(--pm-border);
+  margin-bottom: var(--pm-sp-4);
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  b {
+    font-size: 13px;
+    color: var(--pm-ink);
+  }
+
+  span {
+    font-size: 12.5px;
+    color: var(--pm-ink-2);
+    line-height: 1.55;
+  }
+}
+
+.approvedBanner {
+  border-color: var(--pm-success);
+  color: var(--pm-success);
+}
+
+.warningBox {
+  border-color: var(--pm-warning);
+  color: var(--pm-warning);
+}
+
+.confirmWarning {
+  color: var(--pm-warning);
+}
+
+.groupList {
+  display: grid;
+  gap: 14px;
+  margin-bottom: var(--pm-sp-6);
+}
+
+.groupCard {
+  overflow: hidden;
+  padding: 0;
+  border-radius: 14px;
+  border: 1px solid var(--pm-border);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.groupCard[data-variant="accent"] .groupTrack i {
+  background: #7c3aed;
+}
+.groupCard[data-variant="success"] .groupTrack i {
+  background: #0f9f89;
+}
+.groupCard[data-variant="warning"] .groupTrack i {
+  background: #dc5a19;
+}
+.groupCard[data-variant="violet"] .groupTrack i {
+  background: #2563eb;
+}
+
+.groupHead {
+  display: grid;
+  grid-template-columns: 34px 42px minmax(180px, auto) auto minmax(100px, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--pm-border);
+  background: #ffffff;
+
+  b {
+    font-size: 14px;
+    color: var(--pm-ink);
+  }
+}
+
+.groupNumber {
+  color: var(--pm-ink-3);
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.groupTrack {
+  justify-self: end;
+  width: min(260px, 100%);
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaf2f8;
+
+  i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--pm-accent);
+    opacity: 0.22;
+  }
+}
+
+.groupIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  flex: none;
+}
+
+.groupTasks {
+  padding: 4px 12px 8px 64px;
+}
+
+.iconAccent {
+  border-color: #decdfc;
+  background: #f1eafe;
+  color: #7c3aed;
+}
+.iconSuccess {
+  border-color: #bfe9df;
+  background: #def7f1;
+  color: #0f9f89;
+}
+.iconWarning {
+  border-color: #ffd9c5;
+  background: #fff0e8;
+  color: #dc5a19;
+}
+.iconViolet {
+  border-color: #cad9ff;
+  background: #e8efff;
+  color: #2563eb;
+}
+
+.taskRow {
+  display: grid;
+  grid-template-columns: 28px minmax(220px, 1fr) auto auto 16px;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  width: 100%;
+  padding: 11px 10px;
+  border: 0;
+  border-radius: var(--pm-radius-md);
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+
+  &:hover {
+    background: #f8fbfd;
+  }
+
+  & + & {
+    border-top: 1px solid var(--pm-border);
+  }
+}
+
+.taskOrder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pm-surface-2);
+  color: var(--pm-ink-3);
+  font-size: 11px;
+  font-weight: 700;
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.taskTitle {
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pm-ink);
+}
+
+.taskBadges {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.taskMeta {
+  font-size: 11.5px;
+  color: var(--pm-ink-3);
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.chevron {
+  color: var(--pm-ink-3);
+  transform: rotate(-90deg);
+  flex: none;
+}
+
+@media (max-width: 900px) {
+  .groupHead {
+    grid-template-columns: 28px 38px minmax(0, 1fr) auto;
+  }
+
+  .groupTrack {
+    display: none;
+  }
+
+  .groupTasks {
+    padding-left: 14px;
+  }
+
+  .taskRow {
+    grid-template-columns: 28px minmax(0, 1fr) 16px;
+  }
+
+  .taskBadges,
+  .taskMeta {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .chevron {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+}

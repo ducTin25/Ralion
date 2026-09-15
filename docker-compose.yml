@@ -1,0 +1,67 @@
+services:
+  db:
+    # PostgreSQL 16 with both pgvector and ParadeDB pg_search.  Pin the
+    # extension image so lexical-index semantics do not change on rebuild.
+    image: paradedb/paradedb:v0.25.4-pg16
+    command: ["postgres", "-c", "shared_preload_libraries=pg_search"]
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: pgonboarding
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          test "$$(head -n 1 /var/lib/postgresql/data/postmaster.pid)" = "1" &&
+          pg_isready -U app -d pgonboarding &&
+          test "$$(psql -U app -d pgonboarding -tAc "SELECT 1 FROM pg_extension WHERE extname = 'pg_search'")" = "1"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Trong mạng Docker, "localhost" là chính container backend — phải trỏ tới
+      # tên service "db" (khác với DATABASE_URL trong .env dùng cho chạy trên host).
+      DATABASE_URL: postgresql+asyncpg://app:app@db:5432/pgonboarding
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    init: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  convention-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "-m", "src.infrastructure.scheduling.convention_discovery_worker"]
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://app:app@db:5432/pgonboarding
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:

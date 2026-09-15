@@ -1,0 +1,17 @@
+[Unit]
+Description=P-040 staging health, readiness, and disk monitor
+After=docker.service network-online.target
+Requires=docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=p040-deploy
+Group=p040-deploy
+Environment=P040_BASE_DIR=/opt/p040
+ExecStart=/opt/p040/scripts/monitor.sh
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/p040/state

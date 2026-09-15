@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# Quality and test tooling (not included in the production image)
+ruff>=0.8.0,<1.0
+pytest>=8.0.0,<9.0
+pytest-asyncio>=0.24.0,<1.0
+httpx>=0.28.0,<1.0
+# Database in-memory cho test nghiệp vụ — không cần dựng PostgreSQL khi chạy pytest
+aiosqlite>=0.20.0,<1.0

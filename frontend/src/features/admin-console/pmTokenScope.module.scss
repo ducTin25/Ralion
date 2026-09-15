@@ -1,0 +1,65 @@
+// MasterTemplatePanel tái dùng lại các component UI của PM (PmCard/PmKpiRow/VersionTable/...) —
+// những component đó style bằng biến CSS `--pm-*` (xem PmShell.module.scss), CHỈ được định nghĩa
+// bên trong class `.pmShell`, vốn là khung của TOÀN BỘ trang PM (display:flex, height:100vh...).
+// Admin Console có khung trang riêng (AdminConsoleScreen.tsx), không bọc `.pmShell` — nên nếu
+// không có class này, mọi border/shadow/spacing của các component tái dùng sẽ rỗng (`var()` không
+// khớp biến nào), y hệt hiện tượng "chữ trần không viền" đã thấy.
+//
+// Class này CHỈ khai báo lại đúng bộ biến `--pm-*` (copy từ khối light-theme của `.pmShell`,
+// KHÔNG copy phần layout display:flex/height:100vh của nó — panel này chỉ là 1 khối nội dung nằm
+// trong khung Admin có sẵn, không phải khung trang riêng). Không sửa PmShell.module.scss.
+.pmTokenScope {
+  --pm-bg: #f6f8fa;
+  --pm-surface: #ffffff;
+  --pm-surface-2: #f6f8fa;
+  --pm-surface-3: #eef2f6;
+  --pm-border: #d0d7de;
+  --pm-border-strong: #afb8c1;
+  --pm-ink: #1f2328;
+  --pm-ink-2: #57606a;
+  --pm-ink-3: #6e7781;
+
+  --pm-accent: var(--ralion-primary);
+  --pm-accent-2: #73c4e6;
+  --pm-accent-hover: var(--ralion-primary-hover);
+  --pm-accent-bg: var(--ralion-primary-subtle);
+  --pm-accent-bg-strong: var(--ralion-primary-border);
+
+  --pm-success: #1a7f37;
+  --pm-success-bg: #dafbe1;
+  --pm-success-border: #aceebb;
+  --pm-warning: #9a6700;
+  --pm-warning-bg: #fff8c5;
+  --pm-warning-border: #f0d550;
+  --pm-critical: #cf222e;
+  --pm-critical-bg: #ffebe9;
+  --pm-critical-border: #ffcecb;
+
+  --pm-violet: var(--ralion-primary);
+  --pm-violet-2: #73c4e6;
+  --pm-violet-bg: var(--ralion-primary-subtle);
+
+  --pm-radius-sm: 4px;
+  --pm-radius-md: 6px;
+  --pm-radius-lg: 6px;
+
+  --pm-font-ui: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --pm-sp-1: 4px;
+  --pm-sp-2: 8px;
+  --pm-sp-3: 12px;
+  --pm-sp-4: 16px;
+  --pm-sp-5: 20px;
+  --pm-sp-6: 24px;
+
+  --pm-shadow-sm: none;
+  --pm-shadow-md: 0 8px 24px rgba(31, 35, 40, 0.12);
+  --pm-shadow-lg: 0 16px 48px rgba(31, 35, 40, 0.18);
+  --pm-shadow-accent: none;
+  --pm-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  color: var(--pm-ink);
+  font-family: var(--pm-font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+}

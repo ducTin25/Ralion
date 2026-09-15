@@ -1,0 +1,75 @@
+flowchart LR
+    users["Users<br/>Admin, HR, PM, Engineer"]
+
+    subgraph frontend["Frontend"]
+        web["Ralion Web Application"]
+    end
+
+    subgraph platform["Application Platform"]
+        api["API Layer"]
+        access["Identity and Access"]
+        pm["PM Workspace"]
+        engineer["Engineer Onboarding Experience"]
+        buddy["Onboarding Buddy"]
+
+        api --> access
+        api --> pm
+        api --> engineer
+        api --> buddy
+    end
+
+    subgraph ai["AI Capabilities"]
+        plan["Onboarding Plan Generation"]
+        answering["Grounded Question Answering"]
+        ingestion["Knowledge Ingestion"]
+        mining["Convention Mining"]
+        review["Human Review"]
+
+        pm --> plan
+        pm --> ingestion
+        pm --> mining
+
+        buddy --> answering
+
+        mining --> review
+        review --> ingestion
+    end
+
+    subgraph data["Knowledge and Data"]
+        knowledge["Project Knowledge"]
+        onboarding["Onboarding Plans and Progress"]
+        conversations["Conversations and Evidence"]
+    end
+
+    subgraph external["External Services"]
+        github["GitHub"]
+        models["LLM and Embedding Providers"]
+        storage["Document Storage"]
+        observability["Observability"]
+    end
+
+    users --> web
+    web --> api
+
+    plan --> knowledge
+    plan --> onboarding
+
+    engineer --> onboarding
+    answering --> knowledge
+    answering --> conversations
+
+    ingestion --> knowledge
+    mining --> knowledge
+
+    ingestion --> github
+    mining --> github
+
+    plan --> models
+    answering --> models
+    ingestion --> models
+    mining --> models
+
+    ingestion --> storage
+
+    platform -. telemetry .-> observability
+    ai -. telemetry .-> observability

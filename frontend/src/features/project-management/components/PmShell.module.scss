@@ -1,0 +1,780 @@
+// Design tokens porting từ docs/PM/RALION_UI_DESIGN_GUIDE.md — CHỈ scope trong .pmShell
+// (không đặt ở :root) để không rò ra ngoài trang PM / đụng CSS của module khác.
+.pmShell {
+  --pm-bg: var(--bg);
+  --pm-surface: var(--surface);
+  --pm-surface-2: var(--surface-2);
+  --pm-surface-3: var(--surface-3);
+  --pm-border: var(--border);
+  --pm-border-strong: var(--border-strong);
+  --pm-ink: var(--ink);
+  --pm-ink-2: var(--ink-2);
+  --pm-ink-3: var(--ink-3);
+
+  --pm-accent: var(--accent);
+  --pm-accent-2: var(--accent-2);
+  --pm-accent-hover: var(--accent-hover);
+  --pm-accent-ink: var(--accent-ink);
+  --pm-accent-bg: var(--accent-bg);
+  --pm-accent-bg-strong: var(--accent-bg-strong);
+
+  --pm-success: var(--success);
+  --pm-success-bg: var(--success-bg);
+  --pm-success-border: var(--success-border);
+  --pm-warning: var(--warning);
+  --pm-warning-bg: var(--warning-bg);
+  --pm-warning-border: var(--warning-border);
+  --pm-critical: var(--critical);
+  --pm-critical-bg: var(--critical-bg);
+  --pm-critical-border: var(--critical-border);
+
+  --pm-violet: var(--accent);
+  --pm-violet-2: var(--accent-2);
+  --pm-violet-bg: var(--accent-bg);
+
+  --pm-radius-sm: var(--radius-sm);
+  --pm-radius-md: var(--radius-md);
+  --pm-radius-lg: var(--radius-lg);
+
+  --pm-font-ui: var(--font-ui);
+
+  --pm-sp-1: var(--sp-1);
+  --pm-sp-2: var(--sp-2);
+  --pm-sp-3: var(--sp-3);
+  --pm-sp-4: var(--sp-4);
+  --pm-sp-5: var(--sp-5);
+  --pm-sp-6: var(--sp-6);
+
+  --pm-shadow-sm: var(--shadow-sm);
+  --pm-shadow-md: var(--shadow-md);
+  --pm-shadow-lg: var(--shadow-lg);
+  --pm-shadow-accent: none;
+  --pm-ease: var(--ease);
+
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--pm-ink);
+  font-family: var(--pm-font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pmShell[data-active-view="plan"],
+.pmShell[data-active-view="members"],
+.pmShell[data-active-view="overview"] {
+  background: #ffffff;
+
+  .content,
+  .contentInner {
+    background: #ffffff;
+  }
+}
+
+.sidebar {
+  width: 240px;
+  flex: none;
+  background: var(--pm-surface);
+  border-right: 1px solid var(--pm-border);
+  display: flex;
+  flex-direction: column;
+  padding: var(--pm-sp-4) var(--pm-sp-3);
+}
+
+.sidebarBrand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: var(--pm-sp-2) var(--pm-sp-2) var(--pm-sp-4);
+  color: var(--pm-ink);
+
+  :global(.ralion-brand-primary) {
+    stop-color: var(--pm-accent);
+  }
+
+  :global(.ralion-brand-secondary) {
+    stop-color: var(--pm-accent-2);
+  }
+
+  :global(.ralion-brand-cutout) {
+    fill: var(--pm-surface);
+  }
+}
+
+// Same quiet workspace label the Admin/HR console uses above its nav.
+.navSectionLabel {
+  margin: 0 0 var(--pm-sp-2);
+  padding: 0 var(--pm-sp-3);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pm-ink-3);
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: var(--pm-sp-5);
+}
+
+.mobileMenuButton {
+  display: none;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--pm-ink-2);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px var(--pm-sp-3);
+  border-radius: var(--pm-radius-sm);
+  cursor: pointer;
+  transition:
+    background 0.13s var(--pm-ease),
+    color 0.13s var(--pm-ease);
+  font-family: inherit;
+
+  // icon flex:none để không bị co lại; label chiếm phần còn lại và cắt gọn (ellipsis)
+  // thay vì wrap xuống dòng đè lên tag "Sắp có" — sửa lỗi UI vỡ layout đã gặp.
+  svg {
+    flex: none;
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--pm-surface-2);
+    color: var(--pm-ink);
+  }
+
+  &.active {
+    background: var(--pm-accent-bg);
+    color: var(--pm-accent-ink);
+    font-weight: 600;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.navLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navCount {
+  flex: none;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--pm-surface-3);
+  color: var(--pm-ink-2);
+  border-radius: var(--pm-radius-sm);
+  padding: 1px 7px;
+
+  .active & {
+    background: var(--pm-accent);
+    color: #fff;
+  }
+}
+
+.navCount[data-critical="true"] {
+  background: var(--pm-critical);
+  color: #fff;
+}
+
+.soonTag {
+  flex: none;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--pm-ink-3);
+  background: var(--pm-surface-2);
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  padding: 1px 5px;
+}
+
+.sidebarFoot {
+  margin-top: auto;
+  border-top: 1px solid var(--pm-border);
+  padding-top: var(--pm-sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-2);
+  flex-wrap: wrap;
+}
+
+.logoutBtn {
+  display: inline-flex;
+  flex: 0 0 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 32px;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface);
+  color: var(--pm-ink-2);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--pm-critical-border);
+    background: var(--pm-critical-bg);
+    color: var(--pm-critical);
+  }
+}
+
+.accountActions {
+  display: grid;
+  flex: 0 0 100%;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.accountAction {
+  border: 0;
+  border-radius: var(--pm-radius-sm);
+  background: transparent;
+  color: var(--pm-ink-2);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  padding: 7px 8px;
+  text-align: left;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--pm-surface-2);
+    color: var(--pm-ink);
+  }
+}
+
+.avatarSkeleton {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface-3);
+  flex: none;
+  animation: pulse 1.3s ease-in-out infinite;
+}
+
+.textSkeleton {
+  height: 9px;
+  width: 92px;
+  border-radius: 3px;
+  background: var(--pm-surface-3);
+  animation: pulse 1.3s ease-in-out infinite;
+
+  & + & {
+    margin-top: 6px;
+  }
+}
+
+.textSkeletonSm {
+  width: 64px;
+  height: 8px;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatarSkeleton,
+  .textSkeleton {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 76px;
+    padding-inline: var(--pm-sp-2);
+  }
+  .sidebar .sidebarBrand,
+  .sidebar .roleBadge span:last-child,
+  .sidebar .navLabel,
+  .sidebar .who,
+  .sidebar .accountActions,
+  .sidebar .logoutBtn span {
+    display: none;
+  }
+  .sidebar .sidebarBrand :global(.ralion-brand-wordmark) {
+    display: none;
+  }
+  .sidebar .sidebarBrand,
+  .sidebar .navItem,
+  .sidebar .sidebarFoot,
+  .sidebar .logoutBtn {
+    justify-content: center;
+  }
+  .sidebar .navItem {
+    padding-inline: 0;
+  }
+  .sidebar .sidebarFoot {
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+  .mobileMenuButton {
+    display: inline-flex;
+  }
+  .content {
+    padding: var(--pm-sp-3);
+  }
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--pm-ink-2);
+  flex: none;
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  overflow: hidden;
+
+  b {
+    font-size: 12.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  span {
+    font-size: 11px;
+    color: var(--pm-ink-3);
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  height: 58px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-4);
+  padding: 0 var(--pm-sp-5);
+  border-bottom: 1px solid var(--pm-border);
+  background: var(--pm-surface);
+  box-shadow: none;
+  position: relative;
+  z-index: 5;
+}
+
+.topbarRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbarDivider {
+  width: 1px;
+  height: 20px;
+  flex: none;
+  background: var(--pm-border);
+}
+
+.desktopLanguage {
+  min-height: 30px !important;
+  border-color: transparent !important;
+  background: var(--pm-surface-2) !important;
+  border-radius: 8px !important;
+
+  :global(button) {
+    min-height: 26px !important;
+    border-radius: 6px !important;
+    padding-inline: 8px !important;
+  }
+}
+
+.bellRoot {
+  position: relative;
+  flex: none;
+}
+
+.bellBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--pm-radius-sm);
+  border: 1px solid var(--pm-border);
+  background: var(--pm-surface);
+  color: var(--pm-ink-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  position: relative;
+
+  &:hover:not(:disabled) {
+    border-color: var(--pm-border-strong);
+    color: var(--pm-ink);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.bellBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: var(--pm-warning);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
+
+  &[data-critical="true"] {
+    background: var(--pm-critical);
+  }
+}
+
+.bellDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  width: 320px;
+  max-height: 380px;
+  overflow-y: auto;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-surface);
+  box-shadow: var(--pm-shadow-md);
+
+  header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--pm-border);
+    color: var(--pm-ink-2);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid var(--pm-border);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &[data-overdue="true"] {
+      background: var(--pm-critical-bg);
+    }
+
+    &[data-read="true"] {
+      opacity: 0.68;
+      background: var(--pm-surface);
+    }
+  }
+}
+
+.bellItemLink {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 14px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--pm-surface-2);
+  }
+}
+
+.bellItemTitle {
+  color: var(--pm-ink);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.bellUnreadDot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--pm-accent);
+}
+
+.bellItemMeta {
+  color: var(--pm-ink-3);
+  font-size: 11px;
+
+  em {
+    margin-left: 8px;
+    color: var(--pm-accent);
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+
+.bellEmpty {
+  margin: 0;
+  padding: 16px 14px;
+  color: var(--pm-ink-3);
+  font-size: 12px;
+  text-align: center;
+}
+
+.crumb {
+  font-size: 13px;
+  color: var(--pm-ink-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  b {
+    color: var(--pm-ink);
+    font-weight: 600;
+  }
+}
+
+.projSwitch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--pm-border);
+  background: var(--pm-surface);
+  border-radius: var(--pm-radius-sm);
+  padding: 5px 12px 5px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pm-ink);
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    background: var(--pm-surface-2);
+  }
+}
+
+.projDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pm-success);
+  flex: none;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--pm-sp-5);
+}
+
+.contentInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: viewIn 0.28s var(--pm-ease);
+}
+
+@keyframes viewIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contentInner {
+    animation: none;
+  }
+}
+
+/* Landing-aligned workspace chrome. Kept as a final layer so feature modules
+   continue to consume the stable --pm-* contract. */
+.pmShell {
+  font-size: 14px;
+}
+
+.sidebar {
+  width: 260px;
+  padding: 20px 14px 16px;
+}
+
+.sidebarBrand {
+  padding: 2px 10px 24px;
+}
+
+.navGroup {
+  gap: 4px;
+}
+
+.navItem {
+  min-height: 42px;
+  padding: 10px var(--pm-sp-3);
+  font-size: 14px;
+  font-weight: 560;
+
+  &:hover:not(:disabled) {
+    background: var(--pm-accent-bg);
+  }
+
+  &.active {
+    font-weight: 700;
+    box-shadow: inset 3px 0 0 var(--pm-accent);
+  }
+}
+
+.sidebarFoot {
+  padding: var(--pm-sp-4) 4px 0;
+}
+
+.logoutBtn,
+.accountAction {
+  min-height: 40px;
+  font-size: 13px;
+}
+
+.topbar {
+  height: 52px;
+  padding: 0 20px;
+  background: var(--pm-surface);
+  box-shadow: 0 1px 0 rgba(11, 31, 58, 0.03);
+}
+
+.bellBtn {
+  width: 32px;
+  height: 32px;
+  border-color: transparent;
+  background: transparent;
+
+  &:hover:not(:disabled) {
+    border-color: transparent;
+    background: var(--pm-surface-2);
+  }
+}
+
+.bellDropdown {
+  width: min(360px, calc(100vw - 32px));
+}
+
+.crumb {
+  font-size: 13px;
+}
+
+.projSwitch {
+  min-height: 32px;
+  border-color: transparent;
+  background: var(--pm-surface-2);
+  padding: 5px 10px 5px 8px;
+  font-size: 12.5px;
+
+  &:hover {
+    border-color: transparent;
+    background: var(--pm-surface-3);
+  }
+}
+
+.content {
+  padding: 32px;
+  background: #ffffff;
+}
+
+.contentInner {
+  max-width: 1360px;
+  background: #ffffff;
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .sidebar {
+    width: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    height: 62px;
+    padding-inline: 16px;
+  }
+
+  .content {
+    padding: 22px 16px 32px;
+  }
+
+  .desktopLanguage {
+    display: none;
+  }
+
+  .bellBtn,
+  .mobileMenuButton {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .topbarDivider {
+    display: none;
+  }
+}

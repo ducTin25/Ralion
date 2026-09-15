@@ -1,0 +1,792 @@
+@import "tailwindcss";
+
+html[data-scroll-behavior="smooth"] {
+  scroll-behavior: smooth;
+}
+
+:root {
+  /* Canonical Ralion product tokens — keep semantic aliases below for legacy screens. */
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --surface-2: #f6f8fa;
+  --surface-3: #eef2f6;
+  --border: #d0d7de;
+  --border-strong: #afb8c1;
+  --ink: #1f2328;
+  --ink-2: #57606a;
+  --ink-3: #6e7781;
+  /* Canonical Ralion primary palette. Keep all product action states on this family. */
+  --ralion-primary: #1090cb;
+  --ralion-primary-hover: #0877ac;
+  --ralion-primary-pressed: #06658f;
+  --ralion-primary-ink: #0877ac;
+  --ralion-primary-subtle: #e9f7fd;
+  --ralion-primary-border: #b7e2f3;
+  --ralion-primary-focus: rgb(16 144 203 / 28%);
+  --ralion-primary-soft: rgb(16 144 203 / 18%);
+  --ralion-primary-shadow: rgb(16 144 203 / 12%);
+  --accent: var(--ralion-primary);
+  --accent-2: #73c4e6;
+  --accent-hover: var(--ralion-primary-hover);
+  --accent-ink: var(--ralion-primary-ink);
+  --accent-bg: var(--ralion-primary-subtle);
+  --accent-bg-strong: var(--ralion-primary-border);
+  --success: #1a7f37;
+  --success-bg: #dafbe1;
+  --success-border: #aceebb;
+  --warning: #9a6700;
+  --warning-bg: #fff8c5;
+  --warning-border: #f0d550;
+  --critical: #cf222e;
+  --critical-bg: #ffebe9;
+  --critical-border: #ffcecb;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --shadow-sm: none;
+  --shadow-md: 0 8px 24px rgba(31, 35, 40, 0.12);
+  --shadow-lg: 0 16px 48px rgba(31, 35, 40, 0.18);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --font-ui: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --workspace-page-title-size: clamp(26px, 3vw, 34px);
+  --workspace-page-title-line-height: 1.2;
+  --workspace-page-title-weight: 750;
+  --workspace-page-title-tracking: -0.035em;
+  --background: var(--bg);
+  --foreground: var(--ink);
+}
+
+/*
+ * Landing-aligned workspace tokens. They are intentionally scoped so the
+ * Admin and HR consoles keep their existing visual contract during this
+ * presentation-only hotfix.
+ */
+.ralion-workspace {
+  --ralion-brand-indigo: var(--ralion-primary);
+  --bg: #f8fbff;
+  --surface: #ffffff;
+  --surface-2: #f3f8fd;
+  --surface-3: #eaf4ff;
+  --border: #d9e6f5;
+  --border-strong: #b9c9da;
+  --ink: #0b1f3a;
+  --ink-2: #506176;
+  --ink-3: #73859a;
+  --accent: var(--ralion-primary);
+  --accent-2: #73c4e6;
+  --accent-hover: var(--ralion-primary-hover);
+  --accent-ink: var(--ralion-primary-ink);
+  --accent-bg: var(--ralion-primary-subtle);
+  --accent-bg-strong: var(--ralion-primary-border);
+  --success: #16815d;
+  --success-bg: #e5f7ef;
+  --success-border: #a9dfca;
+  --warning: #9a6700;
+  --warning-bg: #fff7d6;
+  --warning-border: #efd98b;
+  --critical: #c9363f;
+  --critical-bg: #fff0f0;
+  --critical-border: #f2b9bc;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(11, 31, 58, 0.05);
+  --shadow-md: 0 14px 38px rgba(23, 59, 96, 0.12);
+  --shadow-lg: 0 24px 64px rgba(23, 59, 96, 0.18);
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: light;
+}
+
+.ralion-workspace[data-theme="dark"] {
+  --ralion-brand-indigo: #78cbed;
+  --bg: #071426;
+  --surface: #0d2038;
+  --surface-2: #132944;
+  --surface-3: #1a3453;
+  --border: #29415d;
+  --border-strong: #45627f;
+  --ink: #f2f7ff;
+  --ink-2: #b7c8db;
+  --ink-3: #8ea4bb;
+  --accent: #57b6e3;
+  --accent-2: #78cbed;
+  --accent-hover: #8ed7f5;
+  --accent-ink: #8ed7f5;
+  --accent-bg: #123b52;
+  --accent-bg-strong: #1f6587;
+  --success: #59d5aa;
+  --success-bg: #123c35;
+  --success-border: #286f5c;
+  --warning: #f0c95e;
+  --warning-bg: #3b321b;
+  --warning-border: #75642e;
+  --critical: #ff9098;
+  --critical-bg: #42242d;
+  --critical-border: #79404a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 16px 44px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 28px 72px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
+
+.ralion-workspace :where(button, input, select, textarea) {
+  font: inherit;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-hover: var(--ink-3);
+  --color-divider: var(--border);
+  --color-divider-soft: var(--surface-2);
+  --color-header-border: var(--border);
+  --color-navy: var(--accent);
+  --color-navy-hover: var(--accent-hover);
+  --color-link: var(--accent-ink);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-bg: var(--accent-bg);
+  --color-accent-bg-strong: var(--accent-bg-strong);
+  --color-text: var(--ink);
+  --color-text-secondary: var(--ink-2);
+  --color-text-muted: var(--ink-2);
+  --color-text-subtle: var(--ink-2);
+  --color-text-faint: var(--ink-3);
+  --color-tint-navy: var(--accent-bg);
+  --color-tint-navy-border: var(--accent-bg-strong);
+  --color-progress: var(--accent);
+  --color-success: var(--success);
+  --color-success-text: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-success-border: var(--success-border);
+  --color-warn: var(--warning);
+  --color-warn-text: var(--warning);
+  --color-warn-bg: var(--warning-bg);
+  --color-warn-border: var(--warning-border);
+  --color-danger: var(--critical);
+  --color-danger-bg: var(--critical-bg);
+  --color-danger-border: var(--critical-border);
+  --color-critical: var(--critical);
+  --color-critical-bg: var(--critical-bg);
+  --color-critical-border: var(--critical-border);
+  --color-disabled-bg: var(--surface-2);
+  --color-disabled-text: var(--ink-3);
+  --color-disabled-border: var(--border);
+  /* Role chips: each system role gets its own hue so it is scannable in a dense table. */
+  /* ADMIN dùng graphite: đây là chip DUY NHẤT không bão hoà màu, nên tách bạch ngay
+     với accent tím, PM tím đậm, HR hồng và Engineer teal — không chỉ tách với accent. */
+  --color-role-admin-bg: #e4e7ee;
+  --color-role-admin-text: #334155;
+  --color-role-admin-border: #c8cedb;
+  --color-role-hr-bg: #fce7f3;
+  --color-role-hr-text: #9d174d;
+  --color-role-hr-border: #fbcfe8;
+  /* Project roles get their own hues so a membership row is readable at a glance. */
+  --color-role-pm-bg: #f1e9ff;
+  --color-role-pm-text: #6229b3;
+  --color-role-pm-border: #ddc9fb;
+  --color-role-eng-bg: #e2f5f2;
+  --color-role-eng-text: #10695f;
+  --color-role-eng-border: #bfe6e0;
+  /* Access states: why a membership does or does not open the workspace. */
+  --color-state-blocked-bg: #fdecea;
+  --color-state-blocked-text: #9c2f28;
+  --color-state-blocked-border: #f5c9c4;
+  --color-state-suspended-bg: #fdf4e6;
+  --color-state-suspended-text: #8a5a10;
+  --color-state-suspended-border: #eeddba;
+  --color-skeleton: #e4e7ec;
+  --color-skeleton-soft: #eceef2;
+  --color-skeleton-faint: #f0f2f5;
+  --font-sans: var(--font-ui);
+}
+
+@keyframes project-skeleton {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-ui);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-bg-strong);
+  color: var(--ink);
+}
+
+* {
+  scrollbar-color: var(--border-strong) var(--surface-2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ralion-brand {
+  --ralion-brand-indigo: var(--ralion-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--ralion-brand-size, 20px) * 0.16);
+  min-width: 0;
+  color: #111827;
+  line-height: 1;
+}
+
+.ralion-brand-link {
+  display: inline-flex;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ralion-brand-link:focus-visible {
+  border-radius: 9px;
+  outline: 3px solid rgb(16 144 203 / 24%);
+  outline-offset: 4px;
+}
+
+.ralion-brand-mark {
+  width: calc(var(--ralion-brand-size, 20px) * 1.22);
+  height: calc(var(--ralion-brand-size, 20px) * 1.22);
+  flex: none;
+  color: var(--ralion-brand-indigo, #1090cb);
+}
+
+.ralion-brand-wordmark {
+  color: inherit;
+  font-size: var(--ralion-brand-size, 20px);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.ralion-brand-wordmark span {
+  color: var(--ralion-brand-indigo, #1090cb);
+}
+
+.ralion-brand[data-tone="inverse"],
+.ralion-brand[data-tone="inverse"] .ralion-brand-mark,
+.ralion-brand[data-tone="inverse"] .ralion-brand-wordmark span {
+  color: #ffffff;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(322px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 16px;
+}
+
+.project-card {
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: none;
+}
+
+.ralion-workspace .project-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 380px));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.ralion-workspace .project-card {
+  transition:
+    border-color 160ms var(--ease),
+    box-shadow 160ms var(--ease),
+    transform 160ms var(--ease);
+}
+
+.ralion-workspace .project-card:hover {
+  border-color: var(--accent-bg-strong);
+  box-shadow: 0 14px 36px rgba(23, 59, 96, 0.11);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ralion-workspace .project-card {
+    transition: none;
+  }
+
+  .ralion-workspace .project-card:hover {
+    transform: none;
+  }
+}
+
+.pager-console {
+  height: 36px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 0 12px;
+  color: var(--ink);
+}
+
+.pager-console:disabled {
+  cursor: not-allowed;
+  border-color: var(--border);
+  background: var(--surface-2);
+  color: var(--ink-3);
+}
+
+/* =====================================================================
+ * BẢNG MÀU RIÊNG CHO ADMIN / HR CONSOLE
+ *
+ * Toàn bộ định nghĩa nằm TRONG `.ralion-console`, không sửa `:root`. Cách này
+ * hoạt động được vì `@theme inline` ở đầu file ánh xạ mọi màu Tailwind sang các
+ * biến ngữ nghĩa (`--surface`, `--ink`, `--accent`…). Gán đè các biến đó trong
+ * một phạm vi hẹp là mọi class `bg-surface`, `text-navy`, `border-border` bên
+ * trong console tự đổi theo — không phải sửa từng file TSX.
+ *
+ * Cùng kỹ thuật `.ralion-workspace` đã dùng ở trên, nên hai không gian làm việc
+ * đổi màu độc lập mà không giẫm chân nhau.
+ * ===================================================================== */
+.ralion-console {
+  /* Nền và bề mặt */
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --surface-3: #eef2f6;
+
+  /* Đường viền: `--border` cho khung thẻ/bảng, `--border-soft` cho vạch giữa
+     các dòng — vạch nhạt hơn giúp bảng dày không bị kẻ ô nặng nề. */
+  --border: #e2e8f0;
+  --border-soft: #eef2f6;
+  --border-strong: #cbd5e1;
+
+  /* Chữ */
+  --ink: #0f172a;
+  --ink-2: #64748b;
+  --ink-3: #94a3b8;
+
+  /* Xanh thương hiệu của console */
+  --accent: var(--ralion-primary);
+  --accent-2: #73c4e6;
+  --accent-hover: var(--ralion-primary-hover);
+  --accent-ink: var(--ralion-primary-ink);
+  --accent-bg: var(--ralion-primary-subtle);
+  --accent-bg-strong: var(--ralion-primary-border);
+
+  /* Trạng thái */
+  --success: #15803d;
+  --success-bg: #eefaf1;
+  --success-border: #cdeed9;
+  --warning: #b45309;
+  --warning-bg: #fef8ec;
+  --warning-border: #f5e2b8;
+  --critical: #b91c1c;
+  --critical-bg: #fef2f2;
+  --critical-border: #fecaca;
+
+  /* Navy dùng riêng cho sidebar tối */
+  --console-navy: #0f172a;
+  --console-navy-3: #1c2b4a;
+  --console-navy-border: rgba(255, 255, 255, 0.08);
+  --console-navy-border-strong: rgba(255, 255, 255, 0.14);
+  --console-dot-active: #22a35d;
+
+  --radius-sm: 6px;
+  --radius-md: 7px;
+  --radius-lg: 7px;
+  --shadow-sm: none;
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.1), 0 1px 2px rgba(15, 23, 42, 0.06);
+
+  font-family:
+    var(--font-inter),
+    "Inter",
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: light;
+}
+
+.ralion-console ::selection {
+  background: var(--accent-bg-strong);
+}
+
+.ralion-console :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------- SIDEBAR
+ * Nền tối, nên phải đảo các biến chữ NGAY TẠI đây. Không đảo thì `text-navy`
+ * bên trong sidebar vẫn phải đảo foreground để accent luôn đọc được trên nền navy.
+ */
+.ralion-console .console-sidebar {
+  --surface: var(--console-navy);
+  --surface-2: rgba(255, 255, 255, 0.045);
+  --surface-3: var(--console-navy-3);
+  --border: var(--console-navy-border);
+  --border-strong: var(--console-navy-border-strong);
+  --ink: #ffffff;
+  --ink-2: #a8b3c7;
+  --ink-3: #5b6b85;
+  --accent-bg: rgb(16 144 203 / 18%);
+  --accent-ink: #ffffff;
+
+  width: 228px;
+  background: var(--console-navy);
+  border-right: none;
+  color: #c9d3e3;
+}
+
+/* Admin va HR dung sidebar navy: chi dao mau nua dau wordmark de "Ral" luon
+   du tuong phan; "ion" van giu mau xanh thuong hieu. Selector duoc scope
+   trong console-sidebar nen logo o PM, Engineer, login va cac page khac
+   khong bi anh huong. */
+.ralion-console .console-sidebar .ralion-brand-wordmark {
+  color: #ffffff;
+}
+
+.ralion-console .console-sidebar .ralion-brand-wordmark span {
+  color: var(--ralion-brand-indigo, #1090cb);
+}
+
+.nav-console {
+  display: flex;
+  height: 36px;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  /* Viền trái trong suốt sẵn: mục active chỉ đổi màu viền nên chữ không bị nhảy
+     ngang 2px khi chuyển tab. */
+  border-left: 2px solid transparent;
+  margin-bottom: 1px;
+  color: #a8b3c7;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition:
+    color 100ms var(--ease),
+    background 100ms var(--ease);
+}
+
+.nav-console svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.nav-console:hover {
+  background: rgba(255, 255, 255, 0.045);
+  color: #e6ebf4;
+  text-decoration: none;
+}
+
+.nav-console-active,
+.nav-console-active:hover {
+  background: rgb(16 144 203 / 18%);
+  border-left-color: var(--ralion-primary);
+  margin-left: -2px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-console-active svg {
+  opacity: 1;
+  color: #78cbed;
+}
+
+/* --------------------------------------------------------------- TOPBAR */
+.ralion-console .console-topbar {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.ralion-console .console-toolbar,
+.ralion-console .console-stat-card,
+.ralion-console table {
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------- BẢNG
+ * Một mật độ dùng chung cho cả console. Header dính kèm nền chìm để khi cuộn
+ * bảng dài vẫn biết mình đang đọc cột nào.
+ */
+.ralion-console table th {
+  height: 38px;
+  padding: 0 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ralion-console table tbody tr {
+  height: 60px;
+  border-bottom: 1px solid var(--border-soft);
+  transition: background 80ms var(--ease);
+}
+
+.ralion-console table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.ralion-console table td {
+  padding: 0 16px;
+  font-size: 13.5px;
+  vertical-align: middle;
+}
+
+/* Hover dùng nền chìm chứ không dùng tint xanh: tint xanh trùng với màu của
+   dòng ĐANG CHỌN, nên rê chuột qua trông như đã chọn cả bảng. */
+.ralion-console table tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.ralion-console table tbody tr.row-selected,
+.ralion-console table tbody tr.row-selected:hover {
+  background: var(--accent-bg);
+}
+
+/* Chân bảng (đếm bản ghi + phân trang) dùng nền chìm để tách khỏi dòng cuối.
+   Dùng class tường minh chứ không phải `table + div`: bộ chọn anh-em sẽ bắt nhầm
+   bất kỳ div nào đứng sau bảng, kể cả khối rỗng hay thông báo lỗi. */
+.ralion-console .console-table-footer {
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+
+/* ------------------------------------------------------- TOOLBAR & NÚT */
+.ralion-console .console-toolbar {
+  background: transparent;
+  border: none;
+  padding: 0;
+  gap: 8px;
+}
+
+.ralion-console .console-toolbar input,
+.ralion-console .console-toolbar select,
+.ralion-console input[type="search"],
+.ralion-console input[type="text"],
+.ralion-console input[type="email"],
+.ralion-console input[type="date"],
+.ralion-console select {
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.ralion-console select {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.ralion-console input:focus-visible,
+.ralion-console select:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ralion-primary-focus);
+}
+
+/* ------------------------------------------------------------ PHÂN TRANG
+ * Scope trong `.ralion-console` để ghi đè bản dùng chung ở trên mà không xoá
+ * nó — nếu sau này có workspace khác dùng `.pager-console` thì vẫn nguyên vẹn.
+ */
+.ralion-console .pager-console {
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.ralion-console .pager-console:hover:not(:disabled) {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.ralion-console .pager-console:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-3);
+}
+
+/* Memberships tab: a left accent stripe per access state, on top of the shared density. */
+.ralion-console .console-memberships tr.state-blocked {
+  background: #fdf7f6;
+}
+
+.ralion-console .console-memberships tr.state-blocked:hover {
+  background: #fbeeec;
+}
+
+.ralion-console .console-memberships tr.state-suspended {
+  background: #fdfaf3;
+}
+
+.ralion-console .console-memberships tr.state-suspended:hover {
+  background: #faf3e6;
+}
+
+.ralion-console .console-stat-card::after {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Keep the Admin/HR console on the same compact-shell breakpoint as PM and Member workspaces. */
+@media (max-width: 900px) {
+  .ralion-console .console-sidebar {
+    width: 76px;
+  }
+
+  .ralion-console .console-sidebar .ralion-brand-wordmark,
+  .ralion-console .console-sidebar > div:not(:last-child),
+  .ralion-console .console-sidebar .nav-console,
+  .ralion-console .console-sidebar .nav-console svg + * {
+    font-size: 0;
+  }
+
+  .ralion-console .console-sidebar .ralion-brand-wordmark {
+    display: none;
+  }
+
+  .ralion-console .console-sidebar .nav-console {
+    justify-content: center;
+    gap: 0;
+  }
+
+  /* The account block is the sidebar's last child, so the rules above skip it:
+     collapse it to the avatar and the sign-out icon instead of letting it
+     overflow the 76px rail. */
+  .ralion-console .console-sidebar .console-account {
+    margin-inline: 8px;
+  }
+
+  .ralion-console .console-sidebar .console-account-id,
+  .ralion-console .console-sidebar .console-account-label {
+    display: none;
+  }
+
+  .ralion-console .console-sidebar .console-account > div {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .ralion-console .console-sidebar {
+    display: none;
+  }
+}
+
+/* Trích dẫn nội tuyến trong nội dung task: AI chèn [n] ngay tại bước dùng nguồn đó, FE render
+   thành nút bấm nhỏ mở đúng đoạn tài liệu. Dùng class toàn cục (không phải CSS module) vì
+   renderMarkdown() là hàm dùng chung cho nhiều component khác nhau. */
+.pm-citation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  margin: 0 2px;
+  padding: 0 5px;
+  border: 1px solid var(--pm-accent, var(--ralion-primary));
+  border-radius: 9px;
+  background: transparent;
+  color: var(--pm-accent, var(--ralion-primary));
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+.pm-citation:hover {
+  background: var(--pm-accent, var(--ralion-primary));
+  color: #fff;
+}
+
+/* "Kết quả cần đạt" là checklist để đọc/đối chiếu, không phải việc tick trong app — ô checkbox chỉ
+   hiển thị trạng thái (PlanTask lưu status của cả task, không lưu từng dòng). */
+.pm-checklist {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pm-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.pm-checklist input[type="checkbox"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Trích dẫn khối "> ..." — câu nhắc quan trọng trong nội dung task (cảnh báo thiếu tài liệu, câu dặn
+   đọc toàn bộ bản gốc). Global vì renderMarkdown dùng chung nhiều nơi. */
+.pm-quote {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border-left: 1px solid var(--pm-accent, var(--accent));
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: color-mix(in srgb, var(--pm-accent, var(--ralion-primary)) 7%, transparent);
+  color: var(--pm-ink-2, #475569);
+  font-size: 12.5px;
+  line-height: 1.55;
+}

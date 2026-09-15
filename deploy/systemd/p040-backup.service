@@ -1,0 +1,18 @@
+[Unit]
+Description=P-040 PostgreSQL logical backup
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=p040-deploy
+Group=p040-deploy
+Environment=P040_BASE_DIR=/opt/p040
+Environment=DOCKER_CONFIG=/tmp/p040-docker-config
+ExecStartPre=/usr/bin/mkdir -p /tmp/p040-docker-config
+ExecStart=/opt/p040/scripts/backup-db.sh
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/p040/backups /opt/p040/state

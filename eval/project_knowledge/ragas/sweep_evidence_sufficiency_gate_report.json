@@ -1,0 +1,307 @@
+{
+  "records": [
+    {
+      "case_id": "pk_001",
+      "case_type": "answerable",
+      "question": "Thanos la gi va muc tieu chinh cua du an la gi?",
+      "error": null,
+      "accepted_chunk_ids": [],
+      "gate_called": false,
+      "verdict": null
+    },
+    {
+      "case_id": "pk_002",
+      "case_type": "answerable",
+      "question": "Khi dung defer de dong 1 resource ma Close() co the loi, coding style guide cua Thanos khuyen dung cach nao de khong bo sot loi?",
+      "error": null,
+      "accepted_chunk_ids": [
+        428,
+        424,
+        425
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          428
+        ]
+      }
+    },
+    {
+      "case_id": "pk_003",
+      "case_type": "answerable",
+      "question": "Truoc khi them 1 feature/component lon vao Thanos, quy trinh dong gop (CONTRIBUTING.md) yeu cau lam gi truoc khi viet code?",
+      "error": null,
+      "accepted_chunk_ids": [
+        669,
+        408
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": false,
+        "errored": false,
+        "supporting_chunk_ids": []
+      }
+    },
+    {
+      "case_id": "pk_004",
+      "case_type": "answerable",
+      "question": "CONTRIBUTING.md khuyen nghi dung cap thuat ngu nao thay cho whitelist/blacklist va master/slave trong code va tai lieu?",
+      "error": null,
+      "accepted_chunk_ids": [
+        412
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          412
+        ]
+      }
+    },
+    {
+      "case_id": "pk_005",
+      "case_type": "answerable",
+      "question": "Vertical query sharding trong Thanos chia nho truy van dua tren co che nao?",
+      "error": null,
+      "accepted_chunk_ids": [
+        528,
+        525,
+        534,
+        533,
+        535
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          525
+        ]
+      }
+    },
+    {
+      "case_id": "pk_006",
+      "case_type": "answerable",
+      "question": "De xuat xoa du lieu tren object storage (deletions-object-storage) cua Thanos co nhac toi yeu cau tuan thu phap ly nao?",
+      "error": null,
+      "accepted_chunk_ids": [
+        461,
+        463
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": false,
+        "errored": false,
+        "supporting_chunk_ids": []
+      }
+    },
+    {
+      "case_id": "pk_007",
+      "case_type": "answerable",
+      "question": "De xuat mTLS tu dong theo tung endpoint muon giai quyet van de gi khi Querier o cluster observer ket noi toi Sidecar o cluster khac?",
+      "error": null,
+      "accepted_chunk_ids": [
+        492
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          492
+        ]
+      }
+    },
+    {
+      "case_id": "pk_008",
+      "case_type": "answerable",
+      "question": "De xuat active-series-limiting-hashring muon them co che gi de theo doi theo tung tenant?",
+      "error": null,
+      "accepted_chunk_ids": [
+        541,
+        542,
+        555,
+        556,
+        544
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          541,
+          544
+        ]
+      }
+    },
+    {
+      "case_id": "pk_009",
+      "case_type": "answerable",
+      "question": "README liet ke Thanos cung cap co che truy cap du lieu metric hop nhat qua giao thuc/API nao?",
+      "error": null,
+      "accepted_chunk_ids": [
+        594
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          594
+        ]
+      }
+    },
+    {
+      "case_id": "pk_010",
+      "case_type": "answerable",
+      "question": "De xuat query-path tenancy liet ke per-tenant billing la 1 Goal hay khong nam trong pham vi cua proposal?",
+      "error": null,
+      "accepted_chunk_ids": [
+        761
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          761
+        ]
+      }
+    },
+    {
+      "case_id": "pk_011",
+      "case_type": "answerable",
+      "question": "Vi sao Thanos loai bo (deprecate) giao thuc gossip de chuyen sang File SD?",
+      "error": null,
+      "accepted_chunk_ids": [
+        588,
+        585,
+        586
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          585,
+          586
+        ]
+      }
+    },
+    {
+      "case_id": "pk_012",
+      "case_type": "answerable",
+      "question": "De xuat 'Avoid Global Sort on Querier Select' uoc tinh cai thien do tre (latency) khoang bao nhieu phan tram trong benchmark ban dau, voi thiet lap nao?",
+      "error": null,
+      "accepted_chunk_ids": [
+        573,
+        575,
+        576
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": true,
+        "errored": false,
+        "supporting_chunk_ids": [
+          573
+        ]
+      }
+    },
+    {
+      "case_id": "pk_013",
+      "case_type": "unanswerable",
+      "question": "Thanos ho tro dang nhap qua OAuth/SSO cho giao dien UI nhu the nao?",
+      "error": null,
+      "accepted_chunk_ids": [
+        595,
+        593,
+        500
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": false,
+        "errored": false,
+        "supporting_chunk_ids": []
+      }
+    },
+    {
+      "case_id": "pk_014",
+      "case_type": "unanswerable",
+      "question": "Cau hinh Kubernetes RBAC (Role-Based Access Control) cho service account cua Thanos duoc huong dan o dau trong coding style guide?",
+      "error": null,
+      "accepted_chunk_ids": [],
+      "gate_called": false,
+      "verdict": null
+    },
+    {
+      "case_id": "pk_015",
+      "case_type": "unanswerable",
+      "question": "Co proposal nao cua Thanos de xuat dung GraphQL thay the cho gRPC Store API khong?",
+      "error": null,
+      "accepted_chunk_ids": [
+        735,
+        736
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": false,
+        "errored": false,
+        "supporting_chunk_ids": []
+      }
+    },
+    {
+      "case_id": "pk_016",
+      "case_type": "unanswerable",
+      "question": "Quy trinh on-call/pager rotation cho maintainer cua Thanos duoc mo ta o dau trong CONTRIBUTING.md?",
+      "error": null,
+      "accepted_chunk_ids": [
+        408
+      ],
+      "gate_called": true,
+      "verdict": {
+        "sufficient": false,
+        "errored": false,
+        "supporting_chunk_ids": []
+      }
+    },
+    {
+      "case_id": "pk_017",
+      "case_type": "unanswerable",
+      "question": "Chi phi luu tru (gia tren moi GB) khi dung Thanos voi object storage backend la bao nhieu?",
+      "error": null,
+      "accepted_chunk_ids": [],
+      "gate_called": false,
+      "verdict": null
+    },
+    {
+      "case_id": "pk_018",
+      "case_type": "unanswerable",
+      "question": "Thanos co tai lieu nao ve chung nhan tuan thu PCI-DSS khong?",
+      "error": null,
+      "accepted_chunk_ids": [],
+      "gate_called": false,
+      "verdict": null
+    },
+    {
+      "case_id": "pk_019",
+      "case_type": "unanswerable",
+      "question": "Thanos co ho tro viet custom metric provider bang ngon ngu Java khong, tai lieu nao huong dan?",
+      "error": null,
+      "accepted_chunk_ids": [],
+      "gate_called": false,
+      "verdict": null
+    },
+    {
+      "case_id": "pk_020",
+      "case_type": "unanswerable",
+      "question": "Thanos co API tich hop hoa don (invoice) cho hop dong enterprise support khong?",
+      "error": null,
+      "accepted_chunk_ids": [],
+      "gate_called": false,
+      "verdict": null
+    }
+  ]
+}

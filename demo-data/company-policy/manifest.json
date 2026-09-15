@@ -1,0 +1,128 @@
+[
+  {
+    "source": "hr_01_nghi_phep_cham_cong(1).md",
+    "output": "hr_01_nghi_phep_cham_cong.md",
+    "lines": 154,
+    "chars": 8664
+  },
+  {
+    "source": "hr_02_luong_thuong_phuc_loi(1).md",
+    "output": "hr_02_luong_thuong_phuc_loi.md",
+    "lines": 126,
+    "chars": 7777
+  },
+  {
+    "source": "hr_03_onboarding_offboarding(1).md",
+    "output": "hr_03_onboarding_offboarding.md",
+    "lines": 139,
+    "chars": 8106
+  },
+  {
+    "source": "hr_04_dao_tao_phat_trien(1).md",
+    "output": "hr_04_dao_tao_phat_trien.md",
+    "lines": 117,
+    "chars": 6423
+  },
+  {
+    "source": "hr_05_ky_luat_khieu_nai(1).md",
+    "output": "hr_05_ky_luat_khieu_nai.md",
+    "lines": 112,
+    "chars": 6931
+  },
+  {
+    "source": "it_01_cap_phat_thiet_bi(1).md",
+    "output": "it_01_cap_phat_thiet_bi.md",
+    "lines": 113,
+    "chars": 6623
+  },
+  {
+    "source": "it_02_tai_khoan_mat_khau(1).md",
+    "output": "it_02_tai_khoan_mat_khau.md",
+    "lines": 110,
+    "chars": 6684
+  },
+  {
+    "source": "it_03_vpn_remote_access(1).md",
+    "output": "it_03_vpn_remote_access.md",
+    "lines": 94,
+    "chars": 5693
+  },
+  {
+    "source": "it_04_phan_mem_license(1).md",
+    "output": "it_04_phan_mem_license.md",
+    "lines": 109,
+    "chars": 6504
+  },
+  {
+    "source": "it_05_su_co_ha_tang(1).md",
+    "output": "it_05_su_co_ha_tang.md",
+    "lines": 112,
+    "chars": 6287
+  },
+  {
+    "source": "it_06_quan_ly_thay_doi(1).md",
+    "output": "it_06_quan_ly_thay_doi.md",
+    "lines": 95,
+    "chars": 5454
+  },
+  {
+    "source": "it_07_mang_ha_tang_van_phong(1).md",
+    "output": "it_07_mang_ha_tang_van_phong.md",
+    "lines": 86,
+    "chars": 4847
+  },
+  {
+    "source": "it_08_backup_khoi_phuc_du_lieu(1).md",
+    "output": "it_08_backup_khoi_phuc_du_lieu.md",
+    "lines": 91,
+    "chars": 5936
+  },
+  {
+    "source": "policy_hr(1).md",
+    "output": "policy_hr.md",
+    "lines": 73,
+    "chars": 3915
+  },
+  {
+    "source": "policy_it(1).md",
+    "output": "policy_it.md",
+    "lines": 71,
+    "chars": 3671
+  },
+  {
+    "source": "policy_security(1).md",
+    "output": "policy_security.md",
+    "lines": 73,
+    "chars": 4349
+  },
+  {
+    "source": "sec_01_phan_quyen_truy_cap(1).md",
+    "output": "sec_01_phan_quyen_truy_cap.md",
+    "lines": 125,
+    "chars": 7429
+  },
+  {
+    "source": "sec_02_phan_loai_bao_ve_du_lieu(1).md",
+    "output": "sec_02_phan_loai_bao_ve_du_lieu.md",
+    "lines": 129,
+    "chars": 7876
+  },
+  {
+    "source": "sec_03_quan_ly_secret(1).md",
+    "output": "sec_03_quan_ly_secret.md",
+    "lines": 122,
+    "chars": 7154
+  },
+  {
+    "source": "sec_04_ung_pho_su_co(1).md",
+    "output": "sec_04_ung_pho_su_co.md",
+    "lines": 120,
+    "chars": 7477
+  },
+  {
+    "source": "sec_05_su_dung_ai_dich_vu_ngoai.md",
+    "output": "sec_05_su_dung_ai_dich_vu_ngoai.md",
+    "lines": 122,
+    "chars": 8682
+  }
+]

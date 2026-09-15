@@ -1,0 +1,20 @@
+.selectedRow {
+  background: var(--pm-accent-bg);
+}
+
+.rowActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+// Nút Duyệt/Duyệt lại — ghost (không nền đặc), tô màu success để phân biệt với Nhân bản/Xem
+// (ghost trung tính) mà vẫn không nặng nề như nền xanh đặc trước đây.
+.approveBtn {
+  color: var(--pm-success);
+
+  &:hover:not(:disabled) {
+    background: var(--pm-success-bg);
+  }
+}

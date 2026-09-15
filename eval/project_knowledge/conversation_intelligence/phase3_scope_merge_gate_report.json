@@ -1,0 +1,205 @@
+{
+  "domain": "project_knowledge",
+  "eval_type": "conversation_intelligence",
+  "run_mode": "live",
+  "total_cases": 32,
+  "results": [
+    {
+      "case_id": "pk_guard_001#rep1",
+      "status": "fail",
+      "detail": "expected OUT_OF_SCOPE, got scope=IN_SCOPE route=KNOWLEDGE malformed=False",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_002#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_003#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_004#rep1",
+      "status": "fail",
+      "detail": "expected OUT_OF_SCOPE, got scope=IN_SCOPE route=KNOWLEDGE malformed=False",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_005#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_006#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_007#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_008#rep1",
+      "status": "fail",
+      "detail": "expected OUT_OF_SCOPE, got scope=IN_SCOPE route=KNOWLEDGE malformed=False",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_009#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_010#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_011#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_guard_012#rep1",
+      "status": "pass",
+      "detail": "scope=OUT_OF_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_001#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_002#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_003#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_004#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_005#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_006#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_007#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_008#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_009#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_010#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_011#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_012#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_013#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_014#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_015#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_016#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_017#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_018#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_019#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    },
+    {
+      "case_id": "pk_020#rep1",
+      "status": "pass",
+      "detail": "scope=IN_SCOPE",
+      "score": null
+    }
+  ],
+  "summary": {
+    "pass": 29,
+    "fail": 3,
+    "skipped": 0
+  }
+}

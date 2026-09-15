@@ -1,0 +1,204 @@
+// `--pm-*` chỉ được định nghĩa bên trong `.pmShell` (PmShell.module.scss, cố ý không đặt ở :root
+// để không rò ra module khác — xem comment ở đó). Modal này còn được tái dùng ở Member Portal
+// (`TaskDetailPage.tsx`), nơi KHÔNG nằm trong `.pmShell`, nên `--pm-surface`/`--pm-ink`... rỗng ->
+// modal mất nền, chữ trang phía sau đè xuyên qua (đúng lỗi PM chụp màn hình).
+//
+// Fix bằng fallback NGAY TẠI TỪNG CHỖ DÙNG: `var(--pm-x, var(--x))`. KHÔNG được viết thành
+// `--pm-x: var(--pm-x, var(--x))` (tự khai lại chính nó) — theo spec CSS, custom property tự
+// tham chiếu chính nó là GIÁ TRỊ KHÔNG HỢP LỆ (invalid at computed-value time), không "rơi về
+// fallback" như hàm thường — nên bản sửa trước theo cách đó không có tác dụng gì. Viết fallback
+// tại điểm SỬ DỤNG (không phải điểm khai báo lại) thì không tự tham chiếu, hợp lệ, và vẫn ưu
+// tiên đúng giá trị PM (kể cả bản dark mode riêng trong `.pmShell[data-theme="dark"]`) khi modal
+// đang nằm trong `.pmShell` — chỉ dùng token gốc khi thực sự không có `.pmShell` bao ngoài.
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 20, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pm-sp-4, var(--sp-4));
+}
+
+.modal {
+  width: min(460px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  background: var(--pm-surface, var(--surface));
+  border-radius: var(--pm-radius-lg, var(--radius-lg));
+  box-shadow: var(--pm-shadow-lg, var(--shadow-lg));
+  color: var(--pm-ink, var(--ink));
+  font-family: var(--pm-font-ui, var(--font-ui));
+  animation: pop 0.18s var(--pm-ease, var(--ease));
+  display: flex;
+  flex-direction: column;
+}
+
+// Modal chứa form nhiều trường (vd sửa/tạo task) — rộng hơn để các field không bị bóp chật.
+.wide {
+  width: min(660px, calc(100vw - 32px));
+}
+
+.reader {
+  width: min(900px, calc(100vw - 40px));
+  height: min(780px, calc(100dvh - 40px));
+}
+
+.reader > .body {
+  overflow: hidden;
+  padding: 0;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal {
+    animation: none;
+  }
+}
+
+.head {
+  flex: none;
+  padding: var(--pm-sp-4, var(--sp-4)) var(--pm-sp-5, var(--sp-5));
+  border-bottom: 1px solid var(--pm-border, var(--border));
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3, var(--sp-3));
+}
+
+.headIcon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: var(--pm-radius-md, var(--radius-md));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toneDefault {
+  background: var(--pm-surface-3, var(--surface-3));
+  color: var(--pm-ink-2, var(--ink-2));
+}
+
+.tonePrimary {
+  background: var(--pm-accent-bg, var(--accent-bg));
+  color: var(--pm-accent, var(--accent));
+}
+
+.toneSuccess {
+  background: var(--pm-success-bg, var(--success-bg));
+  color: var(--pm-success, var(--success));
+}
+
+.toneWarning {
+  background: var(--pm-warning-bg, var(--warning-bg));
+  color: var(--pm-warning, var(--warning));
+}
+
+.toneDanger {
+  background: var(--pm-critical-bg, var(--critical-bg));
+  color: var(--pm-critical, var(--critical));
+}
+
+.headTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.closeBtn {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: 0;
+  background: transparent;
+  color: var(--pm-ink-3, var(--ink-3));
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--pm-radius-sm, var(--radius-sm));
+  display: flex;
+
+  &:hover {
+    background: var(--pm-surface-2, var(--surface-2));
+    color: var(--pm-ink, var(--ink));
+  }
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--pm-sp-5, var(--sp-5));
+  display: flex;
+  flex-direction: column;
+  gap: var(--pm-sp-4, var(--sp-4));
+}
+
+.foot {
+  flex: none;
+  padding: var(--pm-sp-4, var(--sp-4)) var(--pm-sp-5, var(--sp-5));
+  border-top: 1px solid var(--pm-border, var(--border));
+  background: var(--pm-surface-2, var(--surface-2));
+  border-bottom-left-radius: var(--pm-radius-lg, var(--radius-lg));
+  border-bottom-right-radius: var(--pm-radius-lg, var(--radius-lg));
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 639px) {
+  .overlay {
+    padding: 0;
+  }
+
+  .modal,
+  .wide,
+  .reader {
+    width: 100vw;
+    max-height: 100dvh;
+    min-height: 100dvh;
+    height: 100dvh;
+    border-radius: 0;
+  }
+
+  .head,
+  .body,
+  .foot {
+    padding-inline: var(--pm-sp-4, var(--sp-4));
+  }
+
+  .foot {
+    flex-wrap: wrap;
+  }
+}
+
+.modal {
+  border: 1px solid var(--pm-border, var(--border));
+}
+
+.head {
+  padding-block: 18px;
+}
+
+.headTitle {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  padding-block: 22px;
+}

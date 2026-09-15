@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+bootstrap_path="/tmp/p040-bootstrap.sh"
+printf '%s' '${bootstrap_script_b64}' | base64 --decode > "$${bootstrap_path}"
+chmod 0700 "$${bootstrap_path}"
+
+deploy_public_key="$(printf '%s' '${deploy_public_key_b64}' | base64 --decode)"
+DEPLOY_USER='${deploy_user}' \
+P040_BASE_DIR='/opt/p040' \
+CONFIGURE_UFW='true' \
+CONFIGURE_SSH_HARDENING='true' \
+DEPLOY_PUBLIC_KEY="$${deploy_public_key}" \
+  bash "$${bootstrap_path}"
+rm -f "$${bootstrap_path}"
+
+printf '%s' '${backup_service_b64}' | base64 --decode > /etc/systemd/system/p040-backup.service
+printf '%s' '${backup_timer_b64}' | base64 --decode > /etc/systemd/system/p040-backup.timer
+printf '%s' '${monitor_service_b64}' | base64 --decode > /etc/systemd/system/p040-monitor.service
+printf '%s' '${monitor_timer_b64}' | base64 --decode > /etc/systemd/system/p040-monitor.timer
+chmod 0644 \
+  /etc/systemd/system/p040-backup.service \
+  /etc/systemd/system/p040-backup.timer \
+  /etc/systemd/system/p040-monitor.service \
+  /etc/systemd/system/p040-monitor.timer
+
+systemctl daemon-reload
+systemctl enable --now p040-backup.timer
+
+echo "P-040 startup bootstrap completed" > /var/log/p040-bootstrap.log

@@ -1,0 +1,778 @@
+.taskWorkspace {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  background: #fff;
+}
+.taskPageScroll {
+  height: 100vh;
+  overflow-y: auto;
+  background: #fff;
+}
+.journeySidebar {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  overflow-y: auto;
+  border-right: 1px solid var(--pm-border);
+  padding: 18px 16px;
+  background: #fff;
+}
+.journeyBrand {
+  padding: 3px 6px 18px;
+}
+.backToPlan {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  padding: 9px 7px;
+  background: transparent;
+  color: var(--pm-ink-2);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.backToPlan svg {
+  transform: rotate(180deg);
+}
+.backToPlan:hover {
+  color: var(--pm-accent);
+}
+.journeyTitle {
+  display: grid;
+  gap: 2px;
+  margin: 7px 6px 15px;
+  padding: 14px 0;
+  border-block: 1px solid var(--pm-border);
+}
+.journeyTitle b {
+  font-size: 14px;
+}
+.journeyTitle span {
+  color: var(--pm-ink-3);
+  font-size: 11px;
+}
+.journeyNav {
+  display: grid;
+  gap: 8px;
+}
+.journeyNav section {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 8px;
+}
+.journeyNav section[data-active="true"] {
+  border-color: var(--pm-border);
+  background: #f7fafc;
+}
+.journeySectionToggle {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 34px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 8px;
+  padding: 3px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.journeySectionToggle:hover {
+  background: #edf8fd;
+}
+.journeySectionToggle div {
+  display: grid;
+  min-width: 0;
+  gap: 1px;
+}
+.journeySectionToggle b {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.journeySectionToggle small {
+  color: var(--pm-ink-3);
+  font-size: 9.5px;
+}
+.journeyChevron {
+  color: var(--pm-ink-3);
+  transition: transform 150ms ease;
+}
+.journeySectionToggle[aria-expanded="true"] .journeyChevron {
+  transform: rotate(180deg);
+}
+.journeyCategoryIcon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--pm-accent-bg);
+  color: var(--pm-accent-ink);
+}
+.journeyCategoryIcon[data-variant="success"] {
+  background: #e1f7f1;
+  color: #07917c;
+}
+.journeyCategoryIcon[data-variant="warning"] {
+  background: #fff0e8;
+  color: #df5c1a;
+}
+.journeyCategoryIcon[data-variant="violet"] {
+  background: #f1eaff;
+  color: #7c3aed;
+}
+.journeyNav section > div {
+  display: grid;
+  gap: 3px;
+  margin-top: 5px;
+}
+.journeyNav section > div button {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 7px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px;
+  background: transparent;
+  color: var(--pm-ink-2);
+  font: inherit;
+  font-size: 10.5px;
+  text-align: left;
+  cursor: pointer;
+}
+.journeyNav section > div button > span {
+  color: var(--pm-ink-3);
+  font-weight: 750;
+}
+.journeyNav section > div button:hover {
+  background: #edf8fd;
+  color: var(--pm-accent-ink);
+}
+.journeyNav section > div button[data-current="true"] {
+  background: #e4f5fc;
+  color: var(--pm-accent-ink);
+  font-weight: 700;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-4);
+  padding-bottom: var(--pm-sp-3);
+  margin-bottom: var(--pm-sp-4);
+  border-bottom: 1px solid var(--pm-border);
+  padding: 15px 0;
+  margin: 0;
+  flex-wrap: wrap;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--pm-ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--pm-border);
+  border-radius: 0 0 14px 14px;
+  background: #fff;
+  backdrop-filter: blur(10px);
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--pm-border);
+    border-radius: 5px;
+    background: var(--pm-surface);
+    color: var(--pm-ink-3);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+
+    > span {
+      min-width: 22px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--pm-surface-3);
+      color: var(--pm-ink-3);
+      font-size: 11px;
+    }
+
+    &:hover {
+      color: var(--pm-ink);
+      background: var(--pm-surface-2);
+      border-color: var(--pm-border-strong);
+    }
+  }
+
+  .activeTab {
+    color: #fff;
+    border-color: var(--pm-accent);
+    background: var(--pm-accent);
+    box-shadow: 0 8px 18px color-mix(in srgb, var(--pm-accent) 20%, transparent);
+
+    > span {
+      color: var(--pm-accent-ink);
+      background: #fff;
+    }
+  }
+}
+
+.contentLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 24px;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 20px 0 60px;
+  align-items: start;
+}
+
+.tabContent {
+  width: 100%;
+  min-width: 0;
+  padding: 38px 52px 58px;
+  border: 1px solid var(--pm-border);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.taskOutline {
+  position: sticky;
+  top: 84px;
+  display: grid;
+  gap: 12px;
+
+  > h4 {
+    margin: 0 0 -13px;
+    padding: 18px 18px 20px;
+    border: 1px solid var(--pm-border);
+    border-bottom: 0;
+    border-radius: 14px 14px 0 0;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  > nav {
+    display: grid;
+    gap: 2px;
+    padding: 0 10px 14px;
+    border: 1px solid var(--pm-border);
+    border-radius: 0 0 14px 14px;
+    background: #fff;
+  }
+
+  > nav::before {
+    content: "";
+    height: 8px;
+  }
+
+  button {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 10px;
+    background: transparent;
+    color: var(--pm-ink-3);
+    font: inherit;
+    font-size: 12px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #eef8fc;
+    color: var(--pm-accent-ink);
+  }
+
+  .outlineActive {
+    background: #e5f5fb;
+    color: var(--pm-accent-ink);
+    font-weight: 700;
+  }
+  .outlineDocument {
+    padding-left: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.outlineStatus {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 5px 7px;
+  padding: 16px;
+  border: 1px solid var(--pm-border);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--pm-success);
+
+  span {
+    grid-column: 1 / -1;
+    color: var(--pm-ink-3);
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+}
+
+// Nội dung markdown do AI sinh — dùng lại renderMarkdown() nên cần style cho heading/list/checkbox.
+.instruction {
+  font-size: 14.5px;
+  line-height: 1.78;
+  color: var(--pm-ink-2);
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pm-ink);
+    margin: 24px 0 10px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--pm-border);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--pm-ink);
+    margin: var(--pm-sp-3) 0 6px;
+  }
+
+  p {
+    position: relative;
+    margin: 0 0 10px;
+    padding: 14px 16px 14px 44px;
+    border: 1px solid var(--pm-border);
+    border-radius: 5px;
+    background: var(--pm-surface);
+    transition:
+      background-color 140ms ease,
+      border-color 140ms ease;
+
+    &:hover {
+      border-color: #b9dff1;
+      background: #f3fafe;
+    }
+
+    &::before {
+      content: "•";
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background: var(--pm-accent-bg);
+      color: var(--pm-accent-ink);
+      font-weight: 800;
+      line-height: 1;
+    }
+  }
+
+  ul,
+  ol {
+    margin: 0 0 12px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      margin-left: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--pm-border);
+      border-radius: 5px;
+      background: var(--pm-surface);
+      list-style-position: inside;
+    }
+  }
+
+  strong {
+    color: var(--pm-ink);
+    font-weight: 700;
+  }
+
+  code {
+    background: var(--pm-surface-2);
+    border: 1px solid var(--pm-border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: var(--pm-font-mono, ui-monospace, monospace);
+    font-size: 12px;
+    color: var(--pm-ink);
+    word-break: break-word;
+  }
+
+  blockquote {
+    margin: 0 0 var(--pm-sp-3);
+    padding: 8px var(--pm-sp-3);
+    border-left: 3px solid var(--pm-warning);
+    background: var(--pm-surface-2);
+    color: var(--pm-ink-2);
+    font-size: 12.5px;
+  }
+}
+
+.panelHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+
+  span {
+    color: var(--pm-accent);
+    font-size: 11px;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h4 {
+    margin: 4px 0 5px;
+    color: var(--pm-ink);
+    font-size: 20px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--pm-ink-3);
+    font-size: 13px;
+  }
+
+  b {
+    flex: none;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: var(--pm-accent-bg);
+    color: var(--pm-accent-ink);
+    font-size: 12px;
+  }
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pm-sp-3);
+}
+
+.editHint {
+  font-size: 11.5px;
+  color: var(--pm-ink-3);
+  margin: 0;
+  line-height: 1.6;
+
+  code {
+    font-family: var(--pm-font-mono, ui-monospace, monospace);
+    background: var(--pm-surface-2);
+    border-radius: 3px;
+    padding: 1px 4px;
+  }
+}
+
+.sourceBlock {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.sourceTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pm-ink-3);
+  margin: 0 0 var(--pm-sp-3);
+}
+
+.emptyNote {
+  font-size: 12.5px;
+  color: var(--pm-ink-3);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sourceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  width: 100%;
+  padding: 14px var(--pm-sp-3);
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-surface);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+
+  & + & {
+    margin-top: 8px;
+  }
+
+  &:hover {
+    background: var(--pm-surface-2);
+    border-color: color-mix(in srgb, var(--pm-accent) 35%, var(--pm-border));
+    transform: translateY(-1px);
+  }
+}
+
+.sourceIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface-2);
+  color: var(--pm-ink-2);
+  flex: none;
+}
+
+/* Số `[n]` của trích dẫn — cùng kích thước ô với .sourceIcon để 2 danh sách thẳng hàng nhau. */
+.citationIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--pm-radius-sm);
+  background: color-mix(in srgb, var(--pm-accent) 12%, transparent);
+  color: var(--pm-accent);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex: none;
+}
+
+.sourceBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+
+  b {
+    font-size: 12.5px;
+    color: var(--pm-ink);
+  }
+
+  span {
+    font-size: 11.5px;
+    color: var(--pm-ink-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.sourceEye {
+  color: var(--pm-accent);
+  flex: none;
+}
+
+.footerActions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.footerBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.readOnlyNote {
+  font-size: 12px;
+  color: var(--pm-ink-3);
+  flex: 1;
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .sourceBlock {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+
+    .panelHeading,
+    .sourceTitle,
+    .emptyNote {
+      grid-column: 1 / -1;
+    }
+
+    .sourceRow + .sourceRow {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .tabs {
+    padding-inline: 12px;
+    overflow-x: auto;
+
+    button {
+      white-space: nowrap;
+    }
+  }
+
+  .tabContent {
+    padding: 22px 16px 38px;
+  }
+
+  .panelHeading {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .contentLayout {
+    grid-template-columns: 1fr;
+  }
+  .taskOutline {
+    display: none;
+  }
+}
+
+// Page task là một mặt phẳng đọc liên tục như Engineer Portal; mỗi ý chỉ ngăn bằng line.
+.taskWorkspace .instruction p {
+  margin: 0;
+  padding: 16px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--pm-border);
+  border-radius: 0;
+  background: transparent;
+
+  &::before {
+    content: none;
+  }
+}
+
+.taskWorkspace .instruction li {
+  border: 0;
+  border-bottom: 1px solid var(--pm-border);
+  border-radius: 0;
+  background: transparent;
+}
+
+.taskWorkspace .instruction h2 {
+  scroll-margin-top: 86px;
+}
+
+@media (max-width: 900px) {
+  .taskWorkspace {
+    grid-template-columns: 1fr;
+  }
+  .journeySidebar {
+    display: none;
+  }
+}
+
+.taskTitleHeading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  > span {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    place-items: center;
+    border: 1px solid #b7dcf1;
+    border-radius: 12px;
+    background: #eaf7fd;
+    color: var(--pm-accent);
+  }
+}
+
+.taskWorkspace .metaRow {
+  padding-inline: 32px;
+}
+.taskOutline .outlineNested {
+  padding-left: 28px;
+  font-size: 11.5px;
+}
+
+// Icon nhóm chính sách đứng trước tiêu đề `###` trong nội dung task. Dùng LẠI đúng kích thước/bo
+// góc/nền của badge ở CompanyCoreDrawer để 2 màn hình nói cùng một ngôn ngữ hình ảnh — không đặt
+// thêm màu mới, chỉ lấy biến token sẵn có.
+.groupIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--pm-radius-sm, 5px);
+  color: #fff;
+  flex: none;
+}
+
+.iconaccent {
+  background: var(--pm-accent);
+}
+.iconsuccess {
+  background: var(--pm-success);
+}
+.iconwarning {
+  background: var(--pm-warning);
+}
+.iconviolet {
+  background: var(--pm-violet);
+}

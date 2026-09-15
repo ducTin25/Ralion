@@ -1,0 +1,264 @@
+.card {
+  background: var(--pm-surface);
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-lg);
+  box-shadow: none;
+}
+
+.pad {
+  padding: var(--pm-sp-5);
+}
+
+.pageHead {
+  margin-bottom: var(--pm-sp-5);
+  padding: 0;
+}
+
+.pageHeadInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pm-sp-5);
+  flex-wrap: wrap;
+}
+
+.pageTitleBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.pageTitleIcon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--pm-accent) 20%, var(--pm-border));
+  border-radius: 12px;
+  background: var(--pm-accent-bg);
+  color: var(--pm-accent-ink);
+}
+
+.pageHead h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.pageSub {
+  color: var(--pm-ink-2);
+  font-size: 13.5px;
+  margin: 5px 0 0;
+  max-width: 60ch;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: var(--pm-sp-3);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--pm-sp-3);
+}
+
+// Chữ giải thích phụ đi kèm section title — TÁCH riêng thành span (không để {hint} rời rạc
+// cạnh {children} không bọc gì, sẽ bị trình duyệt gộp chung 1 anonymous flex item và dính chữ).
+.sectionHint {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--pm-ink-3);
+  white-space: nowrap;
+
+  b {
+    color: var(--pm-ink-2);
+    font-weight: 700;
+  }
+}
+
+.kpiRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: var(--pm-sp-6);
+  overflow: hidden;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-surface);
+}
+
+.kpiCard {
+  flex: 1 1 160px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--pm-border);
+  border-radius: 0;
+  box-shadow: none;
+
+  &:hover {
+    background: var(--pm-surface-2);
+  }
+}
+
+.kpiAccent {
+  .kpiIcon {
+    background: var(--pm-accent-bg);
+    color: var(--pm-accent-ink);
+  }
+}
+
+.kpiSuccess {
+  .kpiIcon {
+    background: var(--pm-success-bg);
+    color: var(--pm-success);
+  }
+}
+
+.kpiWarning {
+  .kpiIcon {
+    background: var(--pm-warning-bg);
+    color: var(--pm-warning);
+  }
+}
+
+.kpiViolet {
+  .kpiIcon {
+    background: var(--pm-violet-bg);
+    color: var(--pm-violet);
+  }
+}
+
+// 2 dòng: hàng trên icon+label (label được wrap tự do, không ellipsis), hàng dưới value cỡ lớn
+// riêng 1 dòng — tránh bug label dài ("Thời gian ước tính") bị cắt chữ khi card hẹp (4 card/hàng).
+.kpi {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kpiTop {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+}
+
+.kpiIcon {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: var(--pm-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpiLabel {
+  flex: 1;
+  min-width: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--pm-ink-3);
+  line-height: 1.3;
+}
+
+.kpiValue {
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--pm-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Modern hierarchy shared by every PM view. */
+.card {
+  box-shadow: var(--pm-shadow-sm);
+}
+
+.pad {
+  padding: 22px;
+}
+
+.pageHead {
+  margin-bottom: 26px;
+}
+
+.pageHead h1 {
+  font-size: var(--workspace-page-title-size);
+  font-weight: var(--workspace-page-title-weight);
+  letter-spacing: var(--workspace-page-title-tracking);
+  line-height: var(--workspace-page-title-line-height);
+}
+
+.pageSub {
+  max-width: 68ch;
+  margin-top: 7px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.sectionTitle {
+  font-size: 16px;
+}
+
+.kpiRow {
+  gap: 12px;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+
+.kpiCard {
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-lg);
+  background: var(--pm-surface);
+  box-shadow: var(--pm-shadow-sm);
+}
+
+.kpi {
+  min-height: 82px;
+  padding: 16px;
+}
+
+.kpiIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.kpiValue {
+  font-size: 24px;
+}
+
+@media (max-width: 640px) {
+  .pad {
+    padding: 18px;
+  }
+
+  .pageHeadInner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kpiRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kpiCard:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .kpi {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kpiValue {
+    margin-left: 0;
+  }
+}

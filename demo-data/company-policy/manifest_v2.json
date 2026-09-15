@@ -1,0 +1,287 @@
+{
+  "version": "2.0",
+  "total_policy_files": 39,
+  "new_policy_files": 18,
+  "files": [
+    {
+      "file": "README.md",
+      "document_code": null,
+      "lines": 65,
+      "chars": 4746,
+      "new_in_v2": false
+    },
+    {
+      "file": "bcp_01_lien_tuc_kinh_doanh_khung_hoang.md",
+      "document_code": "BCP-POL-001",
+      "lines": 74,
+      "chars": 3296,
+      "new_in_v2": true
+    },
+    {
+      "file": "corp_01_quy_tac_ung_xu_dao_duc.md",
+      "document_code": "CORP-POL-001",
+      "lines": 97,
+      "chars": 5587,
+      "new_in_v2": true
+    },
+    {
+      "file": "corp_02_xung_dot_loi_ich_qua_tang_chong_hoi_lo.md",
+      "document_code": "CORP-POL-002",
+      "lines": 91,
+      "chars": 4976,
+      "new_in_v2": true
+    },
+    {
+      "file": "corp_03_truyen_thong_mang_xa_hoi.md",
+      "document_code": "CORP-POL-003",
+      "lines": 65,
+      "chars": 3726,
+      "new_in_v2": true
+    },
+    {
+      "file": "cust_01_truy_cap_du_lieu_khach_hang_ho_tro.md",
+      "document_code": "CUST-POL-001",
+      "lines": 66,
+      "chars": 3202,
+      "new_in_v2": true
+    },
+    {
+      "file": "eng_01_secure_sdlc.md",
+      "document_code": "ENG-POL-001",
+      "lines": 76,
+      "chars": 3741,
+      "new_in_v2": true
+    },
+    {
+      "file": "eng_02_quan_ly_lo_hong_va_va_loi.md",
+      "document_code": "ENG-POL-002",
+      "lines": 71,
+      "chars": 3437,
+      "new_in_v2": true
+    },
+    {
+      "file": "eng_03_quan_tri_repo_release_open_source.md",
+      "document_code": "ENG-POL-003",
+      "lines": 68,
+      "chars": 3260,
+      "new_in_v2": true
+    },
+    {
+      "file": "esg_01_moi_truong_va_van_hanh_ben_vung.md",
+      "document_code": "ESG-POL-001",
+      "lines": 64,
+      "chars": 3064,
+      "new_in_v2": true
+    },
+    {
+      "file": "fin_01_cong_tac_phi_hoan_ung.md",
+      "document_code": "FIN-POL-001",
+      "lines": 74,
+      "chars": 3655,
+      "new_in_v2": true
+    },
+    {
+      "file": "fin_02_mua_sam_phe_duyet_chi_tieu.md",
+      "document_code": "FIN-POL-002",
+      "lines": 70,
+      "chars": 3209,
+      "new_in_v2": true
+    },
+    {
+      "file": "gov_01_quan_ly_ho_so_luu_tru_legal_hold.md",
+      "document_code": "GOV-POL-001",
+      "lines": 67,
+      "chars": 3376,
+      "new_in_v2": true
+    },
+    {
+      "file": "hr_01_nghi_phep_cham_cong.md",
+      "document_code": "HR-POL-001",
+      "lines": 154,
+      "chars": 8664,
+      "new_in_v2": false
+    },
+    {
+      "file": "hr_02_luong_thuong_phuc_loi.md",
+      "document_code": "HR-POL-002",
+      "lines": 126,
+      "chars": 7777,
+      "new_in_v2": false
+    },
+    {
+      "file": "hr_03_onboarding_offboarding.md",
+      "document_code": "HR-POL-003",
+      "lines": 139,
+      "chars": 8106,
+      "new_in_v2": false
+    },
+    {
+      "file": "hr_04_dao_tao_phat_trien.md",
+      "document_code": "HR-POL-004",
+      "lines": 117,
+      "chars": 6423,
+      "new_in_v2": false
+    },
+    {
+      "file": "hr_05_ky_luat_khieu_nai.md",
+      "document_code": "HR-POL-005",
+      "lines": 112,
+      "chars": 6931,
+      "new_in_v2": false
+    },
+    {
+      "file": "hr_06_lam_viec_linh_hoat_wfh.md",
+      "document_code": "HR-POL-006",
+      "lines": 67,
+      "chars": 3437,
+      "new_in_v2": true
+    },
+    {
+      "file": "hr_07_quan_ly_hieu_suat_thang_tien.md",
+      "document_code": "HR-POL-007",
+      "lines": 73,
+      "chars": 3646,
+      "new_in_v2": true
+    },
+    {
+      "file": "it_01_cap_phat_thiet_bi.md",
+      "document_code": "IT-POL-001",
+      "lines": 113,
+      "chars": 6623,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_02_tai_khoan_mat_khau.md",
+      "document_code": "IT-POL-002",
+      "lines": 110,
+      "chars": 6684,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_03_vpn_remote_access.md",
+      "document_code": "IT-POL-003",
+      "lines": 94,
+      "chars": 5693,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_04_phan_mem_license.md",
+      "document_code": "IT-POL-004",
+      "lines": 109,
+      "chars": 6504,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_05_su_co_ha_tang.md",
+      "document_code": "IT-POL-005",
+      "lines": 112,
+      "chars": 6287,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_06_quan_ly_thay_doi.md",
+      "document_code": "IT-POL-006",
+      "lines": 95,
+      "chars": 5454,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_07_mang_ha_tang_van_phong.md",
+      "document_code": "IT-POL-007",
+      "lines": 86,
+      "chars": 4847,
+      "new_in_v2": false
+    },
+    {
+      "file": "it_08_backup_khoi_phuc_du_lieu.md",
+      "document_code": "IT-POL-008",
+      "lines": 91,
+      "chars": 5936,
+      "new_in_v2": false
+    },
+    {
+      "file": "leg_01_so_huu_tri_tue_bao_mat.md",
+      "document_code": "LEG-POL-001",
+      "lines": 63,
+      "chars": 3342,
+      "new_in_v2": true
+    },
+    {
+      "file": "leg_02_quan_ly_hop_dong_tham_quyen_ky.md",
+      "document_code": "LEG-POL-002",
+      "lines": 65,
+      "chars": 3067,
+      "new_in_v2": true
+    },
+    {
+      "file": "policy_hr.md",
+      "document_code": "HR-POL-000",
+      "lines": 73,
+      "chars": 3915,
+      "new_in_v2": false
+    },
+    {
+      "file": "policy_it.md",
+      "document_code": "IT-POL-000",
+      "lines": 71,
+      "chars": 3671,
+      "new_in_v2": false
+    },
+    {
+      "file": "policy_security.md",
+      "document_code": "SEC-POL-000",
+      "lines": 73,
+      "chars": 4349,
+      "new_in_v2": false
+    },
+    {
+      "file": "sec_01_phan_quyen_truy_cap.md",
+      "document_code": "SEC-POL-001",
+      "lines": 125,
+      "chars": 7429,
+      "new_in_v2": false
+    },
+    {
+      "file": "sec_02_phan_loai_bao_ve_du_lieu.md",
+      "document_code": "SEC-POL-002",
+      "lines": 129,
+      "chars": 7876,
+      "new_in_v2": false
+    },
+    {
+      "file": "sec_03_quan_ly_secret.md",
+      "document_code": "SEC-POL-003",
+      "lines": 122,
+      "chars": 7154,
+      "new_in_v2": false
+    },
+    {
+      "file": "sec_04_ung_pho_su_co.md",
+      "document_code": "SEC-POL-004",
+      "lines": 120,
+      "chars": 7477,
+      "new_in_v2": false
+    },
+    {
+      "file": "sec_05_su_dung_ai_dich_vu_ngoai.md",
+      "document_code": "SEC-POL-005",
+      "lines": 122,
+      "chars": 8682,
+      "new_in_v2": false
+    },
+    {
+      "file": "sec_06_an_ninh_vat_ly_van_phong.md",
+      "document_code": "SEC-POL-006",
+      "lines": 66,
+      "chars": 2874,
+      "new_in_v2": true
+    },
+    {
+      "file": "tprm_01_quan_ly_rui_ro_nha_cung_cap.md",
+      "document_code": "TPRM-POL-001",
+      "lines": 70,
+      "chars": 3593,
+      "new_in_v2": true
+    }
+  ]
+}

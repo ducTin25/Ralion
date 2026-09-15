@@ -1,0 +1,211 @@
+.errorBanner {
+  color: var(--pm-critical);
+  margin-bottom: var(--pm-sp-4);
+}
+
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--pm-sp-6);
+}
+
+.reviewError {
+  color: var(--pm-critical);
+  padding: var(--pm-sp-3) var(--pm-sp-4) 0;
+}
+
+.reviewRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pm-sp-3);
+  padding: var(--pm-sp-4);
+  border-bottom: 1px solid var(--pm-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.reviewInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  min-width: 0;
+}
+
+.reviewTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pm-ink);
+  word-break: break-all;
+}
+
+.reviewActions {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  flex-shrink: 0;
+}
+
+.reviewFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+}
+
+.categoryGrid {
+  display: grid;
+  // Cố định 3 cột (5 category chuẩn -> 3 hàng đầu, 2 hàng sau) thay vì auto-fit — card hàng 2
+  // giữ đúng cùng bề rộng với hàng 1, không bị kéo giãn to bất thường khi chỉ còn 2 card.
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pm-sp-4);
+  margin-bottom: var(--pm-sp-6);
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pm-sp-3);
+  padding: var(--pm-sp-4);
+  border-radius: var(--pm-radius-lg);
+  border: 1px solid var(--pm-border);
+  background: var(--pm-surface);
+  text-align: left;
+}
+
+.categoryTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  b {
+    font-size: 14px;
+  }
+}
+
+.categoryIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--pm-radius-md);
+  color: #fff;
+}
+
+.iconAccent {
+  background: var(--pm-accent);
+}
+.iconSuccess {
+  background: var(--pm-success);
+}
+.iconWarning {
+  background: var(--pm-warning);
+}
+.iconViolet {
+  background: var(--pm-accent);
+}
+
+// Categories are an inventory, not a dashboard. Keep their actions in one scanable list.
+.categoryGrid {
+  grid-template-columns: 1fr;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  background: var(--pm-surface);
+}
+
+.categoryCard {
+  min-height: 0;
+  flex-direction: row;
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid var(--pm-border);
+  border-radius: 0;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.categoryTop {
+  flex: 0 0 300px;
+  justify-content: flex-start;
+}
+
+.categoryTitle {
+  flex: 1;
+  min-width: 0;
+}
+
+.docInfo,
+.missingNote {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.cardActions {
+  margin: 0 0 0 auto;
+}
+
+.docInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--pm-ink-3);
+}
+
+.docTitle {
+  font-size: 13px;
+  color: var(--pm-ink);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.missingNote {
+  font-size: 12.5px;
+  color: var(--pm-critical);
+}
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  flex: 0 0 198px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 850px) {
+  .categoryCard {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .categoryTop {
+    flex-basis: 100%;
+  }
+
+  .cardActions {
+    flex-basis: auto;
+  }
+}

@@ -1,0 +1,17 @@
+.description {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--pm-ink-2);
+
+  p {
+    margin: 0 0 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  b {
+    color: var(--pm-ink);
+  }
+}

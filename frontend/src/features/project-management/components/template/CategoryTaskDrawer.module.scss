@@ -1,0 +1,132 @@
+.emptyNote {
+  color: var(--pm-ink-3);
+  font-size: 12.5px;
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--pm-sp-3);
+  flex-wrap: wrap;
+}
+
+.secondaryActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--pm-accent);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.taskCard {
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-md);
+  padding: var(--pm-sp-3) var(--pm-sp-4);
+}
+
+.taskCardClickable {
+  cursor: pointer;
+  transition:
+    border-color 0.18s var(--pm-ease),
+    box-shadow 0.18s var(--pm-ease),
+    background 0.18s var(--pm-ease);
+
+  &:hover {
+    border-color: var(--pm-accent);
+    background: var(--pm-surface-2);
+    box-shadow: var(--pm-shadow-sm);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--pm-accent-bg);
+    outline-offset: 2px;
+    border-color: var(--pm-accent);
+  }
+}
+
+.taskCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--pm-sp-2);
+}
+
+.taskTitle {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--pm-ink);
+}
+
+.taskCardActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.iconBtn {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface);
+  color: var(--pm-ink-2);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--pm-surface-2);
+    color: var(--pm-ink);
+  }
+}
+
+.iconBtnDanger:hover {
+  color: var(--pm-critical);
+  border-color: var(--pm-critical-border);
+  background: var(--pm-critical-bg);
+}
+
+.taskObjective {
+  color: var(--pm-ink-2);
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.taskMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.taskDuration {
+  font-size: 12px;
+  color: var(--pm-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+}
+
+.readOnlyNote {
+  font-size: 12px;
+  color: var(--pm-ink-3);
+  flex: 1;
+}

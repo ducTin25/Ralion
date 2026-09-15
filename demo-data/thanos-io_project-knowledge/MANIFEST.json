@@ -1,0 +1,283 @@
+{
+  "domain": "PROJECT",
+  "project_id": 19,
+  "project_key": "THANOS",
+  "source_repo": "thanos-io/thanos",
+  "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+  "ingested_via": "src/modules/knowledge/ingestion/github_sync_worker.py:sync_docs",
+  "filter_applied": "src/core/security/secret_scan.py:scan (same fn as production ingest)",
+  "sync_scope_config": "config/knowledge_sources.yaml",
+  "snapshot_date": "2026-08-20",
+  "documents": [
+    {
+      "path": "README.md",
+      "document_category": "OVERVIEW",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/README.md",
+      "had_secret_findings": false,
+      "bytes": 5759
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "document_category": "SETUP",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/CONTRIBUTING.md",
+      "had_secret_findings": false,
+      "bytes": 15614
+    },
+    {
+      "path": "docs/contributing/coding-style-guide.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/contributing/coding-style-guide.md",
+      "had_secret_findings": false,
+      "bytes": 31211
+    },
+    {
+      "path": "docs/proposals-accepted/202012-deletions-object-storage.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202012-deletions-object-storage.md",
+      "had_secret_findings": false,
+      "bytes": 6634
+    },
+    {
+      "path": "docs/proposals-accepted/202012-receive-split.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202012-receive-split.md",
+      "had_secret_findings": false,
+      "bytes": 5840
+    },
+    {
+      "path": "docs/proposals-accepted/202101-endpoint-discovery.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202101-endpoint-discovery.md",
+      "had_secret_findings": false,
+      "bytes": 4292
+    },
+    {
+      "path": "docs/proposals-accepted/202106-automated-per-endpoint-mTLS.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202106-automated-per-endpoint-mTLS.md",
+      "had_secret_findings": false,
+      "bytes": 5564
+    },
+    {
+      "path": "docs/proposals-accepted/202107-protobuf-openapi-httpapi.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202107-protobuf-openapi-httpapi.md",
+      "had_secret_findings": false,
+      "bytes": 4252
+    },
+    {
+      "path": "docs/proposals-accepted/202108-more-granular-query-performance-metrics.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202108-more-granular-query-performance-metrics.md",
+      "had_secret_findings": false,
+      "bytes": 15238
+    },
+    {
+      "path": "docs/proposals-accepted/202205-vertical-query-sharding.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202205-vertical-query-sharding.md",
+      "had_secret_findings": false,
+      "bytes": 13139
+    },
+    {
+      "path": "docs/proposals-accepted/202206-active-series-limiting-hashring.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202206-active-series-limiting-hashring.md",
+      "had_secret_findings": false,
+      "bytes": 17846
+    },
+    {
+      "path": "docs/proposals-accepted/202209-receive-tenant-external-labels.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/202209-receive-tenant-external-labels.md",
+      "had_secret_findings": false,
+      "bytes": 5220
+    },
+    {
+      "path": "docs/proposals-accepted/20221129-avoid-global-sort.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/20221129-avoid-global-sort.md",
+      "had_secret_findings": false,
+      "bytes": 10792
+    },
+    {
+      "path": "docs/proposals-accepted/README.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-accepted/README.md",
+      "had_secret_findings": false,
+      "bytes": 76
+    },
+    {
+      "path": "docs/proposals-done/201809-gossip-removal.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/201809-gossip-removal.md",
+      "had_secret_findings": false,
+      "bytes": 4885
+    },
+    {
+      "path": "docs/proposals-done/201812-thanos-remote-receive.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/201812-thanos-remote-receive.md",
+      "had_secret_findings": false,
+      "bytes": 19057
+    },
+    {
+      "path": "docs/proposals-done/201901-read-write-operations-bucket.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/201901-read-write-operations-bucket.md",
+      "had_secret_findings": false,
+      "bytes": 20364
+    },
+    {
+      "path": "docs/proposals-done/201909-thanos-sharding.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/201909-thanos-sharding.md",
+      "had_secret_findings": false,
+      "bytes": 8200
+    },
+    {
+      "path": "docs/proposals-done/201912-thanos-binary-index-header.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/201912-thanos-binary-index-header.md",
+      "had_secret_findings": false,
+      "bytes": 12197
+    },
+    {
+      "path": "docs/proposals-done/202001-thanos-query-health-handling.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202001-thanos-query-health-handling.md",
+      "had_secret_findings": false,
+      "bytes": 6878
+    },
+    {
+      "path": "docs/proposals-done/202003-thanos-rules-federation.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202003-thanos-rules-federation.md",
+      "had_secret_findings": false,
+      "bytes": 10244
+    },
+    {
+      "path": "docs/proposals-done/202004-embedd-cortex-frontend.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202004-embedd-cortex-frontend.md",
+      "had_secret_findings": false,
+      "bytes": 6947
+    },
+    {
+      "path": "docs/proposals-done/202005-query-logging.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202005-query-logging.md",
+      "had_secret_findings": false,
+      "bytes": 15439
+    },
+    {
+      "path": "docs/proposals-done/202005-scalable-rule-storage.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202005-scalable-rule-storage.md",
+      "had_secret_findings": false,
+      "bytes": 2883
+    },
+    {
+      "path": "docs/proposals-done/202005-version-documentation.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202005-version-documentation.md",
+      "had_secret_findings": false,
+      "bytes": 7143
+    },
+    {
+      "path": "docs/proposals-done/202106-proposals-process.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202106-proposals-process.md",
+      "had_secret_findings": false,
+      "bytes": 2529
+    },
+    {
+      "path": "docs/proposals-done/202203-grpc-query-api.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202203-grpc-query-api.md",
+      "had_secret_findings": false,
+      "bytes": 5388
+    },
+    {
+      "path": "docs/proposals-done/202301-distributed-query-execution.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202301-distributed-query-execution.md",
+      "had_secret_findings": false,
+      "bytes": 11725
+    },
+    {
+      "path": "docs/proposals-done/202304-query-path-tenancy.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/202304-query-path-tenancy.md",
+      "had_secret_findings": false,
+      "bytes": 10635
+    },
+    {
+      "path": "docs/proposals-done/README.md",
+      "document_category": "CONVENTION",
+      "source_repo": "thanos-io/thanos",
+      "source_ref": "f63ec8ac40c9b12cfde59de6be68fc7bbedc1238",
+      "source_url": "https://github.com/thanos-io/thanos/blob/f63ec8ac40c9b12cfde59de6be68fc7bbedc1238/docs/proposals-done/README.md",
+      "had_secret_findings": false,
+      "bytes": 50
+    }
+  ]
+}

@@ -1,0 +1,1615 @@
+{
+  "partition": "project_rag",
+  "domain": "PROJECT",
+  "corpus": "demo-data/thanos-io_project-knowledge/",
+  "notes": [
+    "Facts come only from the demo-data snapshot, never from upstream Thanos knowledge. Where the snapshot and today's upstream repository would disagree, the snapshot wins -- that is what the deployed system actually knows.",
+    "`test_upload/` documents are the Ralion-authored onboarding guides (Environment setup, Codebase guide, Access & security, Architecture); the rest is the repository snapshot."
+  ],
+  "cases": [
+    {
+      "id": "F5V2-PRJ-001",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Thanos là gì và ba mục tiêu chính của dự án là gì?",
+      "reference_answer": "Thanos là một tập các component có thể ghép thành hệ thống metric có tính sẵn sàng cao với dung lượng lưu trữ không giới hạn, bổ sung được lên các cụm Prometheus sẵn có. Ba mục tiêu: global query view, unlimited retention và high availability của các component kể cả Prometheus.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "định nghĩa Thanos",
+        "global query view",
+        "unlimited retention",
+        "high availability"
+      ],
+      "expected_claims": [
+        "Thanos là tập component tạo hệ thống metric HA với lưu trữ không giới hạn",
+        "ba mục tiêu: global query view, unlimited retention, high availability"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "README.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "README.md",
+            "quote": "Thanos is a set of components that can be composed into a highly available metric system with unlimited storage capacity",
+            "section": "Overview"
+          },
+          {
+            "doc_id": "README.md",
+            "quote": "1. Global query view of metrics.",
+            "section": "Overview"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:pk_001",
+        "note": "From eval/project_knowledge/ragas/golden_dataset.jsonl, whose expected_citations pointed at the deleted raw-data/ tree; re-anchored on demo-data. Measured 2026-08-24: the live system answered this citing 'Thanos Remote Write' rather than README.md, so this case is a real retrieval-ranking probe, not a formality."
+      },
+      "tags": [
+        "overview",
+        "readme",
+        "cross_lingual"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-002",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Khi dùng defer để đóng một resource mà Close() có thể lỗi, coding style guide của Thanos khuyên dùng cách nào?",
+      "reference_answer": "Dùng helper package runutil thay vì gọi defer f.Close() trực tiếp — ví dụ runutil.CloseWithErrCapture khi muốn đóng và trả lỗi ra ngoài, hoặc runutil.CloseWithLogOnErr khi chỉ muốn log.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "dùng runutil thay vì defer f.Close()",
+        "tên helper cụ thể"
+      ],
+      "expected_claims": [
+        "dùng runutil.CloseWithErrCapture hoặc runutil.CloseWithLogOnErr",
+        "không gọi defer f.Close() trực tiếp vì lỗi từ Close bị bỏ qua"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "docs/contributing/coding-style-guide.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "docs/contributing/coding-style-guide.md",
+            "quote": "defer runutil.CloseWithErrCapture(&err, f, \"close file\")",
+            "section": "Go > Development / Code Review > Reliability > Defers: Don't Forget to Check Returned Errors"
+          },
+          {
+            "doc_id": "docs/contributing/coding-style-guide.md",
+            "quote": "It's easy to forget to check the error returned by a `Close` method that we deferred.",
+            "section": "Go > Development / Code Review > Reliability > Defers: Don't Forget to Check Returned Errors"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "reused:pk_002",
+        "note": "The answer-bearing text is inside a fenced code block -- verifies code blocks survive chunking and stay retrievable."
+      },
+      "tags": [
+        "convention",
+        "code_block",
+        "identifier"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-003",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Trước khi viết code cho một feature/component lớn, quy trình đóng góp của Thanos yêu cầu làm gì trước?",
+      "reference_answer": "Phải tạo một proposal document mô tả các quyết định thiết kế, động lực của thay đổi và những phương án thay thế đã cân nhắc.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "yêu cầu tạo proposal trước khi code",
+        "nội dung bắt buộc của proposal"
+      ],
+      "expected_claims": [
+        "feature/component lớn phải có proposal document trước",
+        "proposal nêu design decisions, motivations và alternatives"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CONTRIBUTING.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CONTRIBUTING.md",
+            "quote": "Adding a large new feature or/and component to Thanos should be done by first creating a [proposal](docs/proposals-done) document outlining the design decisions of the change, motivations for the change, and any alternatives that might have been considered.",
+            "section": "Contributing > Adding New Features / Components"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:pk_003",
+        "note": "Process question rather than code question."
+      },
+      "tags": [
+        "contributing",
+        "process"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-004",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "en",
+      "question": "How do I sign off a commit so it satisfies the Thanos DCO requirement?",
+      "reference_answer": "Add a `Signed-off-by: Your Name <your email id>` trailer at the end of the commit message; `git commit -s` does this for you.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "the Signed-off-by trailer",
+        "the git commit -s shortcut"
+      ],
+      "expected_claims": [
+        "commits need a Signed-off-by trailer",
+        "git commit -s adds it"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CONTRIBUTING.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CONTRIBUTING.md",
+            "quote": "To signoff, you need to add `Signed-off-by: Your Name <your email id>` at the end of your commit messages.",
+            "section": "Contributing > Development > Pull Request Process"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Exact-identifier retrieval: the answer is a literal command and trailer format that must be reproduced without paraphrase."
+      },
+      "tags": [
+        "contributing",
+        "identifier",
+        "dco"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-005",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Một pull request của Thanos cần bao nhiêu approval trước khi được merge?",
+      "reference_answer": "Cần sign-off của ít nhất một developer có write access; nếu người mở PR không có quyền merge thì có thể nhờ reviewer thứ hai merge hộ.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "số approval tối thiểu",
+        "trường hợp không có quyền merge"
+      ],
+      "expected_claims": [
+        "cần sign-off của ít nhất một developer có write access"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CONTRIBUTING.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CONTRIBUTING.md",
+            "quote": "You may merge the Pull Request once you have the sign-off of at least one developer with write access, or if you do not have permission to do that, you may request the second reviewer to merge it for you.",
+            "section": "Contributing > Development > Pull Request Process"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "A number an LLM commonly guesses as 'two approvals' from general open-source experience -- pretrained-knowledge probe with a real corpus answer."
+      },
+      "tags": [
+        "contributing",
+        "review",
+        "pretrained_leak_probe"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-006",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "conflict",
+      "language": "vi",
+      "question": "Thanos yêu cầu phiên bản Go nào để build?",
+      "reference_answer": "Hai nguồn trong tài liệu nêu số khác nhau: CONTRIBUTING.md nói Go 1.22.x trở lên, còn hướng dẫn môi trường nói go.mod trên nhánh main khai báo Go 1.26.0. Hướng dẫn môi trường nêu rõ cách xử lý: coi go.mod là ràng buộc phiên bản cho revision đang build.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "con số trong CONTRIBUTING.md",
+        "con số trong go.mod theo hướng dẫn môi trường",
+        "quy tắc ưu tiên go.mod"
+      ],
+      "expected_claims": [
+        "CONTRIBUTING.md nêu Go 1.22.x hoặc cao hơn",
+        "go.mod trên main khai báo Go 1.26.0",
+        "go.mod là ràng buộc phiên bản cho revision đang build"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CONTRIBUTING.md",
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CONTRIBUTING.md",
+            "quote": "Go 1.22.x or higher.",
+            "section": "Contributing > Development > Prerequisites"
+          },
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "The upstream `CONTRIBUTING.md` currently says Go 1.22.x or higher, but `go.mod` on `main` requires Go 1.26.0. For reproducibility, treat `go.mod` as the version constraint for the revision you are building.",
+            "section": "Thanos Development Environment Setup > 2. Supported development environment > Required tools"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "A REAL conflict inside the deployed corpus, with the precedence rule also in the corpus. Answering with only one number is an incomplete answer; inventing a third number is a hallucination. This is the PROJECT counterpart of the POLICY precedence case F5V2-POL-014."
+      },
+      "tags": [
+        "setup",
+        "conflict",
+        "identifier",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-007",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Chạy unit test ở máy local mà không có credential cloud thì dùng lệnh make nào?",
+      "reference_answer": "Dùng `make test-local`, target này cấu hình bỏ qua các tích hợp object-store trực tiếp (GCS, S3, Azure, Swift, COS, Aliyun OSS, BOS, OCI, OBS) rồi chạy test. Nếu chỉ cần kiểm tra nhanh thì dùng `make test-local-short`.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "lệnh make chính xác",
+        "tác dụng bỏ qua object-store integration"
+      ],
+      "expected_claims": [
+        "make test-local chạy test mà không cần credential cloud",
+        "make test-local bỏ qua các live object-store integration"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "`make test-local` configures the test run to skip GCS, S3, Azure, Swift, COS, Aliyun OSS, BOS, OCI, and OBS live object-store integrations, then runs the repository test target.",
+            "section": "Thanos Development Environment Setup > 7. Run tests locally > Normal local unit/integration tests without cloud credentials"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "The single most common real onboarding question, answerable only from test_upload/ -- which was NOT ingested before this task. Exact command string is the correctness criterion."
+      },
+      "tags": [
+        "setup",
+        "identifier",
+        "test_upload",
+        "command"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-008",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "near_miss",
+      "language": "vi",
+      "question": "Muốn chạy một test end-to-end duy nhất thì làm thế nào?",
+      "reference_answer": "Makefile hỗ trợ biến SINGLE_E2E_TEST: `make test-e2e SINGLE_E2E_TEST='TestName'`.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "biến SINGLE_E2E_TEST",
+        "cú pháp lệnh"
+      ],
+      "expected_claims": [
+        "dùng make test-e2e với biến SINGLE_E2E_TEST"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "make test-e2e SINGLE_E2E_TEST='TestName'",
+            "section": "Thanos Development Environment Setup > 8. End-to-end tests"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Deliberate near-miss against F5V2-PRJ-007: the same document has four different make test targets within two sections. Retrieving the section is easy; returning the RIGHT target is the test."
+      },
+      "tags": [
+        "setup",
+        "near_miss",
+        "test_upload",
+        "command"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-009",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "deep_document",
+      "language": "vi",
+      "question": "Muốn chạy quickstart để dựng một topology Thanos local thì cần cấu hình gì trước?",
+      "reference_answer": "Script quickstart hiện tại yêu cầu hoặc một object-store config qua biến OBJSTORECFG_FILE, hoặc chế độ MinIO local qua MINIO_ENABLED (kèm các executable MinIO cần thiết).",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "yêu cầu OBJSTORECFG_FILE hoặc MINIO_ENABLED",
+        "tên biến môi trường chính xác"
+      ],
+      "expected_claims": [
+        "quickstart cần OBJSTORECFG_FILE hoặc MINIO_ENABLED"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "The current script requires either an object-store config via `OBJSTORECFG_FILE` or local MinIO mode via `MINIO_ENABLED` (with the required MinIO executables available).",
+            "section": "Thanos Development Environment Setup > 9. Start a local Thanos topology"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Section 9 of a 31-section document, far past any summary."
+      },
+      "tags": [
+        "setup",
+        "deep_document",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-010",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Muốn biết `thanos query` khởi động thế nào thì nên bắt đầu đọc từ file nào?",
+      "reference_answer": "Bắt đầu từ file tương ứng dưới `cmd/thanos` — mỗi component có một file `cmd/thanos/<component>.go`, và các subcommand được đăng ký trong `cmd/thanos/main.go` qua các hàm như `registerQuery`.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "thư mục/đường dẫn cần đọc",
+        "cơ chế đăng ký subcommand"
+      ],
+      "expected_claims": [
+        "bắt đầu từ cmd/thanos/<component>.go",
+        "subcommand đăng ký trong cmd/thanos/main.go"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_codebase_guide.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_codebase_guide.md",
+            "quote": "If you need to answer “how does `thanos <component>` start?”, begin with the matching file under `cmd/thanos`.",
+            "section": "Thanos Codebase Guide > 2. Main entry point"
+          },
+          {
+            "doc_id": "test_upload/thanos_codebase_guide.md",
+            "quote": "cmd/thanos/main.go",
+            "section": "Thanos Codebase Guide > 2. Main entry point"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Codebase-navigation question; the answer is a path, so a paraphrase that omits the path is not an answer."
+      },
+      "tags": [
+        "codebase_guide",
+        "identifier",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-011",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Component nào của Thanos được phép xóa dữ liệu trong object storage?",
+      "reference_answer": "Compact — nó ghi các block đã compact/downsample và là component có thể xóa dữ liệu. Store Gateway chỉ đọc block lịch sử và không nên có quyền ghi/xóa.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "Compact là component được xóa",
+        "Store Gateway không cần quyền ghi/xóa"
+      ],
+      "expected_claims": [
+        "Compact là component có thể xóa dữ liệu",
+        "Store Gateway không nên có quyền write/delete"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "**Compact** — writes compacted/downsampled blocks and is the component that may delete data.",
+            "section": "Thanos Access and Security Guide > 4. Object-store permissions"
+          },
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "**Store Gateway** — reads historical blocks; it should not require normal write/delete privileges.",
+            "section": "Thanos Access and Security Guide > 4. Object-store permissions"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Least-privilege claim: getting this wrong would hand a component delete rights it must not have."
+      },
+      "tags": [
+        "access_security",
+        "test_upload",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-012",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "composite",
+      "language": "vi",
+      "question": "Thanos Query có tự xác thực tenant trong header không, và cần làm gì để cô lập tenant cho đúng?",
+      "reference_answer": "Không. Thanos không tự xác thực giá trị tenant tùy ý trong header; ai gọi được Query đều có thể đặt giá trị tenant, và Query UI cũng cho chọn tenant. Muốn cô lập tenant thì phải đặt một lớp authentication/authorization phía trước Query và ràng buộc identity đã xác thực với tenant mà request được phép truy cập. Tenant enforcement chỉ giới hạn việc chọn dữ liệu, không thay cho authentication/authorization.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "Thanos không xác thực tenant header",
+        "cần lớp auth phía trước Query",
+        "phân biệt tenant enforcement với authentication/authorization"
+      ],
+      "expected_claims": [
+        "Thanos không tự xác thực giá trị tenant trong header",
+        "phải đặt lớp authentication/authorization trước Query",
+        "tenant enforcement chỉ giới hạn việc chọn dữ liệu"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "The Query documentation explicitly warns that Thanos does not itself authenticate an arbitrary tenant value in the request header.",
+            "section": "Thanos Access and Security Guide > 5. HTTP access and authentication"
+          },
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "Do not use a freely client-controlled header as the sole proof of tenant identity.",
+            "section": "Thanos Access and Security Guide > 6. Tenant isolation"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Three-aspect security boundary question. An answer that says 'enable tenant enforcement' alone is materially incomplete and dangerous."
+      },
+      "tags": [
+        "access_security",
+        "composite",
+        "test_upload",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-013",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Em có cần được cấp quyền write vào repo thanos-io/thanos để gửi đóng góp không?",
+      "reference_answer": "Không. Một contributor không cần write access vào repository chính cho các pull request thông thường: fork repo, tạo nhánh, push lên fork của mình rồi mở pull request.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "không cần write access",
+        "luồng fork → branch → PR"
+      ],
+      "expected_claims": [
+        "contributor không cần write access cho pull request thông thường"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "A contributor does **not** need write access to the canonical repository for ordinary pull requests.",
+            "section": "Thanos Access and Security Guide > 2. Contributor access"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Access-boundary question phrased as a beginner would ask it."
+      },
+      "tags": [
+        "access_security",
+        "paraphrase",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-014",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "multi_chunk",
+      "language": "vi",
+      "question": "Trong dự án Thanos, những thứ gì được coi là secret?",
+      "reference_answer": "Bao gồm object-store access key hoặc service-account credential; cloud IAM credential dùng cho live acceptance test; TLS private key; bearer token hoặc mật khẩu basic-auth cho dịch vụ downstream; credential nhúng trong cấu hình Alertmanager, Query, tracing hoặc cache; và bất kỳ credential nào cho phép truy cập một bucket metric thật.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "object-store/cloud credential",
+        "TLS private key",
+        "token/mật khẩu downstream",
+        "credential trong file cấu hình component"
+      ],
+      "expected_claims": [
+        "object-store access key là secret",
+        "TLS private key là secret",
+        "credential trong cấu hình Alertmanager/Query/tracing/cache là secret"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "object-store access keys or service-account credentials;",
+            "section": "Thanos Access and Security Guide > 3. Secrets and credentials > 3.1 What counts as a secret in this project"
+          },
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "credentials embedded in Alertmanager, Query, tracing, or cache configuration;",
+            "section": "Thanos Access and Security Guide > 3. Secrets and credentials > 3.1 What counts as a secret in this project"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "A six-item list; Task Completeness is the discriminating metric, not faithfulness."
+      },
+      "tags": [
+        "access_security",
+        "multi_chunk",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-015",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "en",
+      "question": "Does Thanos redact object store credentials in its exposed flag map?",
+      "reference_answer": "Yes. The Thanos CLI deliberately redacts the values of `objstore.config` and `objstore.config-file` when building the exposed flag map, because those configurations can contain credentials. It is defense in depth, not permission to put secrets in source control.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "which flags are redacted",
+        "the caveat that redaction is not permission to commit secrets"
+      ],
+      "expected_claims": [
+        "objstore.config and objstore.config-file values are redacted in the exposed flag map"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "The Thanos CLI also deliberately redacts the values of `objstore.config` and `objstore.config-file` when building the exposed flag map",
+            "section": "Thanos Access and Security Guide > 3. Secrets and credentials > 3.2 Rules for local development"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Exact flag names; also carries a caveat the answer must not drop."
+      },
+      "tags": [
+        "access_security",
+        "identifier",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-016",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi_no_diacritics",
+      "question": "Thanos ho tro he dieu hanh nao de phat trien, Windows co dung duoc khong?",
+      "reference_answer": "Hướng dẫn đóng góp khuyến nghị Linux hoặc macOS; phát triển trên Windows vẫn khả thi thông qua WSL 2.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "hệ điều hành được khuyến nghị",
+        "Windows qua WSL 2"
+      ],
+      "expected_claims": [
+        "khuyến nghị Linux hoặc macOS",
+        "Windows dùng được qua WSL 2"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "The upstream contribution guide recommends Linux or macOS. Windows development is possible through WSL 2.",
+            "section": "Thanos Development Environment Setup > 2. Supported development environment"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Vietnamese without diacritics against an English-only PROJECT corpus -- the hardest retrieval combination in the suite."
+      },
+      "tags": [
+        "setup",
+        "no_diacritics",
+        "cross_lingual",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-017",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "identifier",
+      "language": "vi",
+      "question": "Sau khi thêm hoặc cập nhật dependency thì cần chạy lệnh gì?",
+      "reference_answer": "Cập nhật go.mod/go.sum rồi chạy `make deps`.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "lệnh make deps",
+        "cập nhật go.mod/go.sum"
+      ],
+      "expected_claims": [
+        "chạy make deps sau khi đổi dependency"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "Thanos uses Go modules. When intentionally adding or updating a dependency, update `go.mod`/`go.sum` and run:",
+            "section": "Thanos Development Environment Setup > 6. Build Thanos > Dependency changes"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Paired near-miss with F5V2-PRJ-018: CONTRIBUTING.md documents a different git-level go.mod workflow for the same situation."
+      },
+      "tags": [
+        "setup",
+        "identifier",
+        "near_miss",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-018",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "near_miss",
+      "language": "en",
+      "question": "Do I have to commit go.mod and go.sum changes before opening a pull request?",
+      "reference_answer": "Yes — the changes to `go.mod` and `go.sum` have to be committed before submitting the pull request.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "obligation to commit go.mod/go.sum before the PR"
+      ],
+      "expected_claims": [
+        "go.mod and go.sum changes must be committed before submitting the pull request"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "CONTRIBUTING.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "CONTRIBUTING.md",
+            "quote": "You have to commit the changes to `go.mod` and `go.sum` before submitting the pull request.",
+            "section": "Pick a specific version."
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Same keywords as F5V2-PRJ-017 (go.mod, dependency) but the answer is in a DIFFERENT document. Retrieving the environment-setup document here is a ranking error with a plausible-looking wrong answer."
+      },
+      "tags": [
+        "contributing",
+        "near_miss",
+        "identifier"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-019",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "deep_document",
+      "language": "en",
+      "question": "Which Thanos proposal introduced avoiding a global sort on querier select?",
+      "reference_answer": "The accepted proposal 'Avoid Global Sort on Querier Select' (docs/proposals-accepted/20221129-avoid-global-sort.md).",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "name of the proposal"
+      ],
+      "expected_claims": [
+        "the proposal is 'Avoid Global Sort on Querier Select'"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "docs/proposals-accepted/20221129-avoid-global-sort.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "docs/proposals-accepted/20221129-avoid-global-sort.md",
+            "quote": "Avoid Global Sort on Querier Select",
+            "section": "Avoid Global Sort on Querier Select"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "The proposals corpus is 24 similar long design documents -- the largest near-miss field in the whole PROJECT corpus."
+      },
+      "tags": [
+        "proposals",
+        "deep_document"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-020",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "catalog",
+      "language": "vi",
+      "question": "Dự án này có những tài liệu gì cho người mới?",
+      "reference_answer": "Có README tổng quan, CONTRIBUTING.md cho quy trình đóng góp, coding style guide, các thư mục proposals-accepted/proposals-done, và bộ tài liệu onboarding gồm hướng dẫn môi trường phát triển, codebase guide, access & security và architecture.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "CATALOG",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "liệt kê các nhóm tài liệu hiện có"
+      ],
+      "expected_claims": [
+        "tồn tại tài liệu overview, contributing, convention và onboarding guide"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "README.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "README.md",
+            "quote": "## Overview"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "CATALOG route for PROJECT. Routing this to content RAG is the §7.3 failure mode."
+      },
+      "tags": [
+        "catalog",
+        "routing"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-021",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "false_refusal_probe",
+      "language": "vi",
+      "question": "build kiểu gì nhỉ",
+      "reference_answer": "Chạy `make build`; target này kiểm tra Git, bảo đảm dependency Go nhất quán, chuẩn bị build tooling và build ra binary `thanos` dưới GOBIN/build prefix.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "lệnh make build",
+        "kết quả build ra binary thanos"
+      ],
+      "expected_claims": [
+        "dùng make build để build Thanos"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "The build target verifies Git availability, ensures Go dependencies are consistent, prepares build tooling, and builds the `thanos` binary through the repository build tooling.",
+            "section": "Thanos Development Environment Setup > 6. Build Thanos"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Extremely terse, lowercase, no punctuation -- the realistic worst case for ScopeGate/EvidenceSufficiencyGate. It IS answerable, so a fallback here is a FALSE_REFUSAL."
+      },
+      "tags": [
+        "setup",
+        "false_refusal",
+        "terse"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-022",
+      "domain": "PROJECT",
+      "case_type": "partial",
+      "category": "ambiguous",
+      "language": "vi",
+      "question": "Thanos khuyến nghị cấu hình bao nhiêu RAM cho một node Store Gateway trong production?",
+      "reference_answer": "Bộ tài liệu mô tả vai trò của Store Gateway và các cân nhắc vận hành nhưng không nêu bất kỳ con số RAM khuyến nghị nào. Không nên suy đoán con số.",
+      "expected_behavior": {
+        "answerable": "partial",
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "nêu được vai trò Store Gateway theo tài liệu",
+        "nói rõ tài liệu không có con số RAM"
+      ],
+      "expected_claims": [
+        "tài liệu không nêu cấu hình RAM khuyến nghị cho Store Gateway"
+      ],
+      "forbidden_substrings": [
+        "GB RAM"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "**Store Gateway** — reads historical blocks; it should not require normal write/delete privileges.",
+            "section": "Thanos Access and Security Guide > 4. Object-store permissions"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "The topic retrieves strongly and an LLM has abundant pretrained opinions about Thanos sizing. Any concrete GB figure is a False Answer sourced from pretraining, not the corpus."
+      },
+      "tags": [
+        "partial",
+        "hallucination_trap",
+        "pretrained_leak_probe"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-023",
+      "domain": "PROJECT",
+      "case_type": "partial",
+      "category": "ambiguous",
+      "language": "en",
+      "question": "What is the current release cadence of Thanos and when is the next release?",
+      "reference_answer": "The current snapshot documents minor releases every 6 weeks, but it does not state the date of the next release. State the documented cadence and explicitly disclose that the next-release date is absent.",
+      "expected_behavior": {
+        "answerable": "partial",
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "state the documented six-week minor-release cadence",
+        "disclose that the next-release date is not in the snapshot"
+      ],
+      "expected_claims": [
+        "the README documents minor releases every 6 weeks",
+        "the snapshot does not state a next-release date"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "README.md"
+        ],
+        "quotes": [
+          {
+          "doc_id": "README.md",
+          "quote": "We also perform minor releases every 6 weeks.",
+          "section": "Releases"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Time-sensitive question the model may answer from pretraining. Also a snapshot-boundary probe: the corpus is a pinned snapshot, so 'current' cannot be known."
+      },
+      "tags": [
+        "partial",
+        "pretrained_leak_probe",
+        "snapshot_boundary"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-024",
+      "domain": "PROJECT",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Lương trung bình của một maintainer Thanos là bao nhiêu?",
+      "reference_answer": "Không tìm thấy thông tin; tài liệu dự án không chứa dữ liệu lương.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Cross-domain confusion probe: 'lương' retrieves strongly in the POLICY corpus. Under PROJECT scope the answer must be an abstention, never a POLICY salary fact -- that would also be a scope violation."
+      },
+      "tags": [
+        "abstention",
+        "cross_domain_probe"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-025",
+      "domain": "PROJECT",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "en",
+      "question": "Which Kubernetes operator does this project officially ship for deploying Thanos?",
+      "reference_answer": "The corpus does not describe an official Kubernetes operator for Thanos.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "A confident-sounding wrong answer is easy to produce from general Prometheus/Thanos ecosystem knowledge. The snapshot contains no such statement."
+      },
+      "tags": [
+        "abstention",
+        "pretrained_leak_probe"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-026",
+      "domain": "PROJECT",
+      "case_type": "unanswerable",
+      "category": "unanswerable",
+      "language": "vi",
+      "question": "Trong repo này, file go.mod đang khai báo chính xác những dependency nào?",
+      "reference_answer": "Không tìm thấy thông tin: bộ tài liệu nói về go.mod nhưng không chứa nội dung file go.mod, nên không thể liệt kê dependency.",
+      "expected_behavior": {
+        "answerable": false,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": "no_evidence"
+      },
+      "expected_evidence": {
+        "documents": [],
+        "quotes": []
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "The corpus is documentation, not source. 'go.mod' retrieves strongly from three documents, none of which lists dependencies -- retrieval succeeds while the answer must still be an abstention (evidence-sufficiency, not relevance)."
+      },
+      "tags": [
+        "abstention",
+        "near_miss_topic",
+        "evidence_sufficiency"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-027",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "multi_chunk",
+      "language": "vi",
+      "question": "Quy trình đóng góp cho Thanos gồm những bước nào từ fork tới khi được review?",
+      "reference_answer": "Fork thanos-io/thanos về tài khoản GitHub của mình; clone fork về máy; thêm https://github.com/thanos-io/thanos.git làm upstream; tạo topic branch từ main hiện tại; push branch lên fork và mở pull request; rồi xin review từ maintainer/reviewer có write access.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "fork",
+        "clone và thêm upstream",
+        "tạo topic branch",
+        "mở pull request",
+        "xin review"
+      ],
+      "expected_claims": [
+        "fork repo trước",
+        "thêm thanos-io/thanos làm upstream",
+        "tạo topic branch từ main",
+        "mở pull request từ fork"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "fork `thanos-io/thanos` into your GitHub account;",
+            "section": "Thanos Access and Security Guide > 2. Contributor access"
+          },
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "create a topic branch from current `main`;",
+            "section": "Thanos Access and Security Guide > 2. Contributor access"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Six-step ordered list; both completeness AND ordering matter, unlike an unordered set."
+      },
+      "tags": [
+        "access_security",
+        "multi_chunk",
+        "process",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-028",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "scenario",
+      "language": "vi",
+      "question": "Em sắp bắt đầu một task mới, nên cập nhật code từ upstream thế nào cho đúng?",
+      "reference_answer": "Chuyển về nhánh main, fetch từ upstream rồi rebase lên upstream/main, sau đó tạo một nhánh topic riêng cho thay đổi.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "fetch upstream",
+        "rebase lên upstream/main",
+        "tạo nhánh topic mới"
+      ],
+      "expected_claims": [
+        "git fetch upstream rồi git rebase upstream/main trước khi bắt đầu việc mới"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "git rebase upstream/main",
+            "section": "Thanos Development Environment Setup > 3. Clone the repository"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Answer is a command sequence inside a fenced bash block with no surrounding prose keywords."
+      },
+      "tags": [
+        "setup",
+        "scenario",
+        "code_block",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-029",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "en",
+      "question": "Which tools do I need installed only if I work on the React UI or run the full lint target?",
+      "reference_answer": "Node.js and pnpm. `make lint` includes React linting, and the React sources live under `pkg/ui/react-app`.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "Node.js and pnpm",
+        "why they are needed (React lint in make lint)"
+      ],
+      "expected_claims": [
+        "Node.js and pnpm are required for React UI work and the full make lint target"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "`make lint` includes React linting; React sources live under `pkg/ui/react-app`.",
+            "section": "Thanos Development Environment Setup > 2. Supported development environment > Required tools"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Conditional requirement from a table row: the condition is as much of the answer as the tool names."
+      },
+      "tags": [
+        "setup",
+        "table",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-030",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "deep_document",
+      "language": "en",
+      "question": "Where in the code are the canonical Thanos component identities defined?",
+      "reference_answer": "In `pkg/component/component.go`, which defines the canonical component identities and whether a component implements StoreAPI and/or produces metric blocks.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "exact file path",
+        "what that file defines"
+      ],
+      "expected_claims": [
+        "pkg/component/component.go defines canonical component identities"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_codebase_guide.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_codebase_guide.md",
+            "quote": "`pkg/component/component.go` defines canonical component identities and whether a component implements StoreAPI and/or produces metric blocks.",
+            "section": "Thanos Codebase Guide > 4. Component registry"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "Deep inside a 43-section navigation document; the answer is a single path that cannot be paraphrased."
+      },
+      "tags": [
+        "codebase_guide",
+        "deep_document",
+        "identifier",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-031",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "paraphrase",
+      "language": "vi",
+      "question": "Đọc codebase Thanos thì nên bắt đầu từ đâu, cứ đọc lần lượt pkg/ có ổn không?",
+      "reference_answer": "Không nên đọc pkg/ theo thứ tự bảng chữ cái. Nên bắt đầu từ command hoặc hành vi quan sát được từ bên ngoài mà bạn muốn thay đổi, rồi lần vào trong.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "không đọc pkg/ theo thứ tự",
+        "bắt đầu từ command/hành vi rồi trace vào trong"
+      ],
+      "expected_claims": [
+        "không nên đọc pkg/ theo thứ tự bảng chữ cái",
+        "bắt đầu từ command hoặc hành vi cần thay đổi"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_codebase_guide.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_codebase_guide.md",
+            "quote": "Do not begin by reading `pkg/` alphabetically. Start from the command or externally visible behavior you are trying to change and trace inward.",
+            "section": "Thanos Codebase Guide > 1. The mental model"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "The question embeds a wrong proposal ('cứ đọc lần lượt pkg/'); a good answer corrects it from evidence rather than agreeing."
+      },
+      "tags": [
+        "codebase_guide",
+        "paraphrase",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-032",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Thanos đang ở giai đoạn nào trong CNCF?",
+      "reference_answer": "Thanos là một dự án CNCF Incubating.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "trạng thái CNCF của dự án"
+      ],
+      "expected_claims": [
+        "Thanos là dự án CNCF Incubating"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "README.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "README.md",
+            "quote": "Thanos is a [CNCF](https://www.cncf.io/) Incubating project.",
+            "section": "Overview"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "A fact the model may 'know' as Graduated from later pretraining. The snapshot says Incubating, and the snapshot is what the deployed system knows -- corpus fidelity probe."
+      },
+      "tags": [
+        "overview",
+        "readme",
+        "pretrained_leak_probe"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-033",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "en",
+      "question": "What is the Store API in Thanos and what is it used for?",
+      "reference_answer": "A simple gRPC 'Store API' that provides unified data access across all metric data.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "gRPC Store API",
+        "unified data access across metric data"
+      ],
+      "expected_claims": [
+        "Store API is a gRPC API for unified access across all metric data"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "README.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "README.md",
+            "quote": "Simple gRPC \"Store API\" for unified data access across all metric data",
+            "section": "Features"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "reused:pk_009",
+        "note": "Re-anchored from the deleted raw-data/ path onto demo-data/README.md."
+      },
+      "tags": [
+        "overview",
+        "readme",
+        "architecture"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-034",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "composite",
+      "language": "vi",
+      "question": "Một engineer mới cần làm gì để từ máy trắng đến chỗ chạy được test Thanos?",
+      "reference_answer": "Clone fork và đặt thanos-io/thanos làm upstream; cài Git, Go theo go.mod, GNU Make (Docker nếu chạy E2E); build binary bằng make build; rồi chạy test local bằng make test-local-short hoặc make test-local để bỏ qua các tích hợp object-store cần credential.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "clone/fork và cấu hình upstream",
+        "công cụ bắt buộc",
+        "build bằng make build",
+        "chạy test không cần credential cloud"
+      ],
+      "expected_claims": [
+        "cần Git, Go và GNU Make",
+        "build bằng make build",
+        "chạy test local bằng make test-local"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "clone your fork and track `thanos-io/thanos` as `upstream`;",
+            "section": "Thanos Development Environment Setup > 1. What you should have working at the end"
+          },
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "run local unit tests without cloud object-store credentials;",
+            "section": "Thanos Development Environment Setup > 1. What you should have working at the end"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Broad composite spanning most of the setup document -- the realistic 'day one' question, and the case most likely to hit context-budget truncation."
+      },
+      "tags": [
+        "setup",
+        "composite",
+        "task_completeness",
+        "test_upload"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-035",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "en",
+      "question": "Do I need production credentials to do normal backend work on Thanos?",
+      "reference_answer": "No. For normal backend work you do not need production credentials or access to a real object-storage account.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "no production credentials needed for normal backend work"
+      ],
+      "expected_claims": [
+        "normal backend work needs no production credentials or real object-storage access"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_environment_setup.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_environment_setup.md",
+            "quote": "For normal backend work, you do **not** need production credentials or access to a real object-storage account.",
+            "section": "Thanos Development Environment Setup > 1. What you should have working at the end"
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "new",
+        "note": "A 'no' answer grounded in an explicit negative statement. Answering 'yes' would push a new engineer to request credentials they must not have."
+      },
+      "tags": [
+        "setup",
+        "access_security",
+        "test_upload",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-036",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "factual_lookup",
+      "language": "vi",
+      "question": "Lỗ hổng bảo mật của Thanos thì báo cáo thế nào?",
+      "reference_answer": "Các vấn đề bảo mật được báo cáo riêng tư, không mở thành GitHub issue công khai.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "báo cáo riêng tư",
+        "không mở issue công khai"
+      ],
+      "expected_claims": [
+        "vấn đề bảo mật được báo cáo riêng tư, không phải GitHub issue công khai"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/thanos_access_security.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/thanos_access_security.md",
+            "quote": "**Vulnerability disclosure** — security issues are reported privately, not opened as public GitHub issues.",
+            "section": "Thanos Access and Security Guide > 1. Security model in one minute"
+          }
+        ]
+      },
+      "stability": true,
+      "provenance": {
+        "origin": "new",
+        "note": "Critical process claim: telling a contributor to open a public issue for a vulnerability would cause real harm."
+      },
+      "tags": [
+        "access_security",
+        "test_upload",
+        "critical_claim"
+      ]
+    },
+    {
+      "id": "F5V2-PRJ-037",
+      "domain": "PROJECT",
+      "case_type": "answerable",
+      "category": "deep_document",
+      "language": "en",
+      "question": "Roughly what does object storage cost per GB according to the Thanos architecture documentation?",
+      "reference_answer": "Typical object storage prices per GB are about $0.02, with retrievals typically priced at $0.004 per 10,000; the document suggests adding 20% to total storage cost as a conservative estimate for retrievals and running store nodes.",
+      "expected_behavior": {
+        "answerable": true,
+        "expected_route": "KNOWLEDGE",
+        "expected_fallback": null
+      },
+      "expected_aspects": [
+        "the per-GB storage price",
+        "the retrieval pricing or the 20% overhead estimate"
+      ],
+      "expected_claims": [
+        "typical object storage price is about $0.02 per GB"
+      ],
+      "expected_evidence": {
+        "documents": [
+          "test_upload/ARCHITECTURE.md"
+        ],
+        "quotes": [
+          {
+            "doc_id": "test_upload/ARCHITECTURE.md",
+            "quote": "Typical object storage prices per GB are at about $0.02."
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "rewritten:pk_017",
+        "note": "pk_017 in eval/project_knowledge/ragas/golden_dataset.jsonl asserted that NO per-GB price exists in the corpus. That was true of the old raw-data snapshot but is false of the demo corpus: test_upload/ARCHITECTURE.md states one. The case is inverted here -- it now asserts the fact instead of its absence -- and pk_017 was removed rather than left encoding a false absence. Also the only case covering test_upload/ARCHITECTURE.md, which has no markdown headings and so is verified document-wide."
+      },
+      "tags": [
+        "architecture",
+        "test_upload",
+        "cost",
+        "corpus_change"
+      ]
+    }
+  ]
+}

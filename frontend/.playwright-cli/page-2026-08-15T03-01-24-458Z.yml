@@ -1,0 +1,20 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - heading "Ralion" [level=1] [ref=e21]
+        - paragraph [ref=e22]: Begin your calm onboarding journey.
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - generic [ref=e25]: Email công ty
+          - textbox "Email công ty" [ref=e26]:
+            - /placeholder: Email
+        - generic [ref=e27]:
+          - generic [ref=e28]: Mật khẩu
+          - textbox "Mật khẩu" [ref=e29]:
+            - /placeholder: Password
+        - button "Sign In" [ref=e30] [cursor=pointer]
+      - generic [ref=e31]:
+        - button "Forgot Password?" [ref=e32] [cursor=pointer]
+        - button "Create an Account" [ref=e33] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e39] [cursor=pointer]

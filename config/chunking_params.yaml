@@ -1,0 +1,214 @@
+version: "1.0"
+
+embedding:
+  model: BAAI/bge-m3
+  revision: 5617a9f61b028005a4858fdac845db406aefb181
+  provider: sentence_transformers
+  dimension: 1024
+  normalize_embeddings: true
+
+# Evaluation defaults for the shared RetrievalEngine. These values are not
+# canonical constants; tune them against the golden retrieval evaluation set.
+retrieval:
+  config_version: "retrieval-v2"
+  dense:
+    candidate_k: 30
+  bm25:
+    candidate_k: 30
+    backend: paradedb_pg_search
+    index_version: "paradedb-bm25-v1"
+    main_tokenizer: unicode_words
+    lowercase: true
+    english_stemming: false
+    ascii_folding: false
+    technical_identifier_tokenizer: source_code
+    exact_identifier_tokenizer: literal_normalized
+  fusion:
+    strategy: rrf
+    rrf_k: 60
+    bm25_weight:
+      # Dispersion is a property of a population; below this many hits there is no distribution
+      # to measure, and few hits means BM25 was SELECTIVE, which is the opposite of the failure
+      # this guards. Keep full weight there.
+      min_samples: 5
+      # spread <= floor -> weight 0 (branch ignored); spread >= ceiling -> weight 1 (unchanged).
+      spread_floor: 0.20
+      spread_ceiling: 0.30
+      # Root-cause B sweep over 48 POLICY + 12 PROJECT answerable golden cases. Spread alone was
+      # under-cover: it stayed at full weight for a weak query with max=6.29/spread=0.742 and let
+      # BM25 push the dense-rank-1 evidence to fused rank 8. Across the measured distributions,
+      # POLICY max was 25.30..90.80; PROJECT's low/noisy tail was 4.50..12.09. Sweeping ramps
+      # (6,12), (8,16), (10,20), (12,24) selected 10..20: PROJECT Recall@1 0.833->0.917 and MRR
+      # 0.903->0.958 with Recall@3/5/10 unchanged; POLICY metrics were unchanged. Raw BM25 units
+      # are index/corpus-local, so re-run the same eval when either changes.
+      strength_floor: 10.0
+      strength_ceiling: 20.0
+  final_top_k: 10
+chat:
+  max_regeneration_attempts: 1
+  # Ordinary factual questions keep the existing five-chunk / 3200-token envelope.  Broad,
+  # multi-entity synthesis can use this larger *maximum* envelope; relevance thresholds and
+  # packing order remain unchanged.
+  synthesis_evidence_capacity:
+    max_chunks_per_domain: 8
+    context_max_tokens: 6000
+  # Bounded one-query-per-entity retrieval.  This is intentionally not pairwise fan-out.
+  multi_entity_fanout_max: 8
+  max_chunks_per_domain: 5
+  # A procedural question may hit non-adjacent chunks in one numbered section. Fill the missing
+  # ordered siblings with one ACL-scoped DB read; this performs no embedding or LLM request.
+  procedure_section_expansion:
+    enabled: true
+    max_sequence_chunks: 6
+    max_other_chunks: 1
+  # Candidates retain retrieval order; content is head-truncated before this total cap.
+  context_max_tokens: 3200
+  context_per_chunk_max_tokens: 700
+  conversation_memory:
+    max_turn_pairs: 3
+    history_max_chars: 4800
+    per_message_max_chars: 1600
+    history_max_age_minutes: 120
+    # Nhận diện follow-up: câu ngắn hoặc có deixis/liên từ mở đầu. Chỉ áp dụng khi đã có history.
+    followup_max_words: 6
+    followup_max_chars: 40
+    # Tier 1 — mở rộng deterministic: cộng thêm câu hỏi USER gần nhất làm topic prefix.
+    expansion_max_anchors: 2
+    expansion_max_chars: 400
+    # Tier 2 — chỉ chạy khi gate trả rỗng (turn này chắc chắn sẽ no_evidence), tối đa 1 lần.
+    # Tắt mặc định: bật sau khi eval harness (F-25) cho thấy Tier 1 còn để lại miss thật.
+    llm_query_rewrite:
+      enabled: false
+      timeout_seconds: 1.5
+      max_output_chars: 300
+    conversation_mode_max_tokens: 6000
+    topic_state:
+      subject_max_chars: 160
+      entities_max: 6
+  scope_gate:
+    enabled: true
+    timeout_seconds: 3.0
+  evidence_sufficiency_gate:
+    enabled: true
+    timeout_seconds: 4.0
+    partial_verdict_enabled: true
+    ambiguous_verdict_enabled: false
+  support_reply:
+    enabled: true
+    # Matches the other interactive judges. Measured live at reasoning_effort=minimal (the
+    # adapter routes this operation there): well inside the budget, and this is the only LLM
+    # call a SOCIAL turn makes -- it skips retrieval, ESG and AnswerGenerator entirely.
+    # 3.0 -> 5.0 on 2026-08-26: measured 1377-3007ms live at reasoning_effort=minimal, and a
+    # 3007ms call was observed TIMING OUT at 3.0s. The variance here is output length, not
+    # thinking, so the margin belongs on the timeout rather than on the effort level. A timeout is
+    # not user-visible (it renders the static template), but it silently spends a call for
+    # nothing, which is the shape of failure this whole round of work exists to stop being blind
+    # to. Still well inside the turn: a SOCIAL turn makes no other LLM call and does no retrieval.
+    timeout_seconds: 5.0
+    # Sized against the existing static templates (~300 chars) with headroom. A support reply
+    # that runs longer than this has stopped being support and started being content.
+    max_chars: 420
+  turn_interpreter:
+    enabled: true
+    shadow: false
+    scope_merged: false
+    timeout_seconds: 6.0
+    clarify_enabled: false
+    turn_pairs: 2
+    prev_question_max_chars: 200
+    prev_answer_max_chars: 200
+    evidence_titles_max: 3
+    evidence_title_max_chars: 80
+    knowledge_policy_enabled: true
+  general_knowledge:
+    enabled: true # reader: GeneralKnowledgeConfig.from_config
+    max_guidance_items: 6 # reader: guidance_validation.validate_guidance (§8 R5)
+    guidance_item_max_chars: 1200 # reader: guidance_validation.validate_guidance (§8 R5)
+    allow_on_partial: true # reader: ChatService._answer_knowledge_route (§12.1)
+    allow_after_insufficient: true # reader: ChatService._answer_knowledge_route (§10.2)
+    generic_token_allowlist: # reader: guidance_validation._value_tokens/_identifier_tokens via GeneralKnowledgeConfig
+      - python3
+      - pip3
+      - s3
+      - x86_64
+      - utf-8
+      - base64
+      - sha256
+      - oauth2
+      - http2
+      - ipv4
+      - ipv6
+  relevance_gate:
+    policy:
+      vi: { min_dense_cosine: 0.38, min_lexical_score: 0.10 }
+      en: { min_dense_cosine: 0.38, min_lexical_score: 0.10 }
+    project:
+      vi: { min_dense_cosine: 0.35, min_lexical_score: 0.10 }
+      en: { min_dense_cosine: 0.62, min_lexical_score: 0.10 }
+
+policy:
+  chunking_unit: heading_aware
+  heading_boundary: h2_then_h3
+  target_size_tokens_min: 200
+  target_size_tokens_max: 400
+  hard_ceiling_tokens: 700
+  overlap_tokens: 0
+  force_split_overlap_tokens_min: 20
+  force_split_overlap_tokens_max: 40
+  atomic_blocks:
+    - table
+    - numbered_procedure
+    - faq_question_answer
+  update_strategy: full_replace_by_doc_id
+  embedding_context:
+    include_document_code: true
+    include_heading_path: true
+    include_purpose_sentence: true
+
+project_knowledge:
+  rfc:
+    chunking_unit: heading_aware
+    heading_boundary: h1_hard_boundary
+    target_size_tokens_min: 500
+    target_size_tokens_max: 700
+    hard_ceiling_tokens: 1000
+    overlap_ratio_min: 0.10
+    overlap_ratio_max: 0.15
+    atomic_blocks:
+      - code_block_with_explanation
+      - list_with_sub_bullets
+    update_strategy: retain_history_and_resolve_by_effective_date
+    embedding_context:
+      include_rfc_number: true
+      include_feature_name: true
+      include_status: true
+      include_date: true
+      include_h1_section: true
+      include_summary: true
+
+  contrib_guide:
+    inherits: project_knowledge.rfc
+    content_type: CONTRIB_GUIDE
+    source_repo: rust-lang/cargo
+    update_strategy: full_reindex_on_sync
+
+  cargo_book:
+    inherits: project_knowledge.rfc
+    content_type: CARGO_BOOK
+    source_repo: rust-lang/cargo
+    update_strategy: full_reindex_on_sync
+
+rule_mining:
+  config_version: "rule-mining-v1"
+  clustering:
+    cosine_merge_threshold: 0.70
+    cosine_high_confidence_threshold: 0.85
+  discovery:
+    overlap_buffer_days: 3
+    cold_start_lookback_days: 365
+
+tokenizer:
+  name: cl100k_base
+
+evaluation:
+  near_duplicate_cosine_threshold: 0.97

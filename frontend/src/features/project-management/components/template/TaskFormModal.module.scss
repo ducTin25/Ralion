@@ -1,0 +1,123 @@
+// ===== Stepper (3 bước) =====
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--pm-sp-5);
+}
+
+.stepperItem {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  &:last-child {
+    flex: none;
+  }
+}
+
+.stepperNode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  white-space: nowrap;
+}
+
+.stepDot {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-surface-3);
+  color: var(--pm-ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stepCurrent {
+  background: var(--pm-accent);
+  color: #fff;
+}
+
+.stepDone {
+  background: var(--pm-success);
+  color: #fff;
+}
+
+.stepLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pm-ink-3);
+}
+
+.stepLabelActive {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pm-ink);
+}
+
+.stepLine {
+  flex: 1;
+  height: 1px;
+  background: var(--pm-border);
+  margin: 0 10px;
+  min-width: 16px;
+}
+
+.stepLineDone {
+  background: var(--pm-success);
+}
+
+.backIcon {
+  transform: rotate(180deg);
+}
+
+.noDeps {
+  color: var(--pm-ink-3);
+  font-size: 12.5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pm-sp-4);
+}
+
+.row {
+  display: flex;
+  gap: var(--pm-sp-3);
+
+  > * {
+    flex: 1;
+  }
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--pm-ink);
+}
+
+.dependencyList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 160px;
+  overflow-y: auto;
+  border: 1px solid var(--pm-border);
+  border-radius: var(--pm-radius-sm);
+  padding: var(--pm-sp-2) var(--pm-sp-3);
+}
+
+.dependencyItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--pm-ink-2);
+}
