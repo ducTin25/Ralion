@@ -12,7 +12,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$VerifiedSshHostKey,
 
-    [string]$Repository = "AI20K-Build-Phase-Cohort-3/P-040",
+    [string]$Repository = "ducTin25/Ralion",
     [string]$VpsUser = "p040-deploy",
     [int]$Port = 22
 )
@@ -45,9 +45,22 @@ if ($LASTEXITCODE -ne 0) {
     throw "Could not create or update the GitHub staging environment."
 }
 
-$mainPolicy = gh api "repos/$Repository/environments/staging/deployment-branch-policies" `
-    --jq '.branch_policies[] | select(.name == "main" and .type == "branch") | .id'
-if ($LASTEXITCODE -ne 0) {
+$mainPolicy = $null
+$branchPoliciesReady = $false
+for ($attempt = 1; $attempt -le 10; $attempt++) {
+    $policyResponse = gh api "repos/$Repository/environments/staging/deployment-branch-policies"
+    if ($LASTEXITCODE -eq 0) {
+        $mainPolicy = ($policyResponse | ConvertFrom-Json).branch_policies |
+            Where-Object { $_.name -eq "main" -and $_.type -eq "branch" } |
+            Select-Object -First 1 -ExpandProperty id
+        $branchPoliciesReady = $true
+        break
+    }
+    if ($attempt -lt 10) {
+        Start-Sleep -Seconds 2
+    }
+}
+if (-not $branchPoliciesReady) {
     throw "Could not read the staging deployment branch policies."
 }
 if ([string]::IsNullOrWhiteSpace(($mainPolicy | Out-String))) {

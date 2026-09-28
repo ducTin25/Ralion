@@ -1,0 +1,31 @@
+name: Main merge guard
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: main-merge-guard-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate-source-branch:
+    name: Require develop as source branch
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check pull request source branch
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_BRANCH" != "develop" ]; then
+            echo "::error title=Invalid source branch::Pull requests into main must come from develop. Current source branch: $HEAD_BRANCH"
+            echo "Close this pull request and open feature -> develop first."
+            exit 1
+          fi
+
+          echo "Valid release pull request: develop -> main."

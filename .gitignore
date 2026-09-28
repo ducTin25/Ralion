@@ -78,7 +78,7 @@ out/
 .claude/
 .agents/
 .gemini/
-.github/
+.github/copilot-instructions.md
 /README.md
 
 .density_check_cache/

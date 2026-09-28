@@ -1,8 +1,8 @@
 [CmdletBinding()]
 param(
-    [string]$Repository = "AI20K-Build-Phase-Cohort-3/P-040",
+    [string]$Repository = "ducTin25/Ralion",
     [string]$PreviewEnvironment = "vercel-preview",
-    [string]$StagingEnvironment = "staging",
+    [string]$ProductionEnvironment = "production",
     [string]$VercelOrgId = "team_dOaspeSFsU5d7Crxr9ixRtKE",
     [string]$VercelProjectId = "prj_RhrXAGiULSQVL6rB7X0b0l2sMeNc"
 )
@@ -38,9 +38,22 @@ function Set-BranchRestrictedEnvironment {
         throw "Could not create or update GitHub Environment '$Name'."
     }
 
-    $existingPolicy = gh api "repos/$Repository/environments/$Name/deployment-branch-policies" `
-        --jq ".branch_policies[] | select(.name == `"$Branch`" and .type == `"branch`") | .id"
-    if ($LASTEXITCODE -ne 0) {
+    $existingPolicy = $null
+    $branchPoliciesReady = $false
+    for ($attempt = 1; $attempt -le 10; $attempt++) {
+        $policyResponse = gh api "repos/$Repository/environments/$Name/deployment-branch-policies"
+        if ($LASTEXITCODE -eq 0) {
+            $existingPolicy = ($policyResponse | ConvertFrom-Json).branch_policies |
+                Where-Object { $_.name -eq $Branch -and $_.type -eq "branch" } |
+                Select-Object -First 1 -ExpandProperty id
+            $branchPoliciesReady = $true
+            break
+        }
+        if ($attempt -lt 10) {
+            Start-Sleep -Seconds 2
+        }
+    }
+    if (-not $branchPoliciesReady) {
         throw "Could not read branch policies for GitHub Environment '$Name'."
     }
     if ([string]::IsNullOrWhiteSpace(($existingPolicy | Out-String))) {
@@ -54,9 +67,9 @@ function Set-BranchRestrictedEnvironment {
 
 try {
     Set-BranchRestrictedEnvironment -Name $PreviewEnvironment -Branch "develop"
-    Set-BranchRestrictedEnvironment -Name $StagingEnvironment -Branch "main"
+    Set-BranchRestrictedEnvironment -Name $ProductionEnvironment -Branch "main"
 
-    foreach ($environmentName in @($PreviewEnvironment, $StagingEnvironment)) {
+    foreach ($environmentName in @($PreviewEnvironment, $ProductionEnvironment)) {
         $vercelToken | gh secret set VERCEL_TOKEN --env $environmentName --repo $Repository
         if ($LASTEXITCODE -ne 0) {
             throw "Could not set VERCEL_TOKEN in GitHub Environment '$environmentName'."

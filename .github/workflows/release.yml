@@ -1,0 +1,255 @@
+name: Build, publish, and deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ductin25/ralion
+  VERCEL_CLI_VERSION: 59.3.0
+  PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.62.1-noble
+
+jobs:
+  verify-backend:
+    name: Verify backend release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build production image for isolated tests
+        run: docker buildx build --builder default --load --tag p-040-backend:latest .
+      - name: Run isolated quality gates
+        run: |
+          docker compose --project-name p040-release-test --file docker-compose.test.yml up \
+            --build --abort-on-container-exit --exit-code-from backend-test
+      - name: Show isolated test logs
+        if: failure()
+        run: docker compose --project-name p040-release-test --file docker-compose.test.yml logs --no-color
+      - name: Clean up isolated test stack
+        if: always()
+        run: |
+          docker compose --project-name p040-release-test --file docker-compose.test.yml down \
+            --volumes --remove-orphans
+
+  verify-frontend:
+    name: Verify frontend release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+
+  verify-e2e:
+    name: Verify browser release journeys
+    needs: [verify-backend, verify-frontend]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - name: Start isolated E2E backend
+        run: |
+          docker compose --project-name p040-release-e2e --file docker-compose.e2e.yml up \
+            --build --detach --wait
+      - name: Run Playwright journeys in official image
+        run: |
+          docker run --rm --ipc=host \
+            --add-host host.docker.internal:host-gateway \
+            --volume "$PWD/frontend:/work/frontend" \
+            --workdir /work/frontend \
+            --env CI=true \
+            --env API_UPSTREAM_URL=http://host.docker.internal:8001 \
+            "$PLAYWRIGHT_IMAGE" \
+            bash -lc "npm ci && npm run test:e2e"
+      - name: Show E2E logs on failure
+        if: failure()
+        run: docker compose --project-name p040-release-e2e --file docker-compose.e2e.yml logs --no-color
+      - name: Upload Playwright diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-playwright-diagnostics
+          path: frontend/test-results
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Clean up E2E stack
+        if: always()
+        run: |
+          docker compose --project-name p040-release-e2e --file docker-compose.e2e.yml down \
+            --volumes --remove-orphans
+
+  publish:
+    name: Publish immutable container image
+    needs: [verify-backend, verify-frontend, verify-e2e]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=sha-
+            type=ref,event=tag
+            type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
+      - name: Build and push image
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+          cache-to: type=inline
+          provenance: true
+          sbom: true
+
+  deploy-staging:
+    name: Deploy staging VPS
+    if: github.ref == 'refs/heads/main'
+    needs: publish
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
+    concurrency:
+      group: deploy-staging
+      cancel-in-progress: false
+    environment:
+      name: staging
+      url: ${{ vars.PUBLIC_URL }}
+    outputs:
+      public_url: ${{ steps.staging-url.outputs.url }}
+    env:
+      IMAGE_REF: ghcr.io/ductin25/ralion@${{ needs.publish.outputs.digest }}
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+      VPS_SSH_HOST_KEY: ${{ secrets.VPS_SSH_HOST_KEY }}
+      VPS_PORT: ${{ vars.VPS_PORT || '22' }}
+      PUBLIC_URL: ${{ vars.PUBLIC_URL }}
+      GHCR_USER: ${{ github.actor }}
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Record staging URL for promotion
+        id: staging-url
+        run: echo "url=$PUBLIC_URL" >> "$GITHUB_OUTPUT"
+      - name: Configure pinned SSH identity
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/vps_deploy
+          printf '%s\n' "$VPS_SSH_HOST_KEY" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/vps_deploy ~/.ssh/known_hosts
+      - name: Authenticate VPS to GitHub Container Registry
+        run: |
+          printf '%s' "$GHCR_TOKEN" | \
+            ssh -o StrictHostKeyChecking=yes -p "$VPS_PORT" -i ~/.ssh/vps_deploy "$VPS_USER@$VPS_HOST" \
+              "docker login ghcr.io --username '$GHCR_USER' --password-stdin >/dev/null"
+      - name: Upload deployment bundle
+        run: |
+          tar -czf /tmp/p040-deploy.tgz deploy scripts/vps
+          scp -o StrictHostKeyChecking=yes -P "$VPS_PORT" -i ~/.ssh/vps_deploy /tmp/p040-deploy.tgz \
+            "$VPS_USER@$VPS_HOST:/tmp/p040-deploy.tgz"
+      - name: Deploy immutable image digest
+        run: |
+          ssh -o StrictHostKeyChecking=yes -p "$VPS_PORT" -i ~/.ssh/vps_deploy "$VPS_USER@$VPS_HOST" \
+            "rm -rf /tmp/p040-release && mkdir -p /tmp/p040-release && \
+             tar -xzf /tmp/p040-deploy.tgz -C /tmp/p040-release && \
+             install -m 0644 /tmp/p040-release/deploy/compose.vps.yml /opt/p040/deploy/compose.vps.yml && \
+             install -m 0644 /tmp/p040-release/deploy/Caddyfile /opt/p040/deploy/Caddyfile && \
+             install -m 0755 /tmp/p040-release/scripts/vps/*.sh /opt/p040/scripts/ && \
+             sudo install -m 0644 /tmp/p040-release/deploy/systemd/p040-backup.service /etc/systemd/system/p040-backup.service && \
+             sudo install -m 0644 /tmp/p040-release/deploy/systemd/p040-backup.timer /etc/systemd/system/p040-backup.timer && \
+             sudo install -m 0644 /tmp/p040-release/deploy/systemd/p040-monitor.service /etc/systemd/system/p040-monitor.service && \
+             sudo install -m 0644 /tmp/p040-release/deploy/systemd/p040-monitor.timer /etc/systemd/system/p040-monitor.timer && \
+             sudo systemctl daemon-reload && \
+             sudo systemctl enable --now p040-backup.timer p040-monitor.timer && \
+             /opt/p040/scripts/deploy.sh '$IMAGE_REF'"
+      - name: Verify public readiness
+        run: curl --fail --silent --show-error --retry 5 --retry-delay 2 "$PUBLIC_URL/ready"
+      - name: Verify RAG corpus and remote embedding
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 2 "$PUBLIC_URL/ready/rag"
+          ssh -o StrictHostKeyChecking=yes -p "$VPS_PORT" -i ~/.ssh/vps_deploy "$VPS_USER@$VPS_HOST" \
+            "docker exec p040-staging-backend-1 python -m scripts.verify_runtime_integrations"
+
+  deploy-frontend:
+    name: Deploy Vercel Production
+    if: github.ref == 'refs/heads/main'
+    needs: [deploy-staging, verify-frontend]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    defaults:
+      run:
+        working-directory: frontend
+    env:
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      API_UPSTREAM_URL: ${{ needs.deploy-staging.outputs.public_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Pull Production environment
+        run: npx --yes "vercel@${VERCEL_CLI_VERSION}" pull --yes --environment=production --token="$VERCEL_TOKEN"
+      - name: Build Production artifact
+        run: npx --yes "vercel@${VERCEL_CLI_VERSION}" build --prod --token="$VERCEL_TOKEN"
+      - name: Deploy prebuilt Production
+        id: deploy
+        run: |
+          deployment_url="$(npx --yes "vercel@${VERCEL_CLI_VERSION}" deploy --prebuilt --prod --token="$VERCEL_TOKEN")"
+          echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
+          echo "### Vercel Production" >> "$GITHUB_STEP_SUMMARY"
+          echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify Production and API proxy
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.url }}
+        run: |
+          # `vercel curl` reads VERCEL_TOKEN from the job environment. Its beta
+          # wrapper forwards an explicit --token flag to the underlying curl.
+          npx --yes "vercel@${VERCEL_CLI_VERSION}" curl "$DEPLOYMENT_URL/" \
+            -- --fail --silent --show-error --output /dev/null
+          status="$(npx --yes "vercel@${VERCEL_CLI_VERSION}" curl \
+            "$DEPLOYMENT_URL/api/v1/auth/me" -- --silent --output /dev/null --write-out '%{http_code}')"
+          test "$status" = "401"

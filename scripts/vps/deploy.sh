@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/common.sh"
 
 new_image="${1:-}"
-expected_prefix="ghcr.io/ai20k-build-phase-cohort-3/p-040@sha256:"
+expected_prefix="ghcr.io/ductin25/ralion@sha256:"
 local_image=false
 if [[ "$new_image" =~ ^sha256:[a-f0-9]{64}$ ]]; then
   if ! docker image inspect "$new_image" >/dev/null 2>&1; then
