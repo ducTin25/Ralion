@@ -134,7 +134,7 @@ test("@role-ui Engineer journey preserves project context and dark mode", async 
 
   const themeToggle = page.getByRole("button", { name: "Đổi giao diện sáng tối" }).first();
   await themeToggle.click();
-  await expect(page.locator('.ralion-workspace[data-theme="dark"]')).toBeVisible();
+  await expect(page.locator('.ralion-workspace[data-theme="dark"]').first()).toBeVisible();
   await expect
     .poll(() => page.evaluate(() => localStorage.getItem("ralion-member-theme")))
     .toBe("dark");
@@ -150,24 +150,26 @@ test("@role-ui Engineer journey preserves project context and dark mode", async 
   await expect(page.getByRole("dialog", { name: "Tôi đang bị chặn" })).toBeHidden();
   await expect(reportButton).toBeFocused();
   await expectNoHorizontalOverflow(page);
+  await page.getByRole("button", { name: "Quay lại checklist", exact: true }).click();
+  await expect(page).not.toHaveURL(/task=/);
 
   await (await memberNavigationTarget(page, "Quy ước")).click();
   await expect(page).toHaveURL(/project=\d+.*view=conventions|view=conventions.*project=\d+/);
-  await expect(page.locator('.ralion-workspace[data-theme="dark"]')).toBeVisible();
+  await expect(page.locator('.ralion-workspace[data-theme="dark"]').first()).toBeVisible();
   await expectNoHorizontalOverflow(page);
 
   await (await memberNavigationTarget(page, "Ralion Chat")).click();
   await expect(page).toHaveURL(/\/user\?.*view=chat|\/user\?view=chat.*project=\d+/);
-  await expect(page.locator('.ralion-workspace[data-theme="dark"]')).toBeVisible();
+  await expect(page.locator('.ralion-workspace[data-theme="dark"]').first()).toBeVisible();
   await expectNoHorizontalOverflow(page);
   expect(engineerRscRequests, "Engineer tab changes must stay client-side").toEqual([]);
 
   await page.goto("/documents");
-  await expect(page.locator('.ralion-workspace[data-theme="dark"]')).toBeVisible();
+  await expect(page.locator('.ralion-workspace[data-theme="dark"]').first()).toBeVisible();
   await expectNoHorizontalOverflow(page);
 
   await page.goto("/policies");
   await expect(page).toHaveURL(/\/documents$/);
-  await expect(page.locator('.ralion-workspace[data-theme="dark"]')).toBeVisible();
+  await expect(page.locator('.ralion-workspace[data-theme="dark"]').first()).toBeVisible();
   expectNoClientErrors();
 });

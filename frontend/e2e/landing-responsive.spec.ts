@@ -9,14 +9,16 @@ const viewports = [
 ] as const;
 
 const locales = [
-  { locale: "vi", heading: "Giúp mọi kỹ sư hiểu đội ngũ nhanh hơn" },
-  { locale: "en", heading: "Help every engineer understand the team faster" },
+  { locale: "vi", heading: "Giúp mọi kỹ sư hiểu đội ngũ nhanh hơn." },
+  { locale: "en", heading: "Help Every Engineer Understand Teams Faster." },
 ] as const;
 
 async function landingLayout(page: Page) {
   return page.evaluate(() => {
     const hero = document.querySelector<HTMLElement>("main > section");
-    const knowledgeMap = document.querySelector<HTMLElement>('main > div[aria-hidden="true"]');
+    const knowledgeMap = document.querySelector<HTMLElement>(
+      'main > section#hero [class*="heroVisual"]',
+    );
     if (!hero || !knowledgeMap) throw new Error("Landing hero or knowledge map is missing");
     const heroBounds = hero.getBoundingClientRect();
     const mapBounds = knowledgeMap.getBoundingClientRect();
@@ -43,7 +45,7 @@ for (const { locale, heading } of locales) {
       await page.setViewportSize(viewport);
       await page.goto(`/${locale}`);
       await expect(page.getByRole("heading", { name: heading })).toBeVisible();
-      await expect(page.locator('main > div[aria-hidden="true"]')).toBeVisible();
+      await expect(page.locator('main > section#hero [class*="heroVisual"]')).toBeVisible();
 
       const layout = await landingLayout(page);
       expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1);
@@ -70,7 +72,8 @@ test("@mobile-smoke public pages fit at 320px", async ({ page }) => {
 
 test("language switcher preserves path and query", async ({ page }) => {
   await page.goto("/vi/login?next=%2Fvi%2Fadmin%3Fpage%3D2");
-  await page.getByRole("button", { name: "EN", exact: true }).click();
+  await page.locator("summary[aria-label^='Ngôn ngữ']").click();
+  await page.getByRole("menuitem", { name: "English", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/login\?next=%2Fvi%2Fadmin%3Fpage%3D2$/);
   await expect(page.getByRole("heading", { name: "Sign in to Ralion" })).toBeAttached();
 });
@@ -78,9 +81,11 @@ test("language switcher preserves path and query", async ({ page }) => {
 test("landing navigation scrolls to the walkthrough", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/en");
-  await page.getByRole("link", { name: "How it works", exact: true }).click();
-  await expect(page).toHaveURL(/\/en#how-it-works$/);
-  await expect(page.getByRole("heading", { name: "How Ralion works" })).toBeVisible();
+  await page.getByRole("link", { name: "How It Works", exact: true }).first().click();
+  await expect(page).toHaveURL(/\/en#how$/);
+  await expect(
+    page.getByRole("heading", { name: "Shorten the time from day one to first contribution." }),
+  ).toBeVisible();
 });
 
 test("login exposes the test account guide", async ({ page }) => {

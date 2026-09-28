@@ -18,7 +18,8 @@ test("engineer completes the onboarding portal journey", async ({ page }) => {
   await expect(page.getByRole("combobox", { name: "Đổi dự án" })).toBeVisible();
 
   await expect(page.getByRole("heading", { name: "Xin chào Nguyễn Văn A" })).toBeVisible();
-  await expect(page.getByLabel(/Tiến độ \d+%/)).toContainText(/\d+\/\d+ task/);
+  await expect(page.getByRole("progressbar")).toBeVisible();
+  await expect(page.locator("main").getByText(/\d+\/\d+/).first()).toBeVisible();
 
   await page.getByRole("link", { name: /Chạy được service ở local/i }).click();
   await expect(page).toHaveURL(/task=\d+/);
@@ -39,15 +40,17 @@ test("engineer completes the onboarding portal journey", async ({ page }) => {
   await page.getByRole("link", { name: /Blocker của tôi/i }).click();
   await expect(page).toHaveURL(/view=blockers/);
   await expect(
-    page.getByText("E2E: service local không kết nối được database sau khi chạy Docker."),
+    page.getByText("E2E: service local không kết nối được database sau khi chạy Docker.").first(),
   ).toBeVisible();
 
-  await page.getByRole("link", { name: "Checklist & Plan" }).click();
-  await page.getByRole("link", { name: /Đọc Codebase Guide/i }).click();
+  await page.getByRole("link", { name: "Nhiệm vụ", exact: true }).click();
+  await page.getByRole("link", { name: /04 Tìm hiểu codebase/i }).click();
+  await expect(page).toHaveURL(/category=CODEBASE/);
+  await page.getByText(/Đọc Codebase Guide/i).first().click();
   const codebaseDetail = page.getByRole("region", { name: /Đọc Codebase Guide/i });
-  await codebaseDetail.getByRole("button", { name: "Bắt đầu task" }).click();
+  await codebaseDetail.getByRole("button", { name: /Bắt đầu task|Tiếp tục task/ }).click();
   await expect(
-    codebaseDetail.locator("span").getByText("Đang thực hiện", { exact: true }),
+    codebaseDetail.locator("span").getByText("Đang thực hiện", { exact: true }).first(),
   ).toBeVisible();
   await page.goBack();
   await expect(codebaseDetail).toBeHidden();
