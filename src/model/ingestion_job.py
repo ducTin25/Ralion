@@ -29,7 +29,7 @@ class IngestionJob(Base):
         # discovery twice for one project. Both dialects need the same partial-index semantics
         # for this overlap lock to mean the same thing in tests as in production.
         Index(
-            "uq_ingestion_jobs_one_running_per_project_operation",
+            "uq_ingestion_jobs_one_active_per_project_operation",
             "project_id",
             "job_type",
             unique=True,
