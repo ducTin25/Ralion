@@ -7,8 +7,9 @@ vi.mock("@/features/project-management/api", () => ({
   uploadProjectDocument: vi.fn(),
 }));
 
-function pickFile(container: HTMLElement, name: string, type: string) {
-  const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+function pickFile(name: string, type: string) {
+  const input = document.querySelector<HTMLInputElement>('input[type="file"]');
+  if (!input) throw new Error("Document file input was not rendered");
   fireEvent.change(input, { target: { files: [new File(["noi dung"], name, { type })] } });
 }
 
@@ -16,7 +17,7 @@ function pickFile(container: HTMLElement, name: string, type: string) {
 // file cũ vẫn nằm nguyên trên form và được gửi lên làm `title` của tài liệu.
 describe("DocumentUploadModal — đổi file đã chọn", () => {
   it("cập nhật cả tên file lẫn tiêu đề khi chọn file khác", () => {
-    const { container } = render(
+    render(
       <DocumentUploadModal
         projectId={1}
         defaultCategory="SETUP"
@@ -25,11 +26,11 @@ describe("DocumentUploadModal — đổi file đã chọn", () => {
       />,
     );
 
-    pickFile(container, "pet_project.docx", "application/vnd.openxmlformats-officedocument");
+    pickFile("pet_project.docx", "application/vnd.openxmlformats-officedocument");
     expect(screen.getByText("pet_project.docx")).toBeInTheDocument();
     expect(screen.getByDisplayValue("pet_project.docx")).toBeInTheDocument();
 
-    pickFile(container, "thesis.md", "text/markdown");
+    pickFile("thesis.md", "text/markdown");
     expect(screen.getByText("thesis.md")).toBeInTheDocument();
     expect(screen.getByDisplayValue("thesis.md")).toBeInTheDocument();
     expect(screen.queryByText("pet_project.docx")).not.toBeInTheDocument();
@@ -37,7 +38,7 @@ describe("DocumentUploadModal — đổi file đã chọn", () => {
   });
 
   it("giữ nguyên tiêu đề PM đã tự gõ khi đổi file", () => {
-    const { container } = render(
+    render(
       <DocumentUploadModal
         projectId={1}
         defaultCategory="SETUP"
@@ -46,12 +47,12 @@ describe("DocumentUploadModal — đổi file đã chọn", () => {
       />,
     );
 
-    pickFile(container, "pet_project.docx", "application/vnd.openxmlformats-officedocument");
+    pickFile("pet_project.docx", "application/vnd.openxmlformats-officedocument");
     fireEvent.change(screen.getByLabelText("Tiêu đề tài liệu"), {
       target: { value: "Huong dan cai dat" },
     });
 
-    pickFile(container, "thesis.md", "text/markdown");
+    pickFile("thesis.md", "text/markdown");
     expect(screen.getByText("thesis.md")).toBeInTheDocument();
     expect(screen.getByDisplayValue("Huong dan cai dat")).toBeInTheDocument();
   });

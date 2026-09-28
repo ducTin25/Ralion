@@ -18,7 +18,6 @@ COPY --chown=appuser:appuser alembic ./alembic
 COPY --chown=appuser:appuser modal_bge_m3 ./modal_bge_m3
 COPY --chown=appuser:appuser tests ./tests
 COPY --chown=appuser:appuser scripts ./scripts
-COPY --chown=appuser:appuser policy_category_labels.json policy_embeddings.jsonl ./
 COPY --chown=appuser:appuser demo-data ./demo-data
 USER appuser
 

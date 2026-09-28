@@ -127,8 +127,8 @@ Sơ đồ này tập trung vào chiều phụ thuộc tĩnh trong code, không p
 ### Sao chép mã nguồn
 
 ```powershell
-git clone https://github.com/AI20K-Build-Phase-Cohort-3/P-040.git
-cd P-040
+git clone https://github.com/ducTin25/Ralion.git
+cd Ralion
 ```
 
 ### Điều kiện
