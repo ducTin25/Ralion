@@ -14,7 +14,6 @@ import pytest
 
 from src.ai.orchestration.conversation_memory import TopicState
 from src.ai.orchestration.social_reply import SocialIntent
-from src.core.telemetry import TraceRecorder, bind_trace
 from src.ai.orchestration.turn_interpreter import (
     _SYSTEM_INSTRUCTIONS,
     ConversationControlApplication,
@@ -26,6 +25,7 @@ from src.ai.orchestration.turn_interpreter import (
     TurnInterpreter,
     TurnInterpreterConfig,
 )
+from src.core.telemetry import TraceRecorder, bind_trace
 from src.model.enums import DocumentDomain
 from src.shared.ai.external_failures import ExternalFailureCode, ExternalServiceFailure
 from src.shared.ai.request_budget import RequestBudget

@@ -26,12 +26,12 @@ from src.ai.orchestration.answer_generator import (
     VerifiedClaim,
     VerifiedGuidance,
 )
+from src.ai.orchestration.conversation_memory import MemoryConfig
 from src.ai.orchestration.evidence_sufficiency_gate import (
     EvidenceSufficiencyResult,
     EvidenceSufficiencyVerdict,
 )
 from src.ai.orchestration.guidance_validation import GeneralKnowledgeConfig
-from src.ai.orchestration.conversation_memory import MemoryConfig
 from src.ai.orchestration.turn_interpreter import (
     InterpreterContext,
     InterpreterRoute,
